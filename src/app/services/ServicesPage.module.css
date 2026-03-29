@@ -1,0 +1,29 @@
+.page {
+  padding: 48px 0 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: 32px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 720px;
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    padding: 72px 0 0;
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+  }
+}

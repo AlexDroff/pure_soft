@@ -1,0 +1,24 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  transition:
+    background-color var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media screen and (hover: hover) {
+  .button:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+}

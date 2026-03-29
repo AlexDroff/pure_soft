@@ -1,0 +1,47 @@
+.section {
+  padding: 48px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .content {
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .imagePlaceholder,
+  .textBlock {
+    width: calc((100% - 40px) / 2);
+  }
+
+  .imagePlaceholder {
+    min-height: 360px;
+  }
+}

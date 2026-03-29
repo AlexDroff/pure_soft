@@ -1,0 +1,32 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition: background-color var(--transition-base);
+}
+
+.activeDot {
+  background-color: var(--color-accent);
+}

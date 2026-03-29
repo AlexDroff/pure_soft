@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
