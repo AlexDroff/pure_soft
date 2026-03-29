@@ -10,11 +10,17 @@ const navItems = [
   { label: "FAQ", href: "/#faq" },
 ];
 
+type SocialItem = {
+  label: string;
+  href: string;
+  icon: string;
+};
+
 const socialItems = [
   { label: "YouTube", href: "#", icon: "/icons/youtube.svg" },
   { label: "Instagram", href: contacts.instagram, icon: "/icons/instagram.svg" },
   { label: "Facebook", href: contacts.facebook, icon: "/icons/facebook.svg" },
-];
+].filter((item): item is SocialItem => typeof item.href === "string");
 
 export default function Footer() {
   return (
