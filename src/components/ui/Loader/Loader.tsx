@@ -1,5 +1,30 @@
 import styles from "./Loader.module.css";
 
-export default function Loader() {
-  return <span className={styles.loader} aria-label="Loading" />;
+type LoaderProps = {
+  text?: string;
+  subtext?: string;
+  fullScreen?: boolean;
+};
+
+export default function Loader({
+  text = "Cargando...",
+  subtext = "Por favor, espera un momento",
+  fullScreen = false,
+}: LoaderProps) {
+  return (
+    <div
+      className={`${styles.loader} ${fullScreen ? styles.fullScreen : ""}`}
+      role="status"
+      aria-live="polite"
+    >
+      <div className={styles.spinnerShell}>
+        <span className={styles.spinner} aria-hidden="true" />
+      </div>
+
+      <div className={styles.textBlock}>
+        <p className={styles.title}>{text}</p>
+        <p className={styles.subtitle}>{subtext}</p>
+      </div>
+    </div>
+  );
 }

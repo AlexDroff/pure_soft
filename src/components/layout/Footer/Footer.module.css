@@ -1,63 +1,112 @@
 .footer {
-  padding: 48px 0 24px;
-  background-color: var(--color-text-primary);
+  margin-top: var(--spacing-3xl);
+  padding: var(--spacing-xl) 0;
+  background-color: var(--color-primary);
   color: var(--color-white);
-  margin-top: 64px;
 }
 
 .inner {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  gap: var(--spacing-lg);
 }
 
-.brandBlock,
-.contactsBlock {
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.logo {
+  width: 170px;
+  height: auto;
+}
+
+.navBlock {
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.contactGroup {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 800;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.list {
+.addressBlock {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 2px;
+  font-style: normal;
+}
+
+.addressLine,
+.link {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--color-white);
 }
 
 .link {
-  color: var(--color-white);
-  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
   transition: opacity var(--transition-base);
 }
 
-.link:hover {
+.link:hover,
+.socialLink:hover {
   opacity: 0.8;
 }
 
-.bottom {
-  padding-top: 24px;
+.socials {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.socialLink:hover {
+  transform: translateY(-1px);
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (min-width: 768px) {
-  .inner {
-    flex-direction: row;
-    justify-content: space-between;
+  .footer {
+    padding: var(--spacing-lg) 0;
   }
 
-  .brandBlock,
-  .contactsBlock {
-    width: calc((100% - 40px) / 2);
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+  }
+
+  .logo {
+    width: 210px;
+  }
+
+  .contactGroup {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xl);
   }
 }

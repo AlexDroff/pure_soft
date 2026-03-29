@@ -22,7 +22,7 @@ export default function OrderItemCard({
         <h3 className={styles.title}>{item.title}</h3>
 
         <SectionText>
-          {item.price} zł / {item.unit}
+          {item.price} zl / {item.unit}
         </SectionText>
       </div>
 
@@ -30,7 +30,7 @@ export default function OrderItemCard({
         <div className={styles.quantity}>
           <IconButton
             icon={<IoRemove size={18} />}
-            label="Decrease quantity"
+            label="Reducir cantidad"
             onClickAction={() => onDecrease(item.serviceId)}
           />
 
@@ -38,7 +38,7 @@ export default function OrderItemCard({
 
           <IconButton
             icon={<IoAdd size={18} />}
-            label="Increase quantity"
+            label="Aumentar cantidad"
             onClickAction={() => onIncrease(item.serviceId)}
           />
         </div>

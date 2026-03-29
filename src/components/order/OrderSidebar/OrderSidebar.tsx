@@ -34,18 +34,18 @@ export default function OrderSidebar({
   return (
     <aside className={clsx(styles.sidebar, isOpen && styles.open)}>
       <div className={styles.header}>
-        <SectionTitle>Кошик</SectionTitle>
+        <SectionTitle>Carrito</SectionTitle>
 
         <IconButton
           icon={<IoClose size={22} />}
-          label="Close cart"
+          label="Cerrar carrito"
           onClickAction={onClose}
         />
       </div>
 
       {items.length === 0 ? (
         <div className={styles.empty}>
-          <SectionText>Ваш кошик поки порожній.</SectionText>
+          <SectionText>Tu carrito está vacío.</SectionText>
         </div>
       ) : (
         <>

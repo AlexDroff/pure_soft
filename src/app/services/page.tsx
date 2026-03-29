@@ -14,16 +14,18 @@ import styles from "./ServicesPage.module.css";
 export default function ServicesPage() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const {
     items,
+    isSidebarOpen,
     addItem,
     increaseQuantity,
     decreaseQuantity,
     removeItem,
     clearOrder,
+    openSidebar,
+    closeSidebar,
     getTotalItems,
     getTotalPrice,
   } = useOrderStore();
@@ -42,7 +44,7 @@ export default function ServicesPage() {
 
   const handleAddToOrder = (service: Service) => {
     addItem(service);
-    setIsCartOpen(true);
+    openSidebar();
     handleCloseModal();
   };
 
@@ -53,7 +55,7 @@ export default function ServicesPage() {
   const handleCheckoutSuccess = () => {
     clearOrder();
     setIsCheckoutOpen(false);
-    setIsCartOpen(false);
+    closeSidebar();
   };
 
   return (
@@ -61,16 +63,18 @@ export default function ServicesPage() {
       <Container>
         <div className={styles.header}>
           <div className={styles.textBlock}>
-            <SectionTitle>Наші послуги</SectionTitle>
+            <SectionTitle className={styles.title}>
+              Nuestros servicios
+            </SectionTitle>
 
-            <SectionText>
-              Оберіть потрібну послугу, перегляньте деталі та додайте замовлення
-              до кошика.
+            <SectionText className={styles.description}>
+              Elige el servicio que necesitas, revisa los detalles y anade tu
+              pedido al carrito.
             </SectionText>
           </div>
 
-          <Button onClick={() => setIsCartOpen(true)}>
-            Кошик ({getTotalItems()})
+          <Button className={styles.cartButton} onClick={openSidebar}>
+            Carrito ({getTotalItems()})
           </Button>
         </div>
 
@@ -85,11 +89,11 @@ export default function ServicesPage() {
       />
 
       <OrderSidebar
-        isOpen={isCartOpen}
+        isOpen={isSidebarOpen}
         items={items}
         totalItems={getTotalItems()}
         totalPrice={getTotalPrice()}
-        onClose={() => setIsCartOpen(false)}
+        onClose={closeSidebar}
         onCheckout={handleCheckout}
         onIncrease={increaseQuantity}
         onDecrease={decreaseQuantity}

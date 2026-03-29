@@ -29,11 +29,11 @@ export default function ServiceDetails({
         <SectionText>{service.fullDescription}</SectionText>
 
         <p className={styles.price}>
-          Вартість: від {service.price} zł / {service.unit}
+          Precio: desde {service.price} zl / {service.unit}
         </p>
 
         <Button onClick={() => onAddToOrder(service)} fullWidth>
-          Додати в кошик
+          Anadir al carrito
         </Button>
       </div>
     </div>

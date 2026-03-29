@@ -4,12 +4,13 @@ export const services: Service[] = [
   {
     id: "service-sofa-1",
     slug: "sofa-cleaning",
-    title: "Хімчистка дивану",
-    shortDescription: "Професійне очищення диванів від плям, пилу та запахів.",
+    title: "Limpieza de sofa",
+    shortDescription:
+      "Limpieza profesional de sofas contra manchas, polvo y olores.",
     fullDescription:
-      "Глибока хімчистка диванів із видаленням побутових забруднень, пилу, неприємних запахів і плям. Підходить для регулярного догляду та оновлення м’яких меблів.",
+      "Limpieza profunda de sofas con eliminacion de suciedad domestica, polvo, malos olores y manchas. Ideal para el mantenimiento regular y la renovacion de muebles tapizados.",
     price: 120,
-    unit: "шт",
+    unit: "ud",
     image: "/images/services/sofa.jpg",
     category: "sofa",
     isActive: true,
@@ -17,13 +18,13 @@ export const services: Service[] = [
   {
     id: "service-chair-1",
     slug: "chair-cleaning",
-    title: "Хімчистка стільця",
+    title: "Limpieza de silla",
     shortDescription:
-      "Очищення м’яких стільців від пилу, плям і слідів використання.",
+      "Limpieza de sillas tapizadas contra polvo, manchas y marcas de uso.",
     fullDescription:
-      "Делікатна та ефективна хімчистка стільців із текстильним або м’яким покриттям. Допомагає освіжити зовнішній вигляд та прибрати забруднення.",
+      "Limpieza delicada y eficaz de sillas con tapizado textil o acolchado. Ayuda a refrescar la apariencia y eliminar la suciedad acumulada.",
     price: 40,
-    unit: "шт",
+    unit: "ud",
     image: "/images/services/chair.jpg",
     category: "chair",
     isActive: true,
@@ -31,12 +32,13 @@ export const services: Service[] = [
   {
     id: "service-armchair-1",
     slug: "armchair-cleaning",
-    title: "Хімчистка крісла",
-    shortDescription: "Глибоке очищення крісел для дому, офісу або салону.",
+    title: "Limpieza de sillon",
+    shortDescription:
+      "Limpieza profunda de sillones para casa, oficina o negocio.",
     fullDescription:
-      "Очищення крісел із видаленням плям, пилу та запахів. Підходить для домашніх і офісних меблів із текстильним покриттям.",
+      "Limpieza de sillones con eliminacion de manchas, polvo y olores. Apta para mobiliario domestico y profesional con tapiceria textil.",
     price: 70,
-    unit: "шт",
+    unit: "ud",
     image: "/images/services/armchair.jpg",
     category: "armchair",
     isActive: true,
@@ -44,12 +46,13 @@ export const services: Service[] = [
   {
     id: "service-carpet-1",
     slug: "carpet-cleaning",
-    title: "Хімчистка килима",
-    shortDescription: "Очищення килимів і доріжок від пилу, бруду та запахів.",
+    title: "Limpieza de alfombra",
+    shortDescription:
+      "Limpieza de alfombras y tapetes contra polvo, suciedad y olores.",
     fullDescription:
-      "Професійне очищення килимів із відновленням свіжості, кольору та текстури. Допомагає прибрати пил, шерсть тварин та побутові забруднення.",
+      "Limpieza profesional de alfombras con recuperacion de frescura, color y textura. Ayuda a eliminar polvo, pelo de mascotas y suciedad diaria.",
     price: 25,
-    unit: "м²",
+    unit: "m2",
     image: "/images/services/carpet.jpg",
     category: "carpet",
     isActive: true,
@@ -57,12 +60,13 @@ export const services: Service[] = [
   {
     id: "service-mattress-1",
     slug: "mattress-cleaning",
-    title: "Хімчистка матраца",
-    shortDescription: "Глибоке очищення матраців для свіжості та гігієни.",
+    title: "Limpieza de colchon",
+    shortDescription:
+      "Limpieza profunda de colchones para mayor frescura e higiene.",
     fullDescription:
-      "Хімчистка матраців із видаленням пилу, алергенів, плям і запахів. Ідеально для регулярного гігієнічного догляду.",
+      "Limpieza de colchones con eliminacion de polvo, alergenos, manchas y olores. Ideal para el cuidado higienico periodico.",
     price: 150,
-    unit: "шт",
+    unit: "ud",
     image: "/images/services/mattress.jpg",
     category: "mattress",
     isActive: true,
@@ -70,13 +74,13 @@ export const services: Service[] = [
   {
     id: "service-other-1",
     slug: "custom-cleaning",
-    title: "Інші текстильні вироби",
+    title: "Otros textiles",
     shortDescription:
-      "Індивідуальне очищення інших меблів і текстильних виробів.",
+      "Limpieza individual de otros muebles y productos textiles.",
     fullDescription:
-      "Очищення пуфів, банкеток, текстильних панелей та інших виробів. Вартість і формат роботи уточнюються індивідуально.",
+      "Limpieza de pufs, banquetas, paneles textiles y otras piezas. El precio y el formato del servicio se acuerdan de forma individual.",
     price: 50,
-    unit: "від",
+    unit: "desde",
     image: "/images/services/other.jpg",
     category: "other",
     isActive: true,

@@ -1,52 +1,78 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout";
-import { SectionText } from "@/components/ui";
 import { contacts } from "@/data/contacts";
-import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import styles from "./Footer.module.css";
+
+const navItems = [
+  { label: "INICIO", href: "/" },
+  { label: "LIMPIEZA", href: "/#limpieza" },
+  { label: "FAQ", href: "/#faq" },
+];
+
+const socialItems = [
+  { label: "YouTube", href: "#", icon: "/icons/youtube.svg" },
+  { label: "Instagram", href: contacts.instagram, icon: "/icons/instagram.svg" },
+  { label: "Facebook", href: contacts.facebook, icon: "/icons/facebook.svg" },
+];
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer id="contacto" className={styles.footer}>
       <Container>
         <div className={styles.inner}>
-          <div className={styles.brandBlock}>
-            <h2 className={styles.logo}>PURE SOFT</h2>
-            <SectionText>
-              Професійна хімчистка меблів і текстилю з виїздом до клієнта.
-            </SectionText>
-          </div>
+          <Link href="/" className={styles.logoLink} aria-label="PureSoft">
+            <Image
+              src="/icons/logo.svg"
+              alt="PureSoft"
+              width={320}
+              height={68}
+              className={styles.logo}
+            />
+          </Link>
 
-          <div className={styles.contactsBlock}>
-            <h3 className={styles.title}>Контакти</h3>
-
-            <ul className={styles.list}>
-              <li>
-                <Link href={`tel:${contacts.phone}`} className={styles.link}>
-                  {contacts.phone}
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href={`https://wa.me/${formatPhoneNumber(contacts.whatsapp)}`}
-                  className={styles.link}
-                >
-                  WhatsApp
-                </Link>
-              </li>
-
-              <li>
-                <Link href={`mailto:${contacts.email}`} className={styles.link}>
-                  {contacts.email}
-                </Link>
-              </li>
+          <nav className={styles.navBlock} aria-label="Footer navigation">
+            <ul className={styles.navList}>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={styles.link}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
-        </div>
+          </nav>
 
-        <div className={styles.bottom}>
-          <SectionText>© 2026 PURE SOFT. Усі права захищені.</SectionText>
+          <div className={styles.contactGroup}>
+            <address className={styles.addressBlock}>
+              <p className={styles.addressLine}>Avinguda de Dénia, 76,</p>
+              <p className={styles.addressLine}>03013 Alicante,</p>
+              <Link href="tel:637943520" className={styles.link}>
+                637 943 520
+              </Link>
+            </address>
+
+            <div className={styles.socials} aria-label="Social media links">
+              {socialItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={styles.socialLink}
+                  aria-label={item.label}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={40}
+                    height={40}
+                    className={styles.socialIcon}
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </footer>

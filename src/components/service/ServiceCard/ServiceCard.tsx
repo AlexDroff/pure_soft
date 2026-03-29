@@ -35,19 +35,23 @@ export default function ServiceCard({
       <div className={styles.content}>
         <h3 className={styles.title}>{service.title}</h3>
 
-        <SectionText>{service.shortDescription}</SectionText>
+        <SectionText className={styles.description}>
+          {service.shortDescription}
+        </SectionText>
 
         <p className={styles.price}>
-          від {service.price} zł / {service.unit}
+          desde {service.price} zl / {service.unit}
         </p>
 
         {isInteractive ? (
-          <Button onClick={() => onOpen?.(service)} fullWidth>
-            Детальніше
+          <Button className={styles.button} onClick={() => onOpen?.(service)} fullWidth>
+            Detalles
           </Button>
         ) : (
           <Link href={ROUTES.SERVICES} className={styles.link}>
-            <Button fullWidth>Переглянути</Button>
+            <Button className={styles.button} fullWidth>
+              Ver
+            </Button>
           </Link>
         )}
       </div>

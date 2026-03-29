@@ -14,17 +14,17 @@ export function buildWhatsAppMessage({
 
   const itemsText = items
     .map((item, index) => {
-      return `${index + 1}. ${item.title} — ${item.quantity} ${item.unit} × ${item.price} zł`;
+      return `${index + 1}. ${item.title} - ${item.quantity} ${item.unit} x ${item.price} zl`;
     })
     .join("\n");
 
-  return `Доброго дня! Хочу оформити замовлення.
+  return `Hola, quiero hacer un pedido.
 
-Ім’я: ${customer.name}
-Телефон: ${customer.phone}
+Nombre: ${customer.name}
+Teléfono: ${customer.phone}
 
-Послуги:
+Servicios:
 ${itemsText}
 
-Загальна сума: ${total} zł`;
+Total: ${total} zl`;
 }

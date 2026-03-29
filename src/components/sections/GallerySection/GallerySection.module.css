@@ -1,18 +1,245 @@
 .section {
-  padding: 48px 0;
+  padding: var(--spacing-lg) 0;
   background-color: var(--color-bg-secondary);
 }
 
-.header {
+.slider {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
-  margin-bottom: 32px;
-  max-width: 720px;
+}
+
+.viewport {
+  overflow: hidden;
+}
+
+.strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  min-height: 116px;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.4;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base),
+    filter var(--transition-base);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.activeCard {
+  width: 118px;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.activeCard .imageWrapper {
+  aspect-ratio: 1.2 / 1;
+  box-shadow: var(--shadow-md);
+}
+
+.nearCard {
+  width: 76px;
+  opacity: 0.72;
+}
+
+.farCard {
+  width: 58px;
+  opacity: 0.28;
+  filter: saturate(0.8);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--color-border);
+  transition: background-color var(--transition-base);
+}
+
+.activeDot {
+  background-color: var(--color-accent);
+}
+
+.previewOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background-color: var(--color-overlay);
+}
+
+.previewCard {
+  position: relative;
+  width: min(100%, 920px);
+}
+
+.previewClose {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.previewImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+}
+
+.previewImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (hover: hover) {
+  .card:hover {
+    opacity: 1;
+  }
+
+  .arrow:hover {
+    transform: translateY(-1px);
+    color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .previewClose:hover {
+    transform: translateY(-1px);
+  }
 }
 
 @media screen and (min-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .slider {
+    gap: var(--spacing-md);
+  }
+
+  .strip {
+    gap: var(--spacing-md);
+    min-height: 154px;
+  }
+
+  .card {
+    width: 92px;
+  }
+
+  .activeCard {
+    width: 176px;
+  }
+
+  .nearCard {
+    width: 112px;
+  }
+
+  .farCard {
+    width: 86px;
+  }
+
+  .arrow {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .strip {
+    gap: var(--spacing-lg);
+    min-height: 182px;
+  }
+
+  .card {
+    width: 108px;
+  }
+
+  .activeCard {
+    width: 214px;
+  }
+
+  .nearCard {
+    width: 132px;
+  }
+
+  .farCard {
+    width: 98px;
   }
 }

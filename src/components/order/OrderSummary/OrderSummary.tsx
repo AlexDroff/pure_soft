@@ -17,12 +17,12 @@ export default function OrderSummary({
   return (
     <div className={styles.summary}>
       <div className={styles.info}>
-        <SectionText>Послуг у кошику: {totalItems}</SectionText>
-        <p className={styles.total}>Загальна сума: {totalPrice} zł</p>
+        <SectionText>Servicios en el carrito: {totalItems}</SectionText>
+        <p className={styles.total}>Total: {totalPrice} zl</p>
       </div>
 
       <Button onClick={onCheckout} fullWidth disabled={isDisabled}>
-        Оформити замовлення
+        Finalizar pedido
       </Button>
     </div>
   );

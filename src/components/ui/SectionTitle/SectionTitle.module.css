@@ -1,11 +1,14 @@
 .title {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: clamp(2rem, 5vw, var(--font-size-section-title));
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  text-wrap: balance;
 }
 
 @media screen and (min-width: 768px) {
   .title {
-    font-size: 36px;
+    max-width: 20ch;
   }
 }

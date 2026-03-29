@@ -1,33 +1,205 @@
 .section {
-  padding: 48px 0;
+  padding: var(--spacing-lg) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.card {
+  overflow: hidden;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.cardHead {
+  padding: 6px var(--spacing-xs);
+  background-color: var(--color-primary);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 0.5rem;
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.15;
+  text-align: center;
+  color: var(--color-white);
+  letter-spacing: 0.04em;
+}
+
+.imageWrap {
+  position: relative;
+  min-height: 74px;
   background-color: var(--color-bg-secondary);
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  margin-bottom: 32px;
+.image {
+  object-fit: cover;
+  object-position: center;
 }
 
-.textBlock {
+.cardBody {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: 8px;
+  padding: var(--spacing-xs);
+}
+
+.cardText {
+  margin: 0;
+  font-size: 0.56rem;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-text-primary);
 }
 
 .link {
-  width: fit-content;
+  display: block;
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  min-height: 28px;
+  padding: 0 var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.56rem;
+  color: var(--color-text-primary);
+  background-color: rgba(254, 254, 254, 0.72);
+  box-shadow: none;
+}
+
+.promoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 126px;
+  padding: var(--spacing-sm);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.promoLabel {
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.promoValue {
+  font-size: 2.9rem;
+  font-weight: var(--font-weight-extrabold);
+  line-height: 0.9;
+  color: var(--color-accent);
+}
+
+.promoText {
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.15;
+}
+
+@media screen and (hover: hover) {
+  .card:hover,
+  .promoCard:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 @media screen and (min-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: var(--spacing-xl) 0;
   }
 
-  .header {
-    flex-direction: row;
-    align-items: end;
-    justify-content: space-between;
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-2xl);
+  }
+
+  .cardHead {
+    padding: 7px var(--spacing-sm);
+  }
+
+  .cardTitle {
+    font-size: 0.72rem;
+  }
+
+  .imageWrap {
+    min-height: 126px;
+  }
+
+  .cardBody {
+    gap: 8px;
+    padding: var(--spacing-sm);
+  }
+
+  .cardText {
+    font-size: 0.74rem;
+  }
+
+  .button {
+    min-height: 36px;
+    font-size: 0.7rem;
+  }
+
+  .promoCard {
+    min-height: 198px;
+    gap: 8px;
+  }
+
+  .promoLabel {
+    font-size: 1.25rem;
+  }
+
+  .promoValue {
+    font-size: 4.6rem;
+  }
+
+  .promoText {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .grid {
+    gap: var(--spacing-2xl);
+  }
+
+  .cardTitle {
+    font-size: 0.78rem;
+  }
+
+  .imageWrap {
+    min-height: 148px;
+  }
+
+  .cardText {
+    font-size: 0.82rem;
+  }
+
+  .button {
+    min-height: 40px;
+    font-size: 0.76rem;
+  }
+
+  .promoCard {
+    min-height: 230px;
+  }
+
+  .promoValue {
+    font-size: 5rem;
   }
 }

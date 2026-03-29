@@ -72,8 +72,8 @@
   /* Layout */
   --container-max-width: 1320px;
   --container-padding-mobile: 20px;
-  --container-padding-tablet: 32px;
-  --container-padding-desktop: 48px;
+  --container-padding-tablet: 60px;
+  --container-padding-desktop: 80px;
 
   /* section-variables  */
   --section-padding-mobile: 64px;
@@ -96,6 +96,8 @@ html {
   min-height: 100%;
   background-color: var(--color-bg);
   scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {

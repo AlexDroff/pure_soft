@@ -23,8 +23,8 @@ type CheckoutModalProps = {
 };
 
 const checkoutSchema = Yup.object({
-  name: Yup.string().trim().required("Введіть ім’я"),
-  phone: Yup.string().trim().required("Введіть номер телефону"),
+  name: Yup.string().trim().required("Introduce tu nombre"),
+  phone: Yup.string().trim().required("Introduce tu telefono"),
 });
 
 const initialValues: CheckoutFormValues = {
@@ -60,10 +60,11 @@ export default function CheckoutModal({
       className={styles.modal}
     >
       <div className={styles.content}>
-        <SectionTitle>Оформлення замовлення</SectionTitle>
+        <SectionTitle>Finalizar pedido</SectionTitle>
 
         <SectionText>
-          Вкажіть ваші дані, щоб перейти до WhatsApp із готовим замовленням.
+          Introduce tus datos para continuar en WhatsApp con el pedido ya
+          preparado.
         </SectionText>
 
         <Formik
@@ -74,10 +75,10 @@ export default function CheckoutModal({
           {({ values, errors, touched, handleChange, handleBlur }) => (
             <Form className={styles.form}>
               <Input
-                label="Ваше ім’я"
+                label="Nombre"
                 name="name"
                 value={values.name}
-                placeholder="Введіть ім’я"
+                placeholder="Introduce tu nombre"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={errors.name}
@@ -85,7 +86,7 @@ export default function CheckoutModal({
               />
 
               <Input
-                label="Номер телефону"
+                label="Telefono"
                 name="phone"
                 value={values.phone}
                 placeholder="+48 123 456 789"
@@ -96,7 +97,7 @@ export default function CheckoutModal({
               />
 
               <Button type="submit" fullWidth>
-                Замовити через WhatsApp
+                Pedir por WhatsApp
               </Button>
             </Form>
           )}

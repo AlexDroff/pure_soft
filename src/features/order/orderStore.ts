@@ -5,17 +5,22 @@ import { calculateOrderTotal } from "@/utils/calculateOrderTotal";
 
 type OrderStore = {
   items: OrderItem[];
+  isSidebarOpen: boolean;
   addItem: (service: Service) => void;
   removeItem: (serviceId: string) => void;
   increaseQuantity: (serviceId: string) => void;
   decreaseQuantity: (serviceId: string) => void;
   clearOrder: () => void;
+  openSidebar: () => void;
+  closeSidebar: () => void;
+  toggleSidebar: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
 };
 
 export const useOrderStore = create<OrderStore>((set, get) => ({
   items: [],
+  isSidebarOpen: false,
 
   addItem: (service) => {
     const existingItem = get().items.find(
@@ -77,6 +82,18 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
 
   clearOrder: () => {
     set({ items: [] });
+  },
+
+  openSidebar: () => {
+    set({ isSidebarOpen: true });
+  },
+
+  closeSidebar: () => {
+    set({ isSidebarOpen: false });
+  },
+
+  toggleSidebar: () => {
+    set((state) => ({ isSidebarOpen: !state.isSidebarOpen }));
   },
 
   getTotalItems: () => {

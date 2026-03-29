@@ -1,29 +1,50 @@
 .page {
-  padding: 48px 0 0;
+  padding: 42px 0 0;
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  margin-bottom: 32px;
+  gap: 24px;
+  margin-bottom: 28px;
 }
 
 .textBlock {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
-  max-width: 720px;
+  gap: 14px;
+  max-width: 760px;
+}
+
+.title {
+  max-width: none;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.description {
+  max-width: 740px;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.cartButton {
+  align-self: flex-start;
+  min-width: 150px;
 }
 
 @media screen and (min-width: 768px) {
   .page {
-    padding: 72px 0 0;
+    padding: 64px 0 0;
   }
 
   .header {
     flex-direction: row;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  .cartButton {
+    align-self: center;
   }
 }

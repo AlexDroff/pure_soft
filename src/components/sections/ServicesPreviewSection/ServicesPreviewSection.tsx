@@ -1,34 +1,155 @@
+import Image from "next/image";
 import Link from "next/link";
-import { services } from "@/data/services";
 import { Container } from "@/components/layout";
-import { Button, SectionText, SectionTitle } from "@/components/ui";
-import { ServiceGrid } from "@/components/service";
-import { getActiveServices } from "@/utils/getActiveServices";
+import { Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
 import styles from "./ServicesPreviewSection.module.css";
 
+const previewCards = [
+  {
+    title: "LIMPIEZA DE ALFOMBRAS",
+    description: "Limpieza profesional de alfombras",
+    price: "DESDE 50 €",
+    image: "/images/services/carpet.jpg",
+  },
+  {
+    title: "LIMPIEZA DE SOFÁS",
+    description: "Limpieza profunda de sofás y tapicería",
+    price: "DESDE 50 €",
+    image: "/images/services/sofa.jpg",
+  },
+  {
+    title: "LIMPIEZA DE SILLAS",
+    description: "Limpieza profesional de sillas y asientos",
+    price: "DESDE 7 €",
+    image: "/images/services/chair.jpg",
+  },
+  {
+    title: "LIMPIEZA DE COLCHONES",
+    description: "Limpieza y desinfección de colchones",
+    price: "DESDE 60 €",
+    image: "/images/services/mattress.jpg",
+  },
+  {
+    title: "LIMPIEZA DE SILLONES",
+    description: "Limpieza profunda de sillones",
+    price: "DESDE 30 €",
+    image: "/images/services/armchair.jpg",
+  },
+];
+
 export default function ServicesPreviewSection() {
-  const previewServices = getActiveServices(services).slice(0, 3);
-
   return (
-    <section className={styles.section}>
+    <section id="limpieza" className={styles.section}>
       <Container>
-        <div className={styles.header}>
-          <div className={styles.textBlock}>
-            <SectionTitle>Наші послуги</SectionTitle>
+        <div className={styles.grid}>
+          <article className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3 className={styles.cardTitle}>{previewCards[0].title}</h3>
+            </div>
+            <div className={styles.imageWrap}>
+              <Image
+                src={previewCards[0].image}
+                alt={previewCards[0].title}
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.cardBody}>
+              <p className={styles.cardText}>{previewCards[0].description}</p>
+              <Link href={ROUTES.SERVICES} className={styles.link}>
+                <Button className={styles.button}>{previewCards[0].price}</Button>
+              </Link>
+            </div>
+          </article>
 
-            <SectionText>
-              Оберіть потрібний тип хімчистки та перегляньте доступні варіанти
-              очищення меблів і текстилю.
-            </SectionText>
-          </div>
+          <article className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3 className={styles.cardTitle}>{previewCards[1].title}</h3>
+            </div>
+            <div className={styles.imageWrap}>
+              <Image
+                src={previewCards[1].image}
+                alt={previewCards[1].title}
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.cardBody}>
+              <p className={styles.cardText}>{previewCards[1].description}</p>
+              <Link href={ROUTES.SERVICES} className={styles.link}>
+                <Button className={styles.button}>{previewCards[1].price}</Button>
+              </Link>
+            </div>
+          </article>
 
-          <Link href={ROUTES.SERVICES} className={styles.link}>
-            <Button variant="secondary">Усі послуги</Button>
+          <article className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3 className={styles.cardTitle}>{previewCards[2].title}</h3>
+            </div>
+            <div className={styles.imageWrap}>
+              <Image
+                src={previewCards[2].image}
+                alt={previewCards[2].title}
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.cardBody}>
+              <p className={styles.cardText}>{previewCards[2].description}</p>
+              <Link href={ROUTES.SERVICES} className={styles.link}>
+                <Button className={styles.button}>{previewCards[2].price}</Button>
+              </Link>
+            </div>
+          </article>
+
+          <article className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3 className={styles.cardTitle}>{previewCards[3].title}</h3>
+            </div>
+            <div className={styles.imageWrap}>
+              <Image
+                src={previewCards[3].image}
+                alt={previewCards[3].title}
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.cardBody}>
+              <p className={styles.cardText}>{previewCards[3].description}</p>
+              <Link href={ROUTES.SERVICES} className={styles.link}>
+                <Button className={styles.button}>{previewCards[3].price}</Button>
+              </Link>
+            </div>
+          </article>
+
+          <Link href={ROUTES.SERVICES} className={styles.promoCard}>
+            <span className={styles.promoLabel}>PROMO</span>
+            <span className={styles.promoValue}>3x2</span>
+            <span className={styles.promoText}>HAGA CLIC</span>
+            <span className={styles.promoText}>Y CONOZCA MÁS</span>
           </Link>
-        </div>
 
-        <ServiceGrid services={previewServices} />
+          <article className={styles.card}>
+            <div className={styles.cardHead}>
+              <h3 className={styles.cardTitle}>{previewCards[4].title}</h3>
+            </div>
+            <div className={styles.imageWrap}>
+              <Image
+                src={previewCards[4].image}
+                alt={previewCards[4].title}
+                fill
+                className={styles.image}
+              />
+            </div>
+            <div className={styles.cardBody}>
+              <p className={styles.cardText}>{previewCards[4].description}</p>
+              <Link href={ROUTES.SERVICES} className={styles.link}>
+                <Button className={styles.button}>{previewCards[4].price}</Button>
+              </Link>
+            </div>
+          </article>
+        </div>
       </Container>
     </section>
   );

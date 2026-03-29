@@ -1,45 +1,128 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
+  z-index: var(--z-header);
+  background-color: var(--color-primary);
 }
 
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-lg);
   min-height: 72px;
-  gap: var(--spacing-md);
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .logo {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--color-text-primary);
-  text-decoration: none;
+  width: 188px;
+  height: auto;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-lg);
+  min-width: 0;
+}
+
+.nav {
+  min-width: 0;
 }
 
 .navList {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
 }
 
 .navLink {
-  position: relative;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  transition: color var(--transition-base);
-}
-
-.navLink:hover {
-  color: var(--color-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--spacing-xs);
+  padding-bottom: var(--spacing-xs);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+  text-transform: uppercase;
 }
 
 .active {
   color: var(--color-accent);
+}
+
+.cartLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.cartIcon {
+  width: 32px;
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .inner {
+    min-height: 76px;
+    gap: var(--spacing-xl);
+  }
+
+  .logo {
+    width: 214px;
+  }
+
+  .actions {
+    gap: var(--spacing-xl);
+  }
+
+  .navList {
+    flex-wrap: nowrap;
+    gap: var(--spacing-lg);
+  }
+
+  .navLink {
+    font-size: 0.875rem;
+  }
+
+  .cartLink {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cartIcon {
+    width: 36px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .inner {
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+  }
+
+  .navList {
+    justify-content: flex-start;
+  }
 }

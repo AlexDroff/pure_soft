@@ -1,47 +1,107 @@
 .section {
-  padding: 48px 0;
+  padding: var(--spacing-2xl) 0;
 }
 
-.content {
+.wrapper {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--spacing-2xl);
 }
 
-.textBlock {
+.stepsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.stepNumber {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+
+.stepText {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.bottomBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.infoBlock {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
 }
 
-.imagePlaceholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 260px;
-  border-radius: var(--radius-lg);
+.title {
+  max-width: none;
+}
+
+.description {
+  max-width: none;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
   background-color: var(--color-bg-secondary);
-  font-weight: 700;
-  color: var(--color-text-secondary);
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
 }
 
 @media screen and (min-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: var(--spacing-3xl) 0;
   }
 
-  .content {
-    flex-direction: row;
-    align-items: center;
-    gap: 40px;
+  .wrapper {
+    gap: var(--spacing-3xl);
   }
 
-  .imagePlaceholder,
-  .textBlock {
-    width: calc((100% - 40px) / 2);
+  .stepsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-xl);
   }
 
-  .imagePlaceholder {
+  .bottomBlock {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: var(--spacing-2xl);
+  }
+
+  .imageWrapper {
     min-height: 360px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .stepTitle {
+    font-size: 1.375rem;
+  }
+
+  .imageWrapper {
+    min-height: 420px;
   }
 }
