@@ -4,7 +4,7 @@ import styles from "./Input.module.css";
 type InputProps = {
   label: string;
   name: string;
-  type?: string;
+  type?: React.HTMLInputTypeAttribute;
   value: string;
   placeholder?: string;
   error?: string;
@@ -29,10 +29,11 @@ export default function Input({
   const hasError = touched && Boolean(error);
 
   return (
-    <label className={clsx(styles.wrapper, className)}>
+    <label htmlFor={name} className={clsx(styles.wrapper, className)}>
       <span className={styles.label}>{label}</span>
 
       <input
+        id={name}
         className={clsx(styles.input, hasError && styles.error)}
         type={type}
         name={name}

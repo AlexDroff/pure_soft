@@ -80,7 +80,7 @@ export default function ServicesPage() {
       <ServiceModal
         service={selectedService}
         isOpen={isServiceModalOpen}
-        onClose={handleCloseModal}
+        onCloseAction={handleCloseModal}
         onAddToOrder={handleAddToOrder}
       />
 
@@ -99,7 +99,7 @@ export default function ServicesPage() {
       <CheckoutModal
         isOpen={isCheckoutOpen}
         items={items}
-        onClose={() => setIsCheckoutOpen(false)}
+        onCloseAction={() => setIsCheckoutOpen(false)}
         onSuccess={handleCheckoutSuccess}
       />
     </main>

@@ -31,7 +31,7 @@ export default function OrderItemCard({
           <IconButton
             icon={<IoRemove size={18} />}
             label="Decrease quantity"
-            onClick={() => onDecrease(item.serviceId)}
+            onClickAction={() => onDecrease(item.serviceId)}
           />
 
           <span className={styles.count}>{item.quantity}</span>
@@ -39,7 +39,7 @@ export default function OrderItemCard({
           <IconButton
             icon={<IoAdd size={18} />}
             label="Increase quantity"
-            onClick={() => onIncrease(item.serviceId)}
+            onClickAction={() => onIncrease(item.serviceId)}
           />
         </div>
 

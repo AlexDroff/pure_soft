@@ -7,7 +7,7 @@ type IconButtonProps = {
   icon: React.ReactNode;
   label: string;
   type?: "button" | "submit" | "reset";
-  onClick?: () => void;
+  onClickAction?: () => void;
   disabled?: boolean;
   className?: string;
 };
@@ -16,7 +16,7 @@ export default function IconButton({
   icon,
   label,
   type = "button",
-  onClick,
+  onClickAction,
   disabled = false,
   className,
 }: IconButtonProps) {
@@ -25,7 +25,7 @@ export default function IconButton({
       type={type}
       aria-label={label}
       disabled={disabled}
-      onClick={onClick}
+      onClick={onClickAction}
       className={clsx(styles.button, className)}
     >
       {icon}

@@ -36,7 +36,7 @@ export default function GallerySlider({ items }: GallerySliderProps) {
         <IconButton
           icon={<IoChevronBack size={20} />}
           label="Previous slide"
-          onClick={handlePrev}
+          onClickAction={handlePrev}
         />
 
         <div className={styles.dots}>
@@ -56,7 +56,7 @@ export default function GallerySlider({ items }: GallerySliderProps) {
         <IconButton
           icon={<IoChevronForward size={20} />}
           label="Next slide"
-          onClick={handleNext}
+          onClickAction={handleNext}
         />
       </div>
     </div>

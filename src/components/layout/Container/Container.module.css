@@ -1,21 +1,21 @@
 .container {
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding-left: var(--spacing-md);
-  padding-right: var(--spacing-md);
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    padding-left: var(--spacing-lg);
-    padding-right: var(--spacing-lg);
+    padding-left: var(--container-padding-tablet);
+    padding-right: var(--container-padding-tablet);
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .container {
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
   }
 }

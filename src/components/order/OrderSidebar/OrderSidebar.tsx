@@ -39,7 +39,7 @@ export default function OrderSidebar({
         <IconButton
           icon={<IoClose size={22} />}
           label="Close cart"
-          onClick={onClose}
+          onClickAction={onClose}
         />
       </div>
 

@@ -8,14 +8,14 @@ import { IoClose } from "react-icons/io5";
 
 type ModalProps = {
   isOpen: boolean;
-  onClose: () => void;
+  onCloseAction: () => void;
   children: React.ReactNode;
   className?: string;
 };
 
 export default function Modal({
   isOpen,
-  onClose,
+  onCloseAction,
   children,
   className,
 }: ModalProps) {
@@ -24,7 +24,7 @@ export default function Modal({
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        onCloseAction();
       }
     };
 
@@ -35,23 +35,27 @@ export default function Modal({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleEscape);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onCloseAction]);
 
   if (!isOpen) return null;
 
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      onClose();
+      onCloseAction();
     }
   };
 
   return (
     <div className={styles.backdrop} onClick={handleBackdropClick}>
-      <div className={clsx(styles.modal, className)}>
+      <div
+        className={clsx(styles.modal, className)}
+        role="dialog"
+        aria-modal="true"
+      >
         <IconButton
           icon={<IoClose size={22} />}
           label="Close modal"
-          onClick={onClose}
+          onClickAction={onCloseAction}
           className={styles.closeButton}
         />
 

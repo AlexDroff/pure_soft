@@ -7,20 +7,20 @@ import ServiceDetails from "../ServiceDetails/ServiceDetails";
 type ServiceModalProps = {
   service: Service | null;
   isOpen: boolean;
-  onClose: () => void;
+  onCloseAction: () => void;
   onAddToOrder: (service: Service) => void;
 };
 
 export default function ServiceModal({
   service,
   isOpen,
-  onClose,
+  onCloseAction,
   onAddToOrder,
 }: ServiceModalProps) {
   if (!service) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onCloseAction={onCloseAction}>
       <ServiceDetails service={service} onAddToOrder={onAddToOrder} />
     </Modal>
   );

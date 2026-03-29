@@ -18,7 +18,7 @@ import styles from "./CheckoutModal.module.css";
 type CheckoutModalProps = {
   isOpen: boolean;
   items: OrderItem[];
-  onClose: () => void;
+  onCloseAction: () => void;
   onSuccess?: () => void;
 };
 
@@ -35,7 +35,7 @@ const initialValues: CheckoutFormValues = {
 export default function CheckoutModal({
   isOpen,
   items,
-  onClose,
+  onCloseAction,
   onSuccess,
 }: CheckoutModalProps) {
   const handleSubmit = (values: CheckoutFormValues) => {
@@ -50,11 +50,15 @@ export default function CheckoutModal({
 
     window.open(whatsappUrl, "_blank");
     onSuccess?.();
-    onClose();
+    onCloseAction();
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} className={styles.modal}>
+    <Modal
+      isOpen={isOpen}
+      onCloseAction={onCloseAction}
+      className={styles.modal}
+    >
       <div className={styles.content}>
         <SectionTitle>Оформлення замовлення</SectionTitle>
 
