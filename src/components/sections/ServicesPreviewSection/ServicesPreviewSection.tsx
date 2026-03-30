@@ -59,7 +59,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[0].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="preview" fullWidth>
+                  <Button size="sm">
                     {previewCards[0].price}
                   </Button>
                 </Link>
@@ -83,7 +83,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[1].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="preview" fullWidth>
+                  <Button size="sm">
                     {previewCards[1].price}
                   </Button>
                 </Link>
@@ -107,7 +107,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[2].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="preview" fullWidth>
+                  <Button size="sm">
                     {previewCards[2].price}
                   </Button>
                 </Link>
@@ -131,7 +131,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[3].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="preview" fullWidth>
+                  <Button size="sm">
                     {previewCards[3].price}
                   </Button>
                 </Link>
@@ -162,7 +162,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[4].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="preview" fullWidth>
+                  <Button size="sm">
                     {previewCards[4].price}
                   </Button>
                 </Link>

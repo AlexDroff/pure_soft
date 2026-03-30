@@ -1,5 +1,5 @@
 import type { OrderItem } from "@/types/order";
-import { Button, IconButton, SectionText } from "@/components/ui";
+import { IconButton, SectionText } from "@/components/ui";
 import { IoAdd, IoRemove, IoTrashOutline } from "react-icons/io5";
 import styles from "./OrderItemCard.module.css";
 
@@ -43,9 +43,11 @@ export default function OrderItemCard({
           />
         </div>
 
-        <Button variant="secondary" size="xs" onClick={() => onRemove(item.serviceId)}>
-          <IoTrashOutline size={18} />
-        </Button>
+        <IconButton
+          icon={<IoTrashOutline size={18} />}
+          label="Eliminar servicio"
+          onClickAction={() => onRemove(item.serviceId)}
+        />
       </div>
     </div>
   );

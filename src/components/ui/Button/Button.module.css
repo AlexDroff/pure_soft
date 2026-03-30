@@ -15,75 +15,35 @@
     box-shadow var(--transition-base),
     transform var(--transition-fast),
     opacity var(--transition-base);
+  min-width: 0;
 }
 
-.hero {
-  width: min(100%, 400px);
-  min-height: 60px;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: 0.5rem;
+.size-sm,
+.size-md,
+.size-lg {
+  width: 100%;
   box-shadow: var(--shadow-sm);
 }
 
-.preview {
+.size-sm {
   width: min(100%, 300px);
-  min-height: 60px;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: 0.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.service {
-  width: min(100%, 460px);
-  min-height: 90px;
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 0.833rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.details {
-  width: min(100%, 460px);
-  min-height: 90px;
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 0.833rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.cart {
-  width: min(100%, 460px);
-  min-height: 90px;
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 0.667rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.whatsapp {
-  width: min(100%, 460px);
-  min-height: 92px;
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 0.833rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.md {
-  min-height: 56px;
-  padding: var(--spacing-md) var(--spacing-lg);
-  font-size: var(--font-size-button);
-  box-shadow: var(--shadow-sm);
-}
-
-.sm {
-  min-height: 44px;
-  padding: var(--spacing-sm) var(--spacing-lg);
+  height: 50px;
+  padding: 0 var(--spacing-lg);
   font-size: var(--font-size-body-sm);
-  box-shadow: var(--shadow-sm);
 }
 
-.xs {
-  min-height: 24px;
-  padding: var(--spacing-2xs) var(--spacing-sm);
-  font-size: var(--font-size-overline);
-  box-shadow: none;
+.size-md {
+  width: min(100%, 400px);
+  height: 60px;
+  padding: 0 var(--spacing-xl);
+  font-size: var(--font-size-button);
+}
+
+.size-lg {
+  width: min(100%, 500px);
+  height: 90px;
+  padding: 0 var(--spacing-2xl);
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.15rem);
 }
 
 .pill {
@@ -104,10 +64,6 @@
   color: var(--color-white);
 }
 
-.fullWidth {
-  width: 100%;
-}
-
 .button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -117,17 +73,6 @@
 
 .button:active:not(:disabled) {
   transform: translateY(1px);
-}
-
-@media screen and (min-width: 768px) {
-  .md {
-    min-height: 60px;
-    padding: var(--spacing-md) var(--spacing-xl);
-  }
-
-  .sm {
-    min-height: 46px;
-  }
 }
 
 @media screen and (hover: hover) {

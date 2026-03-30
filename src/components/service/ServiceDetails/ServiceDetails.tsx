@@ -35,7 +35,7 @@ export default function ServiceDetails({
         <Button
           className={styles.cta}
           onClick={() => onAddToOrder(service)}
-          size="details"
+          size="md"
         >
           Anadir al carrito
         </Button>

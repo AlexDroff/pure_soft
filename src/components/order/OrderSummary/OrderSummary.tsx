@@ -24,7 +24,7 @@ export default function OrderSummary({
       <Button
         className={styles.cta}
         onClick={onCheckout}
-        size="cart"
+        size="md"
         disabled={isDisabled}
       >
         Finalizar pedido

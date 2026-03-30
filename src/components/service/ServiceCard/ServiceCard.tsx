@@ -22,11 +22,7 @@ export default function ServiceCard({
   const isInteractive = Boolean(onOpen);
   const ctaLabel = `DESDE ${service.price} \u20AC`;
   const cardButton = (
-    <Button
-      className={styles.cta}
-      onClick={() => onOpen?.(service)}
-      size="service"
-    >
+    <Button className={styles.cta} onClick={() => onOpen?.(service)} size="md">
       {ctaLabel}
     </Button>
   );
@@ -53,7 +49,7 @@ export default function ServiceCard({
             cardButton
           ) : (
             <Link href={ROUTES.SERVICES} className={styles.link}>
-              <Button className={styles.cta} size="service">
+              <Button className={styles.cta} size="md">
                 {ctaLabel}
               </Button>
             </Link>

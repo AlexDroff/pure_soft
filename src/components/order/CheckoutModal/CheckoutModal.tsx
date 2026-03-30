@@ -96,11 +96,7 @@ export default function CheckoutModal({
                 touched={touched.phone}
               />
 
-              <Button
-                className={styles.submitButton}
-                type="submit"
-                size="whatsapp"
-              >
+              <Button className={styles.submitButton} type="submit" size="md">
                 Pedir por WhatsApp
               </Button>
             </Form>
