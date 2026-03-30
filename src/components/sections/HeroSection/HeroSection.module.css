@@ -73,14 +73,6 @@
   margin-top: var(--spacing-md);
 }
 
-.button {
-  min-height: 44px;
-  padding: 0 var(--spacing-lg);
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  box-shadow: var(--shadow-sm);
-}
-
 @media screen and (min-width: 768px) {
   .content {
     padding-right: var(--container-padding-mobile);
@@ -99,11 +91,6 @@
 
   .textBlock .text {
     font-size: 0.95rem;
-  }
-
-  .button {
-    min-height: 46px;
-    padding: 0 30px;
   }
 }
 

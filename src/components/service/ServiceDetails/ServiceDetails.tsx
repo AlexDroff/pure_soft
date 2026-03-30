@@ -29,10 +29,14 @@ export default function ServiceDetails({
         <SectionText>{service.fullDescription}</SectionText>
 
         <p className={styles.price}>
-          Precio: desde {service.price} zl / {service.unit}
+          {`Precio: desde ${service.price} \u20AC / ${service.unit}`}
         </p>
 
-        <Button onClick={() => onAddToOrder(service)} fullWidth>
+        <Button
+          className={styles.cta}
+          onClick={() => onAddToOrder(service)}
+          size="details"
+        >
           Anadir al carrito
         </Button>
       </div>

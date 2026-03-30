@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 import type { Service } from "@/types/service";
-import { Button, SectionText } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
 import styles from "./ServiceCard.module.css";
 
@@ -20,9 +20,23 @@ export default function ServiceCard({
   className,
 }: ServiceCardProps) {
   const isInteractive = Boolean(onOpen);
+  const ctaLabel = `DESDE ${service.price} \u20AC`;
+  const cardButton = (
+    <Button
+      className={styles.cta}
+      onClick={() => onOpen?.(service)}
+      size="service"
+    >
+      {ctaLabel}
+    </Button>
+  );
 
   return (
     <article className={clsx(styles.card, className)}>
+      <div className={styles.titleBar}>
+        <h3 className={styles.title}>{service.title}</h3>
+      </div>
+
       <div className={styles.imageWrapper}>
         <Image
           src={service.image}
@@ -30,30 +44,21 @@ export default function ServiceCard({
           fill
           className={styles.image}
         />
-      </div>
+        <div className={styles.overlayContent}>
+          <div className={styles.descriptionOverlay}>
+            {service.shortDescription}
+          </div>
 
-      <div className={styles.content}>
-        <h3 className={styles.title}>{service.title}</h3>
-
-        <SectionText className={styles.description}>
-          {service.shortDescription}
-        </SectionText>
-
-        <p className={styles.price}>
-          desde {service.price} zl / {service.unit}
-        </p>
-
-        {isInteractive ? (
-          <Button className={styles.button} onClick={() => onOpen?.(service)} fullWidth>
-            Detalles
-          </Button>
-        ) : (
-          <Link href={ROUTES.SERVICES} className={styles.link}>
-            <Button className={styles.button} fullWidth>
-              Ver
-            </Button>
-          </Link>
-        )}
+          {isInteractive ? (
+            cardButton
+          ) : (
+            <Link href={ROUTES.SERVICES} className={styles.link}>
+              <Button className={styles.cta} size="service">
+                {ctaLabel}
+              </Button>
+            </Link>
+          )}
+        </div>
       </div>
     </article>
   );

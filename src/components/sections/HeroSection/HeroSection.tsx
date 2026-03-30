@@ -32,7 +32,7 @@ export default function HeroSection() {
               </SectionText>
 
               <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button className={styles.button}>PRESUPUESTO GRATIS</Button>
+                <Button size="hero">PRESUPUESTO GRATIS</Button>
               </Link>
             </div>
           </div>

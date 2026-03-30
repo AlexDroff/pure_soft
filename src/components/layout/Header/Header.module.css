@@ -52,9 +52,9 @@
   justify-content: center;
   padding-top: var(--spacing-xs);
   padding-bottom: var(--spacing-xs);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-overline);
   font-weight: var(--font-weight-medium);
-  line-height: 1;
+  line-height: var(--line-height-tight);
   letter-spacing: 0.08em;
   color: var(--color-white);
   text-transform: uppercase;
@@ -98,7 +98,7 @@
   }
 
   .navLink {
-    font-size: 0.875rem;
+    font-size: var(--font-size-caption);
   }
 
   .cartLink {

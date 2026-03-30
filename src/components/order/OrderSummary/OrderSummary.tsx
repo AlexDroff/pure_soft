@@ -21,7 +21,12 @@ export default function OrderSummary({
         <p className={styles.total}>Total: {totalPrice} zl</p>
       </div>
 
-      <Button onClick={onCheckout} fullWidth disabled={isDisabled}>
+      <Button
+        className={styles.cta}
+        onClick={onCheckout}
+        size="cart"
+        disabled={isDisabled}
+      >
         Finalizar pedido
       </Button>
     </div>

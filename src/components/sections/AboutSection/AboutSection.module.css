@@ -1,5 +1,5 @@
 .section {
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-xl) 0;
 }
 
 .wrapper {
@@ -11,7 +11,7 @@
 .stepsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .stepCard {
@@ -21,16 +21,16 @@
 }
 
 .stepNumber {
-  font-size: 1.5rem;
+  font-size: var(--font-size-body-lg);
   font-weight: var(--font-weight-extrabold);
-  line-height: 1;
+  line-height: var(--line-height-tight);
   color: var(--color-primary);
 }
 
 .stepTitle {
-  font-size: 1.25rem;
+  font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.25;
+  line-height: var(--line-height-heading);
   color: var(--color-text-primary);
 }
 
@@ -42,7 +42,7 @@
 .bottomBlock {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
   align-items: center;
 }
 
@@ -64,7 +64,9 @@
   position: relative;
   overflow: hidden;
   min-height: 280px;
+  border-radius: var(--radius-lg);
   background-color: var(--color-bg-secondary);
+  box-shadow: var(--shadow-sm);
 }
 
 .image {
@@ -74,21 +76,21 @@
 
 @media screen and (min-width: 768px) {
   .section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-2xl) 0;
   }
 
   .wrapper {
-    gap: var(--spacing-3xl);
+    gap: var(--spacing-2xl);
   }
 
   .stepsGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
   }
 
   .bottomBlock {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    gap: var(--spacing-2xl);
+    gap: var(--spacing-xl);
   }
 
   .imageWrapper {
@@ -98,7 +100,7 @@
 
 @media screen and (min-width: 1440px) {
   .stepTitle {
-    font-size: 1.375rem;
+    font-size: var(--font-size-body-lg);
   }
 
   .imageWrapper {

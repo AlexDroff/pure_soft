@@ -41,14 +41,14 @@
 .addressBlock {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--spacing-2xs);
   font-style: normal;
 }
 
 .addressLine,
 .link {
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body);
   color: var(--color-white);
 }
 

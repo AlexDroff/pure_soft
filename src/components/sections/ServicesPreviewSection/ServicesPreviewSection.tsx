@@ -44,9 +44,6 @@ export default function ServicesPreviewSection() {
       <Container>
         <div className={styles.grid}>
           <article className={styles.card}>
-            <div className={styles.cardHead}>
-              <h3 className={styles.cardTitle}>{previewCards[0].title}</h3>
-            </div>
             <div className={styles.imageWrap}>
               <Image
                 src={previewCards[0].image}
@@ -55,18 +52,22 @@ export default function ServicesPreviewSection() {
                 className={styles.image}
               />
             </div>
-            <div className={styles.cardBody}>
-              <p className={styles.cardText}>{previewCards[0].description}</p>
-              <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button className={styles.button}>{previewCards[0].price}</Button>
-              </Link>
+            <div className={styles.cardContent}>
+              <div className={styles.cardHead}>
+                <h3 className={styles.cardTitle}>{previewCards[0].title}</h3>
+              </div>
+              <div className={styles.cardBody}>
+                <p className={styles.cardText}>{previewCards[0].description}</p>
+                <Link href={ROUTES.SERVICES} className={styles.link}>
+                  <Button size="preview" fullWidth>
+                    {previewCards[0].price}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </article>
 
           <article className={styles.card}>
-            <div className={styles.cardHead}>
-              <h3 className={styles.cardTitle}>{previewCards[1].title}</h3>
-            </div>
             <div className={styles.imageWrap}>
               <Image
                 src={previewCards[1].image}
@@ -75,18 +76,22 @@ export default function ServicesPreviewSection() {
                 className={styles.image}
               />
             </div>
-            <div className={styles.cardBody}>
-              <p className={styles.cardText}>{previewCards[1].description}</p>
-              <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button className={styles.button}>{previewCards[1].price}</Button>
-              </Link>
+            <div className={styles.cardContent}>
+              <div className={styles.cardHead}>
+                <h3 className={styles.cardTitle}>{previewCards[1].title}</h3>
+              </div>
+              <div className={styles.cardBody}>
+                <p className={styles.cardText}>{previewCards[1].description}</p>
+                <Link href={ROUTES.SERVICES} className={styles.link}>
+                  <Button size="preview" fullWidth>
+                    {previewCards[1].price}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </article>
 
           <article className={styles.card}>
-            <div className={styles.cardHead}>
-              <h3 className={styles.cardTitle}>{previewCards[2].title}</h3>
-            </div>
             <div className={styles.imageWrap}>
               <Image
                 src={previewCards[2].image}
@@ -95,18 +100,22 @@ export default function ServicesPreviewSection() {
                 className={styles.image}
               />
             </div>
-            <div className={styles.cardBody}>
-              <p className={styles.cardText}>{previewCards[2].description}</p>
-              <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button className={styles.button}>{previewCards[2].price}</Button>
-              </Link>
+            <div className={styles.cardContent}>
+              <div className={styles.cardHead}>
+                <h3 className={styles.cardTitle}>{previewCards[2].title}</h3>
+              </div>
+              <div className={styles.cardBody}>
+                <p className={styles.cardText}>{previewCards[2].description}</p>
+                <Link href={ROUTES.SERVICES} className={styles.link}>
+                  <Button size="preview" fullWidth>
+                    {previewCards[2].price}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </article>
 
           <article className={styles.card}>
-            <div className={styles.cardHead}>
-              <h3 className={styles.cardTitle}>{previewCards[3].title}</h3>
-            </div>
             <div className={styles.imageWrap}>
               <Image
                 src={previewCards[3].image}
@@ -115,11 +124,18 @@ export default function ServicesPreviewSection() {
                 className={styles.image}
               />
             </div>
-            <div className={styles.cardBody}>
-              <p className={styles.cardText}>{previewCards[3].description}</p>
-              <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button className={styles.button}>{previewCards[3].price}</Button>
-              </Link>
+            <div className={styles.cardContent}>
+              <div className={styles.cardHead}>
+                <h3 className={styles.cardTitle}>{previewCards[3].title}</h3>
+              </div>
+              <div className={styles.cardBody}>
+                <p className={styles.cardText}>{previewCards[3].description}</p>
+                <Link href={ROUTES.SERVICES} className={styles.link}>
+                  <Button size="preview" fullWidth>
+                    {previewCards[3].price}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </article>
 
@@ -131,9 +147,6 @@ export default function ServicesPreviewSection() {
           </Link>
 
           <article className={styles.card}>
-            <div className={styles.cardHead}>
-              <h3 className={styles.cardTitle}>{previewCards[4].title}</h3>
-            </div>
             <div className={styles.imageWrap}>
               <Image
                 src={previewCards[4].image}
@@ -142,11 +155,18 @@ export default function ServicesPreviewSection() {
                 className={styles.image}
               />
             </div>
-            <div className={styles.cardBody}>
-              <p className={styles.cardText}>{previewCards[4].description}</p>
-              <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button className={styles.button}>{previewCards[4].price}</Button>
-              </Link>
+            <div className={styles.cardContent}>
+              <div className={styles.cardHead}>
+                <h3 className={styles.cardTitle}>{previewCards[4].title}</h3>
+              </div>
+              <div className={styles.cardBody}>
+                <p className={styles.cardText}>{previewCards[4].description}</p>
+                <Link href={ROUTES.SERVICES} className={styles.link}>
+                  <Button size="preview" fullWidth>
+                    {previewCards[4].price}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </article>
         </div>

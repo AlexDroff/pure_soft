@@ -5,9 +5,9 @@
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  border: 1px solid rgba(15, 105, 120, 0.12);
-  border-radius: 18px;
-  background-color: rgba(254, 254, 254, 0.82);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-overlay);
   color: var(--color-secondary);
   box-shadow: var(--shadow-sm);
   transition:
@@ -44,7 +44,7 @@
 @media screen and (hover: hover) {
   .button:hover:not(:disabled) {
     background-color: var(--color-white);
-    border-color: rgba(1, 150, 172, 0.24);
+    border-color: var(--color-border-focus);
     color: var(--color-primary);
     box-shadow: var(--shadow-md);
     transform: translateY(-1px);

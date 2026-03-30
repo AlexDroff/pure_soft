@@ -4,7 +4,6 @@ import { useState } from "react";
 import { services } from "@/data/services";
 import type { Service } from "@/types/service";
 import { Container } from "@/components/layout";
-import { Button, SectionText, SectionTitle } from "@/components/ui";
 import { ServiceGrid, ServiceModal } from "@/components/service";
 import { OrderSidebar, CheckoutModal } from "@/components/order";
 import { useOrderStore } from "@/features/order";
@@ -61,22 +60,11 @@ export default function ServicesPage() {
   return (
     <main className={styles.page}>
       <Container>
-        <div className={styles.header}>
-          <div className={styles.textBlock}>
-            <SectionTitle className={styles.title}>
-              Nuestros servicios
-            </SectionTitle>
-
-            <SectionText className={styles.description}>
-              Elige el servicio que necesitas, revisa los detalles y anade tu
-              pedido al carrito.
-            </SectionText>
-          </div>
-
-          <Button className={styles.cartButton} onClick={openSidebar}>
-            Carrito ({getTotalItems()})
-          </Button>
-        </div>
+        <section className={styles.promoBanner} aria-label="Promocion destacada">
+          <span className={styles.promoLabel}>PROMO</span>
+          <span className={styles.promoValue}>3x2</span>
+          <span className={styles.promoText}>HAGA CLIC Y CONOZCA MAS</span>
+        </section>
 
         <ServiceGrid services={activeServices} onOpen={handleOpenModal} />
       </Container>

@@ -43,7 +43,7 @@ export default function OrderItemCard({
           />
         </div>
 
-        <Button variant="secondary" onClick={() => onRemove(item.serviceId)}>
+        <Button variant="secondary" size="xs" onClick={() => onRemove(item.serviceId)}>
           <IoTrashOutline size={18} />
         </Button>
       </div>
