@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -10,68 +11,37 @@
   aspect-ratio: 616.58 / 554.02;
 }
 
-.titleBar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 16.7%;
-  min-height: 0;
-  padding: 0 var(--spacing-xs);
-  background-color: var(--color-primary);
-}
-
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  flex: 1 1 auto;
-  background-color: var(--color-bg-secondary);
-}
-
-.imageWrapper::after {
-  content: "";
+.imageWrap {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(28, 27, 23, 0.58) 0%,
-    rgba(28, 27, 23, 0.24) 24%,
-    rgba(28, 27, 23, 0) 52%
-  );
-  pointer-events: none;
+  background-color: var(--color-bg-secondary);
 }
 
 .image {
   object-fit: cover;
+  object-position: center;
 }
 
-.overlayContent {
-  position: absolute;
-  right: var(--spacing-sm);
-  bottom: var(--spacing-sm);
-  left: var(--spacing-sm);
+.cardContent {
+  position: relative;
   z-index: var(--z-base);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-xs);
+  justify-content: space-between;
+  min-height: 100%;
 }
 
-.descriptionOverlay {
-  width: 100%;
-  max-width: 75%;
-  font-size: var(--font-size-body-sm);
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--line-height-tight);
-  text-align: center;
-  color: var(--color-white);
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-primary);
 }
 
 .title {
-  font-size: var(--font-size-body-sm);
+  margin: 0;
+  font-size: 0.8rem;
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
   text-align: center;
@@ -79,17 +49,66 @@
   color: var(--color-white);
 }
 
-.price {
-  display: none;
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background-color: color-mix(in srgb, var(--color-white) 50%, transparent);
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cta {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 75%;
 }
 
 .link {
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 75%;
+}
+
+@media screen and (min-width: 768px) {
+  .titleBar {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .cardBody {
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+  }
+
+  .description {
+    font-size: var(--font-size-body);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: var(--font-size-body-lg);
+  }
 }

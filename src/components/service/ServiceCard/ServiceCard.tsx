@@ -29,22 +29,20 @@ export default function ServiceCard({
 
   return (
     <article className={clsx(styles.card, className)}>
-      <div className={styles.titleBar}>
-        <h3 className={styles.title}>{service.title}</h3>
-      </div>
-
-      <div className={styles.imageWrapper}>
+      <div className={styles.imageWrap}>
         <Image
           src={service.image}
           alt={service.title}
           fill
           className={styles.image}
         />
-        <div className={styles.overlayContent}>
-          <div className={styles.descriptionOverlay}>
-            {service.shortDescription}
-          </div>
-
+      </div>
+      <div className={styles.cardContent}>
+        <div className={styles.titleBar}>
+          <h3 className={styles.title}>{service.title}</h3>
+        </div>
+        <div className={styles.cardBody}>
+          <p className={styles.description}>{service.shortDescription}</p>
           {isInteractive ? (
             cardButton
           ) : (
