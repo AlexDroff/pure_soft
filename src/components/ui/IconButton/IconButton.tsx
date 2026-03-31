@@ -10,6 +10,7 @@ type IconButtonProps = {
   onClickAction?: () => void;
   disabled?: boolean;
   className?: string;
+  variant?: "default" | "borderless";
 };
 
 export default function IconButton({
@@ -19,6 +20,7 @@ export default function IconButton({
   onClickAction,
   disabled = false,
   className,
+  variant = "default",
 }: IconButtonProps) {
   return (
     <button
@@ -26,7 +28,7 @@ export default function IconButton({
       aria-label={label}
       disabled={disabled}
       onClick={onClickAction}
-      className={clsx(styles.button, className)}
+      className={clsx(styles.button, variant === "borderless" && styles.borderless, className)}
     >
       {icon}
     </button>

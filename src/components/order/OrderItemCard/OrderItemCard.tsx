@@ -1,6 +1,7 @@
 import type { OrderItem } from "@/types/order";
 import { IconButton, SectionText } from "@/components/ui";
 import { IoAdd, IoRemove, IoTrashOutline } from "react-icons/io5";
+import { services } from "@/data/services";
 import styles from "./OrderItemCard.module.css";
 
 type OrderItemCardProps = {
@@ -16,14 +17,19 @@ export default function OrderItemCard({
   onDecrease,
   onRemove,
 }: OrderItemCardProps) {
+  const service = services.find((s) => s.id === item.serviceId);
+  const image = service?.image || "/images/placeholders/placeholders.jpg";
+
   return (
     <div className={styles.card}>
+      <div className={styles.imageContainer}>
+        <img src={image} alt={item.title} className={styles.image} />
+      </div>
+
       <div className={styles.info}>
         <h3 className={styles.title}>{item.title}</h3>
 
-        <SectionText>
-          {item.price} zl / {item.unit}
-        </SectionText>
+        <SectionText className={styles.price}>{item.price} €</SectionText>
       </div>
 
       <div className={styles.controls}>
@@ -47,6 +53,7 @@ export default function OrderItemCard({
           icon={<IoTrashOutline size={18} />}
           label="Eliminar servicio"
           onClickAction={() => onRemove(item.serviceId)}
+          variant="borderless"
         />
       </div>
     </div>

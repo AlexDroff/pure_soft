@@ -7,13 +7,23 @@ import styles from "./ServiceGrid.module.css";
 type ServiceGridProps = {
   services: Service[];
   onOpen?: (service: Service) => void;
+  onAddToOrder?: (service: Service) => void;
 };
 
-export default function ServiceGrid({ services, onOpen }: ServiceGridProps) {
+export default function ServiceGrid({
+  services,
+  onOpen,
+  onAddToOrder,
+}: ServiceGridProps) {
   return (
     <div className={styles.grid}>
       {services.map((service) => (
-        <ServiceCard key={service.id} service={service} onOpen={onOpen} />
+        <ServiceCard
+          key={service.id}
+          service={service}
+          onOpen={onOpen}
+          onAddToOrder={onAddToOrder}
+        />
       ))}
     </div>
   );

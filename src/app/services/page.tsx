@@ -44,7 +44,6 @@ export default function ServicesPage() {
   const handleAddToOrder = (service: Service) => {
     addItem(service);
     openSidebar();
-    handleCloseModal();
   };
 
   const handleCheckout = () => {
@@ -66,7 +65,11 @@ export default function ServicesPage() {
           <span className={styles.promoText}>HAGA CLIC Y CONOZCA MAS</span>
         </section>
 
-        <ServiceGrid services={activeServices} onOpen={handleOpenModal} />
+        <ServiceGrid
+          services={activeServices}
+          onOpen={handleOpenModal}
+          onAddToOrder={handleAddToOrder}
+        />
       </Container>
 
       <ServiceModal

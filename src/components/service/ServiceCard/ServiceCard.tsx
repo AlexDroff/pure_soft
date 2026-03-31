@@ -11,24 +11,42 @@ import styles from "./ServiceCard.module.css";
 type ServiceCardProps = {
   service: Service;
   onOpen?: (service: Service) => void;
+  onAddToOrder?: (service: Service) => void;
   className?: string;
 };
 
 export default function ServiceCard({
   service,
   onOpen,
+  onAddToOrder,
   className,
 }: ServiceCardProps) {
   const isInteractive = Boolean(onOpen);
   const ctaLabel = `DESDE ${service.price} \u20AC`;
+
+  const handleCardClick = () => {
+    onOpen?.(service);
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onAddToOrder?.(service);
+  };
+
   const cardButton = (
-    <Button className={styles.cta} onClick={() => onOpen?.(service)} size="md">
-      {ctaLabel}
-    </Button>
+    <div onClick={handleButtonClick} className={styles.buttonWrapper}>
+      <Button className={styles.cta} size="md">
+        {ctaLabel}
+      </Button>
+    </div>
   );
 
   return (
-    <article className={clsx(styles.card, className)}>
+    <article
+      className={clsx(styles.card, className)}
+      onClick={handleCardClick}
+      style={{ cursor: isInteractive ? "pointer" : undefined }}
+    >
       <div className={styles.imageWrap}>
         <Image
           src={service.image}

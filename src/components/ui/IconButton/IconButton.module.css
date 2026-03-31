@@ -50,3 +50,15 @@
     transform: translateY(-1px);
   }
 }
+
+.borderless {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.borderless:hover:not(:disabled) {
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}

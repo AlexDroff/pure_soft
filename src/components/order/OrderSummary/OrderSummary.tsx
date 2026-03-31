@@ -5,6 +5,7 @@ type OrderSummaryProps = {
   totalItems: number;
   totalPrice: number;
   onCheckout: () => void;
+  onClose: () => void;
   isDisabled?: boolean;
 };
 
@@ -12,13 +13,13 @@ export default function OrderSummary({
   totalItems,
   totalPrice,
   onCheckout,
+  onClose,
   isDisabled = false,
 }: OrderSummaryProps) {
   return (
     <div className={styles.summary}>
       <div className={styles.info}>
-        <SectionText>Servicios en el carrito: {totalItems}</SectionText>
-        <p className={styles.total}>Total: {totalPrice} zl</p>
+        <p className={styles.subtotal}>Subtotal: {totalPrice} €</p>
       </div>
 
       <Button
@@ -27,8 +28,12 @@ export default function OrderSummary({
         size="md"
         disabled={isDisabled}
       >
-        Finalizar pedido
+        REALIZAR PEDIDO
       </Button>
+
+      <button className={styles.continueText} onClick={onClose} type="button">
+        Continuar comprando
+      </button>
     </div>
   );
 }

@@ -6,11 +6,13 @@ import styles from "./ServiceDetails.module.css";
 type ServiceDetailsProps = {
   service: Service;
   onAddToOrder: (service: Service) => void;
+  onClose: () => void;
 };
 
 export default function ServiceDetails({
   service,
   onAddToOrder,
+  onClose,
 }: ServiceDetailsProps) {
   return (
     <div className={styles.wrapper}>
@@ -24,20 +26,24 @@ export default function ServiceDetails({
       </div>
 
       <div className={styles.content}>
-        <SectionTitle>{service.title}</SectionTitle>
+        <div className={styles.header}>
+          <SectionTitle className={styles.title}>{service.title}</SectionTitle>
+          <p className={styles.subtitle}>{service.shortDescription}</p>
+        </div>
 
-        <SectionText>{service.fullDescription}</SectionText>
-
-        <p className={styles.price}>
-          {`Precio: desde ${service.price} \u20AC / ${service.unit}`}
-        </p>
+        <SectionText className={styles.description}>
+          {service.fullDescription}
+        </SectionText>
 
         <Button
           className={styles.cta}
-          onClick={() => onAddToOrder(service)}
+          onClick={() => {
+            onAddToOrder(service);
+            onClose();
+          }}
           size="md"
         >
-          Anadir al carrito
+          Desde {service.price} €
         </Button>
       </div>
     </div>

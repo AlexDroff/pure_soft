@@ -5,7 +5,7 @@
   background-color: var(--color-overlay);
   backdrop-filter: blur(8px);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   padding: var(--spacing-md);
   overflow-y: auto;
@@ -14,10 +14,9 @@
 .modal {
   position: relative;
   width: 100%;
-  max-width: 760px;
-  margin-top: auto;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  max-width: 400px;
+  border: none;
+  border-radius: var(--radius-md);
   background-color: var(--color-white);
   box-shadow: var(--shadow-lg);
   padding: var(--spacing-4xl) var(--spacing-md) var(--spacing-lg);
@@ -27,22 +26,26 @@
   position: absolute;
   top: var(--spacing-md);
   right: var(--spacing-md);
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 @media screen and (min-width: 768px) {
   .backdrop {
-    align-items: center;
     padding: var(--spacing-xl);
   }
 
   .modal {
+    max-width: 900px;
     padding: var(--spacing-4xl) var(--spacing-xl) var(--spacing-xl);
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1440px) {
   .modal {
-    max-width: 820px;
-    padding: var(--spacing-4xl) var(--spacing-xl) var(--spacing-xl);
+    max-width: 1320px;
+    width: 100%;
+    padding: var(--spacing-xl);
   }
 }

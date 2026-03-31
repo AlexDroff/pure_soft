@@ -12,12 +12,25 @@
   gap: var(--spacing-xs);
 }
 
-.total {
+.subtotal {
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-accent);
+  color: var(--color-text-primary);
 }
 
 .cta {
   align-self: center;
+}
+
+.continueText {
+  font-size: var(--font-size-caption);
+  color: var(--color-secondary);
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
 }

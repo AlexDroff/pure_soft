@@ -21,7 +21,11 @@ export default function ServiceModal({
 
   return (
     <Modal isOpen={isOpen} onCloseAction={onCloseAction}>
-      <ServiceDetails service={service} onAddToOrder={onAddToOrder} />
+      <ServiceDetails
+        service={service}
+        onAddToOrder={onAddToOrder}
+        onClose={onCloseAction}
+      />
     </Modal>
   );
 }

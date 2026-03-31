@@ -34,7 +34,7 @@ export default function OrderSidebar({
   return (
     <aside className={clsx(styles.sidebar, isOpen && styles.open)}>
       <div className={styles.header}>
-        <SectionTitle>Carrito</SectionTitle>
+        <SectionTitle className={styles.title}>TU PEDIDO</SectionTitle>
 
         <IconButton
           icon={<IoClose size={22} />}
@@ -42,6 +42,7 @@ export default function OrderSidebar({
           onClickAction={onClose}
         />
       </div>
+      <div className={styles.divider} />
 
       {items.length === 0 ? (
         <div className={styles.empty}>
@@ -65,6 +66,7 @@ export default function OrderSidebar({
             totalItems={totalItems}
             totalPrice={totalPrice}
             onCheckout={onCheckout}
+            onClose={onClose}
           />
         </>
       )}
