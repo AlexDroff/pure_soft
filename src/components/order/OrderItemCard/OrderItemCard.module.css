@@ -39,7 +39,7 @@
 }
 
 .price {
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-body-md);
   color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }

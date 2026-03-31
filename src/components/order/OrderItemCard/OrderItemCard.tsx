@@ -38,6 +38,7 @@ export default function OrderItemCard({
             icon={<IoRemove size={18} />}
             label="Reducir cantidad"
             onClickAction={() => onDecrease(item.serviceId)}
+            variant="borderless"
           />
 
           <span className={styles.count}>{item.quantity}</span>
@@ -46,6 +47,7 @@ export default function OrderItemCard({
             icon={<IoAdd size={18} />}
             label="Aumentar cantidad"
             onClickAction={() => onIncrease(item.serviceId)}
+            variant="borderless"
           />
         </div>
 

@@ -40,6 +40,7 @@ export default function OrderSidebar({
           icon={<IoClose size={22} />}
           label="Cerrar carrito"
           onClickAction={onClose}
+          variant="borderless"
         />
       </div>
       <div className={styles.divider} />
