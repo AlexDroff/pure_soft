@@ -13,10 +13,9 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background-color: var(--color-white);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   aspect-ratio: 4 / 5;
   transition:
     transform var(--transition-base),
@@ -65,7 +64,7 @@
   margin-top: auto;
   gap: var(--spacing-xs);
   padding: var(--spacing-sm);
-  background-color: color-mix(in srgb, var(--color-white) 50%, transparent);
+  background-color: var(--color-surface-overlay);
 }
 
 .cardText {
@@ -77,10 +76,10 @@
 }
 
 .link {
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
-
 .promoCard {
   display: flex;
   flex-direction: column;
@@ -123,7 +122,7 @@
 @media screen and (hover: hover) {
   .card:hover,
   .promoCard:hover {
-    transform: translateY(-1px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-md);
   }
 }

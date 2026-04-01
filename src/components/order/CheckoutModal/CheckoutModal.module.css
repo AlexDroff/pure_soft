@@ -1,19 +1,103 @@
 .modal {
-  max-width: 520px;
+  background-color: var(--color-bg);
+  max-width: 100%;
+  width: 100%;
 }
 
 .content {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.title {
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-heading);
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  text-align: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  width: 100%;
+}
+
+.inputField {
+  width: 100%;
+}
+
+.inputField :global(.label) {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
 }
 
 .submitButton {
   align-self: center;
+  margin-top: var(--spacing-sm);
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .modal {
+    max-width: 700px;
+  }
+
+  .content {
+    gap: var(--spacing-xl);
+  }
+
+  .title {
+    font-size: var(--font-size-card-title);
+  }
+
+  .subtitleBox {
+    padding: var(--spacing-lg);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-body-sm);
+  }
+
+  .form {
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1440px) {
+  .modal {
+    max-width: 700px;
+    width: 700px;
+  }
+
+  .content {
+    gap: var(--spacing-2xl);
+  }
+
+  .title {
+    font-size: var(--font-size-section-title);
+  }
+
+  .subtitleBox {
+    padding: var(--spacing-xl);
+  }
+
+  .form {
+    gap: var(--spacing-xl);
+  }
 }

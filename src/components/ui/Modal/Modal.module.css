@@ -3,6 +3,7 @@
   inset: 0;
   z-index: var(--z-overlay);
   background-color: var(--color-overlay);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -17,7 +18,7 @@
   max-width: 400px;
   border: none;
   border-radius: var(--radius-md);
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   box-shadow: var(--shadow-lg);
   padding: var(--spacing-4xl) var(--spacing-md) var(--spacing-lg);
 }

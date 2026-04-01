@@ -3,13 +3,7 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import type { OrderItem, CheckoutFormValues } from "@/types/order";
-import {
-  Modal,
-  Input,
-  Button,
-  SectionTitle,
-  SectionText,
-} from "@/components/ui";
+import { Modal, Input, Button } from "@/components/ui";
 import { contacts } from "@/data/contacts";
 import { buildWhatsAppMessage } from "@/utils/buildWhatsAppMessage";
 import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
@@ -60,13 +54,11 @@ export default function CheckoutModal({
       className={styles.modal}
     >
       <div className={styles.content}>
-        <SectionTitle>Finalizar pedido</SectionTitle>
-
-        <SectionText>
-          Introduce tus datos para continuar en WhatsApp con el pedido ya
-          preparado.
-        </SectionText>
-
+        <h2 className={styles.title}>REALIZAR UN PEDIDO</h2>
+        <p className={styles.subtitle}>
+          Por favor, introduzca sus datos y nuestro asesor se pondrá en contacto
+          con usted en breve.
+        </p>
         <Formik
           initialValues={initialValues}
           validationSchema={checkoutSchema}
@@ -75,29 +67,31 @@ export default function CheckoutModal({
           {({ values, errors, touched, handleChange, handleBlur }) => (
             <Form className={styles.form}>
               <Input
-                label="Nombre"
+                label="Su nombre*"
                 name="name"
                 value={values.name}
-                placeholder="Introduce tu nombre"
+                placeholder="Nombre"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={errors.name}
                 touched={touched.name}
+                className={styles.inputField}
               />
 
               <Input
-                label="Telefono"
+                label="Número de teléfono*"
                 name="phone"
                 value={values.phone}
-                placeholder="+48 123 456 789"
+                placeholder="+34 123 456 789"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={errors.phone}
                 touched={touched.phone}
+                className={styles.inputField}
               />
 
               <Button className={styles.submitButton} type="submit" size="md">
-                Pedir por WhatsApp
+                PEDIR POR WHATSAPP
               </Button>
             </Form>
           )}
