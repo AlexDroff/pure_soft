@@ -114,23 +114,43 @@ export default function Header() {
               />
             </button>
 
-            <button
-              type="button"
-              className={styles.burgerButton}
-              aria-label={isMobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
-              aria-controls={mobileMenuId}
-              aria-expanded={isMobileMenuOpen}
-              aria-haspopup="dialog"
-              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            >
-              <Image
-                src="/icons/burger.svg"
-                alt=""
-                width={28}
-                height={28}
-                className={styles.burgerIcon}
-              />
-            </button>
+            {isMobileMenuOpen ? (
+              <button
+                type="button"
+                className={styles.burgerButton}
+                aria-label="Cerrar menu"
+                aria-controls={mobileMenuId}
+                aria-expanded="true"
+                aria-haspopup="dialog"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              >
+                <Image
+                  src="/icons/burger.svg"
+                  alt=""
+                  width={28}
+                  height={28}
+                  className={styles.burgerIcon}
+                />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className={styles.burgerButton}
+                aria-label="Abrir menu"
+                aria-controls={mobileMenuId}
+                aria-expanded="false"
+                aria-haspopup="dialog"
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              >
+                <Image
+                  src="/icons/burger.svg"
+                  alt=""
+                  width={28}
+                  height={28}
+                  className={styles.burgerIcon}
+                />
+              </button>
+            )}
           </div>
         </div>
       </Container>

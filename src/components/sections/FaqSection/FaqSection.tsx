@@ -71,30 +71,49 @@ export default function FaqSection() {
 
             return (
               <div key={item.id} className={styles.item}>
-                <button
-                  type="button"
-                  className={styles.trigger}
-                  onClick={() => handleToggle(item.id)}
-                  aria-expanded={isOpen}
-                >
-                  <span className={styles.leading}>
-                    <span className={styles.icon} aria-hidden="true">
-                      <Image
-                        src={
-                          isOpen
-                            ? "/icons/rectangle-up.svg"
-                            : "/icons/rectangle-right.svg"
-                        }
-                        alt=""
-                        width={12}
-                        height={12}
-                        className={styles.iconImage}
-                      />
-                    </span>
+                {isOpen ? (
+                  <button
+                    type="button"
+                    className={styles.trigger}
+                    onClick={() => handleToggle(item.id)}
+                    aria-expanded="true"
+                  >
+                    <span className={styles.leading}>
+                      <span className={styles.icon} aria-hidden="true">
+                        <Image
+                          src="/icons/rectangle-up.svg"
+                          alt=""
+                          width={12}
+                          height={12}
+                          className={styles.iconImage}
+                        />
+                      </span>
 
-                    <span className={styles.question}>{item.question}</span>
-                  </span>
-                </button>
+                      <span className={styles.question}>{item.question}</span>
+                    </span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className={styles.trigger}
+                    onClick={() => handleToggle(item.id)}
+                    aria-expanded="false"
+                  >
+                    <span className={styles.leading}>
+                      <span className={styles.icon} aria-hidden="true">
+                        <Image
+                          src="/icons/rectangle-right.svg"
+                          alt=""
+                          width={12}
+                          height={12}
+                          className={styles.iconImage}
+                        />
+                      </span>
+
+                      <span className={styles.question}>{item.question}</span>
+                    </span>
+                  </button>
+                )}
 
                 {isOpen && <p className={styles.answer}>{item.answer}</p>}
               </div>

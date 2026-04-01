@@ -5,7 +5,8 @@ import { Footer, Header } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "PURE SOFT",
-  description: "Професійна хімчистка меблів і текстилю",
+  description:
+    "Servicio profesional de limpieza de tapicería, muebles y textiles para eliminar manchas, olores y suciedad profunda.",
 };
 
 type RootLayoutProps = {
@@ -14,7 +15,7 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="uk" data-scroll-behavior="smooth">
+    <html lang="es" data-scroll-behavior="smooth">
       <body>
         <Header />
         {children}
