@@ -21,6 +21,7 @@ export default function ServiceDetails({
           src={service.image}
           alt={service.title}
           fill
+          sizes="(min-width: 1440px) 520px, (min-width: 768px) 420px, 320px"
           className={styles.image}
         />
       </div>

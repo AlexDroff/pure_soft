@@ -4,12 +4,6 @@ import { Container } from "@/components/layout";
 import { contacts } from "@/data/contacts";
 import styles from "./Footer.module.css";
 
-const navItems = [
-  { label: "INICIO", href: "/" },
-  { label: "LIMPIEZA", href: "/#limpieza" },
-  { label: "FAQ", href: "/#faq" },
-];
-
 type SocialItem = {
   label: string;
   href: string;
@@ -18,7 +12,11 @@ type SocialItem = {
 
 const socialItems = [
   { label: "YouTube", href: "#", icon: "/icons/youtube.svg" },
-  { label: "Instagram", href: contacts.instagram, icon: "/icons/instagram.svg" },
+  {
+    label: "Instagram",
+    href: contacts.instagram,
+    icon: "/icons/instagram.svg",
+  },
   { label: "Facebook", href: contacts.facebook, icon: "/icons/facebook.svg" },
 ].filter((item): item is SocialItem => typeof item.href === "string");
 
@@ -36,18 +34,6 @@ export default function Footer() {
               className={styles.logo}
             />
           </Link>
-
-          <nav className={styles.navBlock} aria-label="Footer navigation">
-            <ul className={styles.navList}>
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className={styles.link}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>

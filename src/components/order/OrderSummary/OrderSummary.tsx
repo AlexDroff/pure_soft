@@ -1,4 +1,4 @@
-import { Button, SectionText } from "@/components/ui";
+import { Button } from "@/components/ui";
 import styles from "./OrderSummary.module.css";
 
 type OrderSummaryProps = {
@@ -10,7 +10,6 @@ type OrderSummaryProps = {
 };
 
 export default function OrderSummary({
-  totalItems,
   totalPrice,
   onCheckout,
   onClose,

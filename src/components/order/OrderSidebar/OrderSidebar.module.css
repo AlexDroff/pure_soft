@@ -1,10 +1,25 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 850;
+  background-color: var(--color-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.backdropVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 900;
   width: 100%;
-  max-width: 620px;
+  max-width: 470px;
   height: 100vh;
   background-color: var(--color-bg);
   box-shadow: var(--shadow-md);
@@ -15,6 +30,30 @@
   transform: translateX(100%);
   transition: transform var(--transition-base);
   overflow-y: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    width: min(78vw, 300px);
+    max-width: min(78vw, 300px);
+    right: 0;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .header {
+    gap: var(--spacing-sm);
+  }
+
+  .items {
+    gap: var(--spacing-2xs);
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .sidebar {
+    max-width: 430px;
+  }
 }
 
 .open {

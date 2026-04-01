@@ -34,10 +34,22 @@
   flex-direction: column;
   gap: var(--spacing-md);
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .inputField {
   width: 100%;
+}
+
+.inputField input {
+  background-color: var(--color-bg-secondary);
+}
+
+.inputField input:hover,
+.inputField input:focus,
+.inputField input:focus-visible {
+  background-color: var(--color-bg-secondary);
 }
 
 .inputField :global(.label) {
@@ -49,6 +61,15 @@
 .submitButton {
   align-self: center;
   margin-top: var(--spacing-sm);
+}
+
+@media screen and (hover: hover) {
+  .modal > button:hover {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
+  }
 }
 
 /* Tablet */
@@ -75,6 +96,7 @@
 
   .form {
     gap: var(--spacing-lg);
+    max-width: 66%;
   }
 }
 
@@ -99,5 +121,6 @@
 
   .form {
     gap: var(--spacing-xl);
+    max-width: 66%;
   }
 }

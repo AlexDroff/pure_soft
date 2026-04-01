@@ -15,7 +15,6 @@ export type Service = {
   shortDescription: string;
   fullDescription: string;
   price: number;
-  unit: string;
   image: string;
   category: ServiceCategory;
   isActive: boolean;

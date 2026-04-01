@@ -11,9 +11,10 @@ export default function HeroSection() {
       <Container>
         <div className={styles.hero}>
           <Image
-            src="/images/hero/hero.jpg"
+            src="/images/hero/hero.webp"
             alt="Limpieza profesional de muebles y tapiceria"
             fill
+            sizes="100vw"
             priority
             className={styles.image}
           />

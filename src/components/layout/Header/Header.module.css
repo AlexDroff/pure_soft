@@ -34,6 +34,10 @@
   min-width: 0;
 }
 
+.burgerButton {
+  display: none;
+}
+
 .nav {
   min-width: 0;
 }
@@ -78,6 +82,10 @@
   height: auto;
 }
 
+.mobileOverlay {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .inner {
     min-height: 76px;
@@ -112,17 +120,123 @@
 }
 
 @media screen and (max-width: 767px) {
-  .inner {
-    flex-wrap: wrap;
-  }
-
   .actions {
-    width: 100%;
-    justify-content: space-between;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
 
-  .navList {
-    justify-content: flex-start;
+  .nav,
+  .cartLink {
+    display: none;
+  }
+
+  .burgerButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--color-white);
+    box-shadow: none;
+  }
+
+  .burgerIcon {
+    width: 24px;
+    height: auto;
+  }
+
+  .mobileOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background-color: var(--color-overlay);
+  }
+
+  .mobileMenu {
+    position: relative;
+    width: min(100%, 420px);
+    min-height: 420px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+    text-align: center;
+  }
+
+  .mobileCloseButton {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--color-secondary);
+    box-shadow: none;
+  }
+
+  .mobileNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    width: 100%;
+  }
+
+  .mobileMenuLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 0 var(--spacing-sm);
+
+    color: var(--color-secondary);
+    font-size: var(--font-size-body-md);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    background-color: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+
+  .mobileCartButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 0 var(--spacing-sm);
+
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .mobileCartIcon {
+    width: 36px;
+    height: auto;
+
+    filter: brightness(0) saturate(100%) invert(27%) sepia(18%) saturate(1200%)
+      hue-rotate(145deg) brightness(95%) contrast(90%);
   }
 }

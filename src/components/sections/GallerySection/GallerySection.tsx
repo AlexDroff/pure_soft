@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { gallery } from "@/data/gallery";
 import { Container } from "@/components/layout";
 import styles from "./GallerySection.module.css";
@@ -49,8 +48,6 @@ export default function GallerySection() {
 
                 const isActive = wrappedOffset === 0;
                 const isNear = Math.abs(wrappedOffset) === 1;
-                const isFar = Math.abs(wrappedOffset) > 1;
-
                 return (
                   <button
                     key={item.id}
@@ -70,6 +67,7 @@ export default function GallerySection() {
                         src={item.image}
                         alt={item.alt}
                         fill
+                        sizes="(min-width: 1440px) 214px, (min-width: 768px) 176px, 118px"
                         className={styles.image}
                       />
                     </div>
@@ -82,11 +80,17 @@ export default function GallerySection() {
           <div className={styles.controls}>
             <button
               type="button"
-              className={styles.arrow}
+              className={styles.navButton}
               onClick={handlePrev}
               aria-label="Previous slide"
             >
-              <IoChevronBack size={16} />
+              <Image
+                src="/icons/arrow-left.svg"
+                alt=""
+                width={12}
+                height={12}
+                className={styles.navIcon}
+              />
             </button>
 
             <div className={styles.dots}>
@@ -105,11 +109,17 @@ export default function GallerySection() {
 
             <button
               type="button"
-              className={styles.arrow}
+              className={styles.navButton}
               onClick={handleNext}
               aria-label="Next slide"
             >
-              <IoChevronForward size={16} />
+              <Image
+                src="/icons/arrow-right.svg"
+                alt=""
+                width={12}
+                height={12}
+                className={styles.navIcon}
+              />
             </button>
           </div>
         </div>
@@ -140,6 +150,7 @@ export default function GallerySection() {
                   src={gallery[expandedIndex].image}
                   alt={gallery[expandedIndex].alt}
                   fill
+                  sizes="(min-width: 1024px) 920px, 100vw"
                   className={styles.previewImage}
                 />
               </div>

@@ -10,33 +10,36 @@ const previewCards = [
     title: "LIMPIEZA DE ALFOMBRAS",
     description: "Limpieza profesional de alfombras",
     price: "DESDE 50 €",
-    image: "/images/services/carpet.jpg",
+    image: "/images/services/carpet.webp",
   },
   {
     title: "LIMPIEZA DE SOFÁS",
     description: "Limpieza profunda de sofás y tapicería",
     price: "DESDE 50 €",
-    image: "/images/services/sofa.jpg",
+    image: "/images/services/sofa.webp",
   },
   {
     title: "LIMPIEZA DE SILLAS",
     description: "Limpieza profesional de sillas y asientos",
     price: "DESDE 7 €",
-    image: "/images/services/chair.jpg",
+    image: "/images/services/chair.webp",
   },
   {
     title: "LIMPIEZA DE COLCHONES",
     description: "Limpieza y desinfección de colchones",
     price: "DESDE 60 €",
-    image: "/images/services/mattress.jpg",
+    image: "/images/services/mattress.webp",
   },
   {
     title: "LIMPIEZA DE SILLONES",
     description: "Limpieza profunda de sillones",
     price: "DESDE 30 €",
-    image: "/images/services/armchair.jpg",
+    image: "/images/services/armchair.webp",
   },
 ];
+
+const previewImageSizes =
+  "(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw";
 
 export default function ServicesPreviewSection() {
   return (
@@ -49,6 +52,7 @@ export default function ServicesPreviewSection() {
                 src={previewCards[0].image}
                 alt={previewCards[0].title}
                 fill
+                sizes={previewImageSizes}
                 className={styles.image}
               />
             </div>
@@ -59,9 +63,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[0].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="sm">
-                    {previewCards[0].price}
-                  </Button>
+                  <Button size="sm">{previewCards[0].price}</Button>
                 </Link>
               </div>
             </div>
@@ -73,6 +75,7 @@ export default function ServicesPreviewSection() {
                 src={previewCards[1].image}
                 alt={previewCards[1].title}
                 fill
+                sizes={previewImageSizes}
                 className={styles.image}
               />
             </div>
@@ -83,9 +86,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[1].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="sm">
-                    {previewCards[1].price}
-                  </Button>
+                  <Button size="sm">{previewCards[1].price}</Button>
                 </Link>
               </div>
             </div>
@@ -97,6 +98,7 @@ export default function ServicesPreviewSection() {
                 src={previewCards[2].image}
                 alt={previewCards[2].title}
                 fill
+                sizes={previewImageSizes}
                 className={styles.image}
               />
             </div>
@@ -107,9 +109,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[2].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="sm">
-                    {previewCards[2].price}
-                  </Button>
+                  <Button size="sm">{previewCards[2].price}</Button>
                 </Link>
               </div>
             </div>
@@ -121,6 +121,7 @@ export default function ServicesPreviewSection() {
                 src={previewCards[3].image}
                 alt={previewCards[3].title}
                 fill
+                sizes={previewImageSizes}
                 className={styles.image}
               />
             </div>
@@ -131,9 +132,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[3].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="sm">
-                    {previewCards[3].price}
-                  </Button>
+                  <Button size="sm">{previewCards[3].price}</Button>
                 </Link>
               </div>
             </div>
@@ -152,6 +151,7 @@ export default function ServicesPreviewSection() {
                 src={previewCards[4].image}
                 alt={previewCards[4].title}
                 fill
+                sizes={previewImageSizes}
                 className={styles.image}
               />
             </div>
@@ -162,9 +162,7 @@ export default function ServicesPreviewSection() {
               <div className={styles.cardBody}>
                 <p className={styles.cardText}>{previewCards[4].description}</p>
                 <Link href={ROUTES.SERVICES} className={styles.link}>
-                  <Button size="sm">
-                    {previewCards[4].price}
-                  </Button>
+                  <Button size="sm">{previewCards[4].price}</Button>
                 </Link>
               </div>
             </div>

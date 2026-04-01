@@ -22,7 +22,7 @@ export default function ServiceCard({
   className,
 }: ServiceCardProps) {
   const isInteractive = Boolean(onOpen);
-  const ctaLabel = `DESDE ${service.price} \u20AC`;
+  const ctaLabel = `DESDE ${String(service.price)} \u20AC`;
 
   const handleCardClick = () => {
     onOpen?.(service);
@@ -35,7 +35,7 @@ export default function ServiceCard({
 
   const cardButton = (
     <div onClick={handleButtonClick} className={styles.buttonWrapper}>
-      <Button className={styles.cta} size="md">
+      <Button size="sm">
         {ctaLabel}
       </Button>
     </div>
@@ -43,15 +43,15 @@ export default function ServiceCard({
 
   return (
     <article
-      className={clsx(styles.card, className)}
+      className={clsx(styles.card, isInteractive && styles.interactive, className)}
       onClick={handleCardClick}
-      style={{ cursor: isInteractive ? "pointer" : undefined }}
     >
       <div className={styles.imageWrap}>
         <Image
           src={service.image}
           alt={service.title}
           fill
+          sizes="(min-width: 1280px) 44vw, 100vw"
           className={styles.image}
         />
       </div>
@@ -65,7 +65,7 @@ export default function ServiceCard({
             cardButton
           ) : (
             <Link href={ROUTES.SERVICES} className={styles.link}>
-              <Button className={styles.cta} size="md">
+              <Button size="sm">
                 {ctaLabel}
               </Button>
             </Link>

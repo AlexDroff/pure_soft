@@ -10,7 +10,13 @@ export default function GallerySlide({ item }: GallerySlideProps) {
   return (
     <div className={styles.slide}>
       <div className={styles.imageWrapper}>
-        <Image src={item.image} alt={item.alt} fill className={styles.image} />
+        <Image
+          src={item.image}
+          alt={item.alt}
+          fill
+          sizes="100vw"
+          className={styles.image}
+        />
       </div>
     </div>
   );

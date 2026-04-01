@@ -43,12 +43,17 @@
 
 .title {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: var(--font-size-overline);
   font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
+  line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
   color: var(--color-white);
+  overflow-wrap: anywhere;
+}
+
+.interactive {
+  cursor: pointer;
 }
 
 .cardBody {
@@ -64,20 +69,12 @@
 
 .description {
   margin: 0;
-  font-size: var(--font-size-body-sm);
+  font-size: var(--font-size-caption);
   font-weight: var(--font-weight-medium);
-  line-height: 1.2;
+  line-height: 1.35;
   text-align: center;
   color: var(--color-text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cta {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .link {
@@ -105,17 +102,25 @@
   }
 
   .title {
-    font-size: 1.1rem;
+    font-size: var(--font-size-body-sm);
   }
 
   .cardBody {
     gap: var(--spacing-xs);
     padding: var(--spacing-sm);
   }
+
+  .description {
+    font-size: 0.95rem;
+  }
 }
 
 @media screen and (min-width: 1440px) {
   .title {
     font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: var(--font-size-body-sm);
   }
 }

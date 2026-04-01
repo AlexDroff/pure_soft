@@ -8,6 +8,7 @@
 .inner {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-lg);
 }
 
@@ -22,25 +23,18 @@
   height: auto;
 }
 
-.navBlock {
-  display: flex;
-}
-
-.navList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
-
 .contactGroup {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  align-items: center;
+  gap: var(--spacing-4xl);
+  width: 100%;
 }
 
 .addressBlock {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--spacing-2xs);
   font-style: normal;
 }
@@ -65,6 +59,7 @@
 .socials {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
 }
 
@@ -94,10 +89,14 @@
   }
 
   .inner {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: var(--spacing-xl);
+  }
+
+  .logoLink {
+    justify-self: start;
   }
 
   .logo {
@@ -105,8 +104,15 @@
   }
 
   .contactGroup {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--spacing-xl);
+    display: contents;
+  }
+
+  .addressBlock {
+    align-items: flex-start;
+    justify-self: center;
+  }
+
+  .socials {
+    justify-self: end;
   }
 }

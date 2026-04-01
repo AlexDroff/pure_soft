@@ -21,7 +21,7 @@
 }
 
 .stepNumber {
-  font-size: var(--font-size-body-lg);
+  font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
   color: var(--color-primary);
@@ -31,12 +31,13 @@
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
-  color: var(--color-text-primary);
+  color: var(--color-primary);
 }
 
 .stepText {
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
 }
 
 .bottomBlock {
@@ -54,6 +55,7 @@
 
 .title {
   max-width: none;
+  color: var(--color-primary) !important;
 }
 
 .description {

@@ -56,9 +56,10 @@ export default function AboutSection() {
 
             <div className={styles.imageWrapper}>
               <Image
-                src="/images/about/about.jpg"
+                src="/images/about/about.webp"
                 alt="Limpieza profesional segura para el hogar y el medio ambiente"
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className={styles.image}
               />
             </div>
