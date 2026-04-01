@@ -17,12 +17,13 @@ export default function ServiceGrid({
 }: ServiceGridProps) {
   return (
     <div className={styles.grid}>
-      {services.map((service) => (
+      {services.map((service, index) => (
         <ServiceCard
           key={service.id}
           service={service}
           onOpen={onOpen}
           onAddToOrder={onAddToOrder}
+          imagePriority={index === 0}
         />
       ))}
     </div>

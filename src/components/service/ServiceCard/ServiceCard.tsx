@@ -13,6 +13,7 @@ type ServiceCardProps = {
   onOpen?: (service: Service) => void;
   onAddToOrder?: (service: Service) => void;
   className?: string;
+  imagePriority?: boolean;
 };
 
 export default function ServiceCard({
@@ -20,6 +21,7 @@ export default function ServiceCard({
   onOpen,
   onAddToOrder,
   className,
+  imagePriority = false,
 }: ServiceCardProps) {
   const isInteractive = Boolean(onOpen);
   const ctaLabel = `DESDE ${String(service.price)} \u20AC`;
@@ -52,6 +54,7 @@ export default function ServiceCard({
           alt={service.title}
           fill
           sizes="(min-width: 1280px) 44vw, 100vw"
+          priority={imagePriority}
           className={styles.image}
         />
       </div>
