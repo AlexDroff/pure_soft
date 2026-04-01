@@ -9,6 +9,7 @@ export const services: Service[] = [
     fullDescription:
       "Servicio profesional de desinfeccion y limpieza profunda de alfombras para eliminar suciedad, polvo y manchas comunes.",
     price: 50,
+    unit: "servicio",
     image: "/images/services_page/carpet_s.webp",
     category: "carpet",
     isActive: true,
@@ -21,6 +22,7 @@ export const services: Service[] = [
     fullDescription:
       "Limpieza profunda de sillon con tratamiento para manchas, polvo y malos olores, pensada para tapicerias de uso diario.",
     price: 30,
+    unit: "servicio",
     image: "/images/services_page/armchair_s.webp",
     category: "armchair",
     isActive: true,
@@ -33,6 +35,7 @@ export const services: Service[] = [
     fullDescription:
       "Limpieza especializada de sillas y asientos tapizados para refrescar el tejido y retirar suciedad acumulada.",
     price: 7,
+    unit: "servicio",
     image: "/images/services_page/chair_s.webp",
     category: "chair",
     isActive: true,
@@ -45,6 +48,7 @@ export const services: Service[] = [
     fullDescription:
       "Desinfeccion y limpieza profunda de colchon de 90 x 190 cm para mejorar la higiene y reducir manchas y olores.",
     price: 60,
+    unit: "servicio",
     image: "/images/services_page/mattress1_s.webp",
     category: "mattress",
     isActive: true,
@@ -57,6 +61,7 @@ export const services: Service[] = [
     fullDescription:
       "Desinfeccion y limpieza profunda de colchon de 135 x 190 cm con enfoque en higiene, frescura y eliminacion de suciedad.",
     price: 70,
+    unit: "servicio",
     image: "/images/services_page/mattress2_s.webp",
     category: "mattress",
     isActive: true,
@@ -69,6 +74,7 @@ export const services: Service[] = [
     fullDescription:
       "Desinfeccion y limpieza profunda de colchon de 193 x 202 cm para una limpieza completa de la superficie y el tejido.",
     price: 80,
+    unit: "servicio",
     image: "/images/services_page/mattress3_s.webp",
     category: "mattress",
     isActive: true,
@@ -81,6 +87,7 @@ export const services: Service[] = [
     fullDescription:
       "Limpieza profunda de sofa de 2 plazas con tratamiento para manchas habituales, polvo y olores incrustados.",
     price: 50,
+    unit: "servicio",
     image: "/images/services_page/sofa2\u0445_s.webp",
     category: "sofa",
     isActive: true,
@@ -93,6 +100,7 @@ export const services: Service[] = [
     fullDescription:
       "Limpieza profunda de sofa de 3 plazas con eliminacion de manchas y suciedad acumulada en el tapizado.",
     price: 65,
+    unit: "servicio",
     image: "/images/services_page/sofa3\u0445_s.webp",
     category: "sofa",
     isActive: true,
@@ -105,6 +113,7 @@ export const services: Service[] = [
     fullDescription:
       "Limpieza profunda de sofa de 4 plazas con lavado de tapiceria y eliminacion de manchas visibles.",
     price: 80,
+    unit: "servicio",
     image: "/images/services_page/sofa4\u0445_s.webp",
     category: "sofa",
     isActive: true,
@@ -117,6 +126,7 @@ export const services: Service[] = [
     fullDescription:
       "Limpieza profunda de sofa en esquina para renovar la tapiceria, eliminar manchas y recuperar frescura.",
     price: 100,
+    unit: "servicio",
     image: "/images/services_page/sofa-es_s.webp",
     category: "sofa",
     isActive: true,

@@ -4,21 +4,21 @@ export const gallery: GalleryItem[] = [
   {
     id: "gallery-1",
     image: "/images/gallery/gallery-1.webp",
-    alt: "Очищений світлий диван після хімчистки",
+    alt: "Sofa claro despues de una limpieza profesional",
   },
   {
     id: "gallery-2",
     image: "/images/gallery/gallery-2.webp",
-    alt: "Крісло після професійної хімчистки",
+    alt: "Sillon despues de una limpieza profesional",
   },
   {
     id: "gallery-3",
     image: "/images/gallery/gallery-3.webp",
-    alt: "Чистий килим після обробки",
+    alt: "Alfombra limpia despues del tratamiento",
   },
   {
     id: "gallery-4",
     image: "/images/gallery/gallery-4.webp",
-    alt: "М’які меблі після очищення",
+    alt: "Muebles tapizados despues de la limpieza",
   },
 ];

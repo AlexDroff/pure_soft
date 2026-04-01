@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { OrderItem } from "@/types/order";
 import { IconButton, SectionText } from "@/components/ui";
 import { IoAdd, IoRemove, IoTrashOutline } from "react-icons/io5";
@@ -24,7 +25,13 @@ export default function OrderItemCard({
     <div className={styles.card}>
       <div className={styles.topRow}>
         <div className={styles.imageContainer}>
-          <img src={image} alt={item.title} className={styles.image} />
+          <Image
+            src={image}
+            alt={item.title}
+            fill
+            sizes="(max-width: 767px) 72px, 90px"
+            className={styles.image}
+          />
         </div>
 
         <div className={styles.info}>
