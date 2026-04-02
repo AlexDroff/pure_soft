@@ -40,7 +40,7 @@ const previewCards = [
 ];
 
 const previewImageSizes =
-  "(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw";
+  "(min-width: 768px) 356px, (min-width: 390px) 356px, 100vw";
 
 export default function ServicesPreviewSection() {
   return (

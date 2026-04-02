@@ -17,6 +17,7 @@ export default function HeroSection() {
             fill
             sizes="100vw"
             priority
+            fetchPriority="high"
             className={styles.image}
           />
 

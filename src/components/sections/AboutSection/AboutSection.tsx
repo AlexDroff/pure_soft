@@ -60,7 +60,7 @@ export default function AboutSection() {
                 src="/images/about/about.webp"
                 alt="Limpieza profesional segura para el hogar y el medio ambiente"
                 fill
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 1280px) 52vw, (min-width: 768px) 50vw, 100vw"
                 className={styles.image}
               />
             </div>
