@@ -36,6 +36,20 @@ export default function GallerySection() {
     setExpandedIndex(null);
   };
 
+  const orderedGallery = gallery
+    .map((item, index) => {
+      const offset = index - currentIndex;
+      const wrappedOffset =
+        offset > gallery.length / 2
+          ? offset - gallery.length
+          : offset < -gallery.length / 2
+            ? offset + gallery.length
+            : offset;
+
+      return { item, index, wrappedOffset };
+    })
+    .sort((a, b) => a.wrappedOffset - b.wrappedOffset);
+
   useEffect(() => {
     if (expandedIndex === null) return;
 
@@ -98,15 +112,7 @@ export default function GallerySection() {
         <div className={styles.slider}>
           <div className={styles.viewport}>
             <div className={styles.strip}>
-              {gallery.map((item, index) => {
-                const offset = index - currentIndex;
-                const wrappedOffset =
-                  offset > gallery.length / 2
-                    ? offset - gallery.length
-                    : offset < -gallery.length / 2
-                      ? offset + gallery.length
-                      : offset;
-
+              {orderedGallery.map(({ item, index, wrappedOffset }) => {
                 const isActive = wrappedOffset === 0;
                 const isNear = Math.abs(wrappedOffset) === 1;
                 return (

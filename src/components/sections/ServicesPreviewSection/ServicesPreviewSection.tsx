@@ -140,10 +140,15 @@ export default function ServicesPreviewSection() {
           </article>
 
           <Link href={ROUTES.SERVICES} className={styles.promoCard}>
-            <span className={styles.promoLabel}>PROMO</span>
-            <span className={styles.promoValue}>3x2</span>
-            <span className={styles.promoText}>HAGA CLIC</span>
-            <span className={styles.promoText}>Y CONOZCA MAS</span>
+            <div className={styles.promoMedia}>
+              <Image
+                src="/icons/promo.svg"
+                alt="Promocion 3x2"
+                width={280}
+                height={280}
+                className={styles.promoImage}
+              />
+            </div>
           </Link>
 
           <article className={styles.card}>
