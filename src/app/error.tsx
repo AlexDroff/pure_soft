@@ -16,16 +16,20 @@ type ErrorPageProps = {
 
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
   useEffect(() => {
-    console.error(error);
+    if (process.env.NODE_ENV !== "production") {
+      console.error(error);
+    }
   }, [error]);
 
   return (
     <SystemState>
-      <SectionTitle>Щось пішло не так</SectionTitle>
+      <SectionTitle>Algo salio mal</SectionTitle>
 
-      <SectionText>Виникла неочікувана помилка. Спробуйте ще раз.</SectionText>
+      <SectionText>
+        Ocurrio un error inesperado. Intenta nuevamente en unos segundos.
+      </SectionText>
 
-      <Button onClick={reset}>Спробувати знову</Button>
+      <Button onClick={reset}>Intentar de nuevo</Button>
     </SystemState>
   );
 }

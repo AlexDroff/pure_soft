@@ -12,6 +12,7 @@ type ModalProps = {
   onCloseAction: () => void;
   children: React.ReactNode;
   className?: string;
+  ariaLabel?: string;
 };
 
 export default function Modal({
@@ -19,6 +20,7 @@ export default function Modal({
   onCloseAction,
   children,
   className,
+  ariaLabel = "Dialog window",
 }: ModalProps) {
   useEffect(() => {
     if (!isOpen) return;
@@ -52,6 +54,7 @@ export default function Modal({
         className={clsx(styles.modal, className)}
         role="dialog"
         aria-modal="true"
+        aria-label={ariaLabel}
       >
         <IconButton
           icon={<IoClose size={22} />}

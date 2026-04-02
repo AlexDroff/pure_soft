@@ -45,7 +45,7 @@ export default function ServiceDetails({
           }}
           size="md"
         >
-          Desde {service.price} €
+          Desde {service.price} EUR
         </Button>
       </div>
     </div>

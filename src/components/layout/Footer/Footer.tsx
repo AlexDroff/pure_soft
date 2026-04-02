@@ -38,7 +38,7 @@ export default function Footer() {
 
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>
-              <p className={styles.addressLine}>Avinguda de Dénia, 76,</p>
+              <p className={styles.addressLine}>Avinguda de Denia, 76,</p>
               <p className={styles.addressLine}>03013 Alicante,</p>
               <Link href="tel:637943520" className={styles.link}>
                 637 943 520

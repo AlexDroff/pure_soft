@@ -48,7 +48,7 @@ export default function OrderSidebar({
 
       {items.length === 0 ? (
         <div className={styles.empty}>
-          <SectionText>Tu carrito está vacío.</SectionText>
+          <SectionText>Tu carrito esta vacio.</SectionText>
         </div>
       ) : (
         <>

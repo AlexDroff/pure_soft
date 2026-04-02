@@ -37,7 +37,7 @@ export default function OrderItemCard({
 
         <div className={styles.info}>
           <h3 className={styles.title}>{item.title}</h3>
-          <SectionText className={styles.price}>{item.price} €</SectionText>
+          <SectionText className={styles.price}>{item.price} EUR</SectionText>
         </div>
       </div>
 

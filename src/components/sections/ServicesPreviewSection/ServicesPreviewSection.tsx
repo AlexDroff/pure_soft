@@ -10,31 +10,31 @@ const previewCards = [
   {
     title: "LIMPIEZA DE ALFOMBRAS",
     description: "Limpieza profesional de alfombras",
-    price: "DESDE 50 €",
+    price: "DESDE 50 EUR",
     image: "/images/services/carpet.webp",
   },
   {
-    title: "LIMPIEZA DE SOFÁS",
-    description: "Limpieza profunda de sofás y tapicería",
-    price: "DESDE 50 €",
+    title: "LIMPIEZA DE SOFAS",
+    description: "Limpieza profunda de sofas y tapiceria",
+    price: "DESDE 50 EUR",
     image: "/images/services/sofa.webp",
   },
   {
     title: "LIMPIEZA DE SILLAS",
     description: "Limpieza profesional de sillas y asientos",
-    price: "DESDE 7 €",
+    price: "DESDE 7 EUR",
     image: "/images/services/chair.webp",
   },
   {
     title: "LIMPIEZA DE COLCHONES",
-    description: "Limpieza y desinfección de colchones",
-    price: "DESDE 60 €",
+    description: "Limpieza y desinfeccion de colchones",
+    price: "DESDE 60 EUR",
     image: "/images/services/mattress.webp",
   },
   {
     title: "LIMPIEZA DE SILLONES",
     description: "Limpieza profunda de sillones",
-    price: "DESDE 30 €",
+    price: "DESDE 30 EUR",
     image: "/images/services/armchair.webp",
   },
 ];
@@ -143,7 +143,7 @@ export default function ServicesPreviewSection() {
             <span className={styles.promoLabel}>PROMO</span>
             <span className={styles.promoValue}>3x2</span>
             <span className={styles.promoText}>HAGA CLIC</span>
-            <span className={styles.promoText}>Y CONOZCA MÁS</span>
+            <span className={styles.promoText}>Y CONOZCA MAS</span>
           </Link>
 
           <article className={styles.card}>

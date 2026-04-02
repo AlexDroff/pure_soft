@@ -11,14 +11,15 @@ import { ROUTES } from "@/lib/constants/routes";
 export default function NotFoundPage() {
   return (
     <SystemState>
-      <SectionTitle>Сторінку не знайдено</SectionTitle>
+      <SectionTitle>Pagina no encontrada</SectionTitle>
 
       <SectionText>
-        Можливо, посилання застаріло або сторінка була переміщена.
+        Es posible que el enlace este desactualizado o que la pagina se haya
+        movido.
       </SectionText>
 
       <Link href={ROUTES.HOME}>
-        <Button>Повернутися на головну</Button>
+        <Button>Volver al inicio</Button>
       </Link>
     </SystemState>
   );

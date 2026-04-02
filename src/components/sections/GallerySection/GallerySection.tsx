@@ -143,7 +143,7 @@ export default function GallerySection() {
                 onClick={handleClosePreview}
                 aria-label="Close image preview"
               >
-                ×
+                x
               </button>
 
               <div className={styles.previewImageWrapper}>

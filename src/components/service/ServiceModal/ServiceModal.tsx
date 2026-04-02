@@ -21,7 +21,11 @@ export default function ServiceModal({
   if (!service) return null;
 
   return (
-    <Modal isOpen={isOpen} onCloseAction={onCloseAction}>
+    <Modal
+      isOpen={isOpen}
+      onCloseAction={onCloseAction}
+      ariaLabel={`Detalles del servicio ${service.title}`}
+    >
       <ServiceDetails
         service={service}
         onAddToOrder={onAddToOrder}

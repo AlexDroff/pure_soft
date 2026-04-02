@@ -19,7 +19,7 @@ export default function OrderSummary({
   return (
     <div className={styles.summary}>
       <div className={styles.info}>
-        <p className={styles.subtotal}>Subtotal: {totalPrice} €</p>
+        <p className={styles.subtotal}>Subtotal: {totalPrice} EUR</p>
       </div>
 
       <Button

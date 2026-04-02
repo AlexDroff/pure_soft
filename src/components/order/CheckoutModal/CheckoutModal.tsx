@@ -53,12 +53,13 @@ export default function CheckoutModal({
       isOpen={isOpen}
       onCloseAction={onCloseAction}
       className={styles.modal}
+      ariaLabel="Formulario de pedido"
     >
       <div className={styles.content}>
         <h2 className={styles.title}>REALIZAR UN PEDIDO</h2>
         <p className={styles.subtitle}>
-          Por favor, introduzca sus datos y nuestro asesor se pondrá en contacto
-          con usted en breve.
+          Por favor, introduzca sus datos y nuestro asesor se pondra en
+          contacto con usted en breve.
         </p>
         <Formik
           initialValues={initialValues}
@@ -80,7 +81,7 @@ export default function CheckoutModal({
               />
 
               <Input
-                label="Número de teléfono*"
+                label="Numero de telefono*"
                 name="phone"
                 value={values.phone}
                 placeholder="+34 123 456 789"

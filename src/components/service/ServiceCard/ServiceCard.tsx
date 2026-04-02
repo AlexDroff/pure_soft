@@ -31,6 +31,14 @@ export default function ServiceCard({
     onOpen?.(service);
   };
 
+  const handleCardKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (!isInteractive) return;
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onOpen?.(service);
+    }
+  };
+
   const handleButtonClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     onAddToOrder?.(service);
@@ -47,7 +55,11 @@ export default function ServiceCard({
   return (
     <article
       className={clsx(styles.card, isInteractive && styles.interactive, className)}
-      onClick={handleCardClick}
+      onClick={isInteractive ? handleCardClick : undefined}
+      onKeyDown={isInteractive ? handleCardKeyDown : undefined}
+      role={isInteractive ? "button" : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      aria-label={isInteractive ? `Abrir detalles de ${service.title}` : undefined}
     >
       <div className={styles.imageWrap}>
         <Image

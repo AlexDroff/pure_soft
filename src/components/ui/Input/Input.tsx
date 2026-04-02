@@ -28,6 +28,7 @@ export default function Input({
   className,
 }: InputProps) {
   const hasError = touched && Boolean(error);
+  const errorId = hasError ? `${name}-error` : undefined;
 
   return (
     <label htmlFor={name} className={clsx(styles.wrapper, className)}>
@@ -42,9 +43,15 @@ export default function Input({
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
+        aria-invalid={hasError}
+        aria-describedby={errorId}
       />
 
-      {hasError && <span className={styles.message}>{error}</span>}
+      {hasError && (
+        <span id={errorId} className={styles.message}>
+          {error}
+        </span>
+      )}
     </label>
   );
 }

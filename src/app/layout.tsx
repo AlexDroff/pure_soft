@@ -7,7 +7,7 @@ import { Footer, Header } from "@/components/layout";
 export const metadata: Metadata = {
   title: "PURE SOFT",
   description:
-    "Servicio profesional de limpieza de tapicería, muebles y textiles para eliminar manchas, olores y suciedad profunda.",
+    "Servicio profesional de limpieza de tapiceria, muebles y textiles para eliminar manchas, olores y suciedad profunda.",
 };
 
 type RootLayoutProps = {
