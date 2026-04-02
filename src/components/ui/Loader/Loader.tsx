@@ -1,3 +1,4 @@
+// React component 'Loader'. Handles a dedicated UI element and its behavior.
 import styles from "./Loader.module.css";
 
 type LoaderProps = {

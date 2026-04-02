@@ -1,3 +1,4 @@
+// Data file 'gallery'. Stores static content and structures used for UI rendering.
 import type { GalleryItem } from "@/types/common";
 
 export const gallery: GalleryItem[] = [

@@ -1,3 +1,4 @@
+/* Style module for 'SectionTitle'. Contains local classes and visual presentation rules. */
 .title {
   font-size: clamp(2rem, 5vw, var(--font-size-section-title));
   font-weight: var(--font-weight-extrabold);

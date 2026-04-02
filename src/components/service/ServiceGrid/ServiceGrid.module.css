@@ -1,3 +1,4 @@
+/* Style module for 'ServiceGrid'. Contains local classes and visual presentation rules. */
 .grid {
   --service-card-width: 356px;
   display: grid;

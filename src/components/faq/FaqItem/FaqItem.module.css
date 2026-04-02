@@ -1,3 +1,4 @@
+/* Style module for 'FaqItem'. Contains local classes and visual presentation rules. */
 .item {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);

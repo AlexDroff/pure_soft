@@ -1,3 +1,4 @@
+// React component 'Container'. Handles a dedicated UI element and its behavior.
 import clsx from "clsx";
 import styles from "./Container.module.css";
 

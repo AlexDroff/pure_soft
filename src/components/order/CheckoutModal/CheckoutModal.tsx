@@ -1,3 +1,4 @@
+// React component 'CheckoutModal'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import { Formik, Form } from "formik";

@@ -1,3 +1,4 @@
+// React component 'GallerySlider'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import { useState } from "react";

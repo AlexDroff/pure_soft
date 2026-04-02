@@ -1,3 +1,4 @@
+// Data file 'services'. Stores static content and structures used for UI rendering.
 import type { Service } from "@/types/service";
 
 export const services: Service[] = [

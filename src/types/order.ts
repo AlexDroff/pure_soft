@@ -1,3 +1,4 @@
+// Type definition file 'order'. Declares TypeScript contracts for data and module interaction.
 import type { Id } from "./common";
 
 export type OrderItem = {

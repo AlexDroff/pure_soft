@@ -1,3 +1,4 @@
+// React component 'ServiceDetails'. Handles a dedicated UI element and its behavior.
 import Image from "next/image";
 import type { Service } from "@/types/service";
 import { Button, SectionText, SectionTitle } from "@/components/ui";

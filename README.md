@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PURE SOFT — Cleaning Services Web App
 
-## Getting Started
+## 📌 Опис проекту
 
-First, run the development server:
+PURE SOFT — це веб-додаток для сервісу хімчистки меблів та текстилю.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Користувач може:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- переглянути доступні послуги
+- подивитися деталі кожної послуги
+- додати послуги в кошик
+- оформити замовлення
+- відправити заявку через WhatsApp
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Проект реалізований як MVP з фокусом на простоту UX та швидкість взаємодії.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Технології
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Styling
 
-## Deploy on Vercel
+- CSS Modules
+- Design Tokens (colors, spacing, shadows)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### State Management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Zustand
+
+### Forms
+
+- Formik + Yup
+
+### Інше
+
+- Next/Image (оптимізація зображень)
+- Responsive Design (mobile / tablet / desktop)
+
+---
+
+## 🧠 Архітектура
+
+Проект побудований за принципами:
+
+- розділення на домени (service, order)
+- ізоляція UI-компонентів
+- централізований store (Zustand)
+- чиста структура папок
+
+---
+
+## 📁 Структура проекту
+
+src/
+│
+├── app/ # Next.js App Router (pages + layout)
+│ ├── layout.tsx # Глобальний layout (header, footer, html)
+│ ├── page.tsx # Головна сторінка
+│ ├── loading.tsx # Глобальний loader при переходах
+│ └── services/
+│ └── page.tsx # Сторінка зі списком послуг
+│
+├── components/ # UI та domain компоненти
+│
+│ ├── layout/ # Layout компоненти
+│ │ ├── Container.tsx # Обгортка з max-width
+│ │ ├── Header/ # Хедер (навігація + бургер)
+│ │ └── Footer/ # Футер (контакти + соцмережі)
+│
+│ ├── ui/ # Базові UI компоненти
+│ │ ├── Button.tsx # Кнопка (варіанти, розміри)
+│ │ ├── Modal.tsx # Базова модалка
+│ │ ├── Loader.tsx # Локальний loader (НЕ fullscreen)
+│ │ ├── SectionTitle.tsx # Заголовок секції
+│ │ └── SectionText.tsx # Текст секції
+│
+│ ├── service/ # Домен "послуги"
+│ │ ├── ServiceCard/ # Картка послуги
+│ │ ├── ServiceGrid/ # Сітка послуг
+│ │ ├── ServiceModal/ # Модалка з деталями
+│ │ └── ServiceDetails/ # Контент модалки
+│
+│ ├── order/ # Домен "замовлення"
+│ │ ├── OrderSidebar/ # Кошик (sidebar)
+│ │ ├── OrderItem/ # Елемент кошика
+│ │ └── CheckoutModal/ # Фінальна модалка (форма)
+│
+│ └── sections/ # Секції сторінки
+│ ├── HeroSection/ # Головний банер
+│ ├── ServicesPreview/ # Прев’ю послуг
+│ ├── GallerySection/ # Галерея
+│ └── AboutSection/ # Про компанію
+│
+├── data/ # Статичні дані
+│ ├── services.ts # Список послуг (джерело правди)
+│ ├── gallery.ts # Дані галереї
+│ └── contacts.ts # Контактні дані
+│
+├── features/ # Бізнес-логіка
+│ └── order/
+│ └── store.ts # Zustand store (кошик)
+│
+├── hooks/ # Кастомні React hooks
+│
+├── types/ # TypeScript типи
+│ └── service.ts # Тип Service
+│
+├── utils/ # Утиліти
+│ └── getActiveServices.ts # Фільтрація активних послуг
+│
+├── constants/ # Константи
+│
+└── styles/ # Глобальні стилі / токени
+
+---
+
+## 🚀 Основна логіка
+
+- Дані про послуги зберігаються в `services.ts`
+- Користувач додає послуги через Zustand store
+- Кошик відображається в sidebar
+- Checkout відправляє дані у WhatsApp
+
+---
+
+## 📦 Особливості
+
+- Адаптивний дизайн (mobile-first)
+- Мінімалістичний UX
+- Чітке розділення UI / бізнес-логіки
+- Готовність до масштабування
+
+---
+
+## 🧩 TODO (можна додати)
+
+- API інтеграція
+- Авторизація
+- Адмінка
+- Аналітика

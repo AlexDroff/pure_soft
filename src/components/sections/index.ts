@@ -1,3 +1,4 @@
+// Component barrel file for 'sections'. Centralizes re-exports for simpler imports.
 export { default as HeroSection } from "./HeroSection/HeroSection";
 export { default as AboutSection } from "./AboutSection/AboutSection";
 export { default as ServicesPreviewSection } from "./ServicesPreviewSection/ServicesPreviewSection";

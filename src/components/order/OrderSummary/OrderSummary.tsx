@@ -1,3 +1,4 @@
+// React component 'OrderSummary'. Handles a dedicated UI element and its behavior.
 import { Button } from "@/components/ui";
 import styles from "./OrderSummary.module.css";
 

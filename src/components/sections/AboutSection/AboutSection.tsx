@@ -1,3 +1,4 @@
+// React component 'AboutSection'. Handles a dedicated UI element and its behavior.
 import Image from "next/image";
 import { Container } from "@/components/layout";
 import { SectionText, SectionTitle } from "@/components/ui";

@@ -1,3 +1,4 @@
+/* Style module for 'OrderItemCard'. Contains local classes and visual presentation rules. */
 .card {
   display: flex;
   flex-direction: row;

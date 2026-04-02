@@ -1,3 +1,4 @@
+// React component 'Modal'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import { useEffect } from "react";

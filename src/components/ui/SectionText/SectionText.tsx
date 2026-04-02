@@ -1,3 +1,4 @@
+// React component 'SectionText'. Handles a dedicated UI element and its behavior.
 import clsx from "clsx";
 import styles from "./SectionText.module.css";
 

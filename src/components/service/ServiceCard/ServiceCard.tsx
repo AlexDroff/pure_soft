@@ -1,3 +1,4 @@
+// React component 'ServiceCard'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import Image from "next/image";

@@ -1,3 +1,4 @@
+// React component 'FaqItem'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import clsx from "clsx";

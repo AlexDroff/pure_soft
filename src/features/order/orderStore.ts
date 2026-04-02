@@ -1,3 +1,4 @@
+// Feature module file 'orderStore'. Encapsulates state or helper logic for a domain area.
 import { create } from "zustand";
 import type { OrderItem } from "@/types/order";
 import type { Service } from "@/types/service";

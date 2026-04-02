@@ -1,3 +1,4 @@
+/* Style module for 'ServiceDetails'. Contains local classes and visual presentation rules. */
 .wrapper {
   display: flex;
   flex-direction: column;

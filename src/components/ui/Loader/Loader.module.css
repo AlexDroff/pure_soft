@@ -1,3 +1,4 @@
+/* Style module for 'Loader'. Contains local classes and visual presentation rules. */
 .loader {
   display: flex;
   flex-direction: column;

@@ -1,3 +1,4 @@
+// React component 'GallerySlide'. Handles a dedicated UI element and its behavior.
 import Image from "next/image";
 import type { GalleryItem } from "@/types/common";
 import styles from "./GallerySlide.module.css";

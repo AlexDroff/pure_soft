@@ -1,3 +1,4 @@
+// Data file 'contacts'. Stores static content and structures used for UI rendering.
 import type { ContactItem } from "@/types/common";
 
 export const contacts: ContactItem = {

@@ -1,3 +1,4 @@
+// React component 'ServiceModal'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import type { Service } from "@/types/service";

@@ -1,3 +1,4 @@
+/* Style module for 'OrderSummary'. Contains local classes and visual presentation rules. */
 .summary {
   display: flex;
   flex-direction: column;

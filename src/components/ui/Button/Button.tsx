@@ -1,3 +1,4 @@
+// React component 'Button'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import clsx from "clsx";

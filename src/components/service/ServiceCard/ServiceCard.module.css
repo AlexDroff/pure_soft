@@ -1,3 +1,4 @@
+/* Style module for 'ServiceCard'. Contains local classes and visual presentation rules. */
 .card {
   position: relative;
   display: flex;

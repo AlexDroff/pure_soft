@@ -1,3 +1,4 @@
+// Next.js route page file. Composes sections and renders route content.
 "use client";
 
 import { useState } from "react";

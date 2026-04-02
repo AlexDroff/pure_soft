@@ -1,3 +1,4 @@
+// Route-level error boundary file. Renders fallback UI when route rendering fails.
 "use client";
 
 import { useEffect } from "react";

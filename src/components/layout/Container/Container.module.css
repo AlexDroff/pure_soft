@@ -1,3 +1,4 @@
+/* Style module for 'Container'. Contains local classes and visual presentation rules. */
 .container {
   width: 100%;
   max-width: var(--container-max-width);

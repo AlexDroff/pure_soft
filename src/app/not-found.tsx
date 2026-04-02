@@ -1,3 +1,4 @@
+// Next.js 404 route file. Displays UI when the requested route is missing.
 import Link from "next/link";
 import {
   Button,

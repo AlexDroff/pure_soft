@@ -1,3 +1,4 @@
+// Utility file 'buildWhatsAppMessage'. Provides a reusable helper function for the application.
 import type { CheckoutFormValues, OrderItem } from "@/types/order";
 import { calculateOrderTotal } from "./calculateOrderTotal";
 

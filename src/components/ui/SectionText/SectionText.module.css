@@ -1,3 +1,4 @@
+/* Style module for 'SectionText'. Contains local classes and visual presentation rules. */
 .text {
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-medium);

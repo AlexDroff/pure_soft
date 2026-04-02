@@ -1,3 +1,4 @@
+// Type definition file 'common'. Declares TypeScript contracts for data and module interaction.
 export type Id = string;
 
 export type FaqItem = {

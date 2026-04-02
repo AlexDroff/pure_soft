@@ -1,3 +1,4 @@
+/* Style module for 'CheckoutModal'. Contains local classes and visual presentation rules. */
 .modal {
   background-color: var(--color-bg);
   max-width: 100%;

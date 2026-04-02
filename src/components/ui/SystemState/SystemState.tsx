@@ -1,3 +1,4 @@
+// React component 'SystemState'. Handles a dedicated UI element and its behavior.
 import clsx from "clsx";
 import { Container } from "@/components/layout";
 import styles from "./SystemState.module.css";

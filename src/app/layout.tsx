@@ -1,3 +1,4 @@
+// Root Next.js layout file. Connects global styles and shared page structure.
 import type { Metadata } from "next";
 import "modern-normalize";
 import "@/styles/globals.css";

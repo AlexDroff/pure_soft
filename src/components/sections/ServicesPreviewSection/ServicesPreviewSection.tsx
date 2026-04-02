@@ -1,3 +1,4 @@
+// React component 'ServicesPreviewSection'. Handles a dedicated UI element and its behavior.
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout";

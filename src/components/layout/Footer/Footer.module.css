@@ -1,3 +1,4 @@
+/* Style module for 'Footer'. Contains local classes and visual presentation rules. */
 .footer {
   margin-top: var(--spacing-3xl);
   padding: var(--spacing-xl) 0;

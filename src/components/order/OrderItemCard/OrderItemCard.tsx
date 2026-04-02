@@ -1,3 +1,4 @@
+// React component 'OrderItemCard'. Handles a dedicated UI element and its behavior.
 import Image from "next/image";
 import type { OrderItem } from "@/types/order";
 import { IconButton, SectionText } from "@/components/ui";

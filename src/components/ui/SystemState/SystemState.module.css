@@ -1,3 +1,4 @@
+/* Style module for 'SystemState'. Contains local classes and visual presentation rules. */
 .wrapper {
   min-height: 60vh;
   display: flex;
