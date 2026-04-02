@@ -124,7 +124,6 @@ export default function Header() {
               alt="PURE SOFT"
               width={320}
               height={68}
-              priority
               className={styles.logo}
             />
           </Link>
