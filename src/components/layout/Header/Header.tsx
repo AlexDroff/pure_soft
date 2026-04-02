@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { usePathname, useRouter } from "next/navigation";
 import { Container } from "@/components/layout";
@@ -23,24 +23,66 @@ export default function Header() {
   const openSidebar = useOrderStore((state) => state.openSidebar);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuId = useId();
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileCloseButtonRef = useRef<HTMLButtonElement | null>(null);
+  const mobileTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
 
     const previousBodyOverflow = document.body.style.overflow;
+    const focusableSelector =
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-    const handleEscape = (event: KeyboardEvent) => {
+    const focusableElements = mobileMenuRef.current
+      ? Array.from(
+          mobileMenuRef.current.querySelectorAll<HTMLElement>(
+            focusableSelector,
+          ),
+        )
+      : [];
+
+    (mobileCloseButtonRef.current || focusableElements[0] || mobileMenuRef.current)?.focus();
+
+    const handleEscapeAndTrap = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsMobileMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !mobileMenuRef.current) return;
+
+      const activeFocusable = Array.from(
+        mobileMenuRef.current.querySelectorAll<HTMLElement>(focusableSelector),
+      );
+
+      if (activeFocusable.length === 0) {
+        event.preventDefault();
+        mobileMenuRef.current.focus();
+        return;
+      }
+
+      const firstElement = activeFocusable[0];
+      const lastElement = activeFocusable[activeFocusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleEscapeAndTrap);
 
     return () => {
       document.body.style.overflow = previousBodyOverflow;
-      window.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleEscapeAndTrap);
+      if (mobileTriggerRef.current?.isConnected) {
+        mobileTriggerRef.current.focus();
+      }
     };
   }, [isMobileMenuOpen]);
 
@@ -58,6 +100,17 @@ export default function Header() {
   };
 
   const handleMobileLinkClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleOpenMobileMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    mobileTriggerRef.current = event.currentTarget;
+    setIsMobileMenuOpen(true);
+  };
+
+  const handleCloseMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
@@ -123,7 +176,7 @@ export default function Header() {
                 aria-controls={mobileMenuId}
                 aria-expanded="true"
                 aria-haspopup="dialog"
-                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                onClick={handleCloseMobileMenu}
               >
                 <Image
                   src="/icons/burger.svg"
@@ -141,7 +194,7 @@ export default function Header() {
                 aria-controls={mobileMenuId}
                 aria-expanded="false"
                 aria-haspopup="dialog"
-                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                onClick={handleOpenMobileMenu}
               >
                 <Image
                   src="/icons/burger.svg"
@@ -159,21 +212,24 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div
           className={styles.mobileOverlay}
-          onClick={() => setIsMobileMenuOpen(false)}
+          onClick={handleCloseMobileMenu}
         >
           <div
             id={mobileMenuId}
+            ref={mobileMenuRef}
             role="dialog"
             aria-modal="true"
             aria-label="Menu movil"
             className={styles.mobileMenu}
             onClick={(event) => event.stopPropagation()}
+            tabIndex={-1}
           >
             <button
+              ref={mobileCloseButtonRef}
               type="button"
               className={styles.mobileCloseButton}
               aria-label="Cerrar menu"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={handleCloseMobileMenu}
             >
               <IoClose size={24} />
             </button>

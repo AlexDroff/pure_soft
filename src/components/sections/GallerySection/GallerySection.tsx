@@ -2,7 +2,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gallery } from "@/data/gallery";
 import { Container } from "@/components/layout";
 import styles from "./GallerySection.module.css";
@@ -10,6 +10,9 @@ import styles from "./GallerySection.module.css";
 export default function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const previewCardRef = useRef<HTMLDivElement | null>(null);
+  const previewCloseButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? gallery.length - 1 : prev - 1));
@@ -23,7 +26,8 @@ export default function GallerySection() {
     setCurrentIndex(index);
   };
 
-  const handleImageClick = (index: number) => {
+  const handleImageClick = (index: number, trigger: HTMLButtonElement) => {
+    previewTriggerRef.current = trigger;
     setCurrentIndex(index);
     setExpandedIndex(index);
   };
@@ -31,6 +35,62 @@ export default function GallerySection() {
   const handleClosePreview = () => {
     setExpandedIndex(null);
   };
+
+  useEffect(() => {
+    if (expandedIndex === null) return;
+
+    const focusableSelector =
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const focusableElements = previewCardRef.current
+      ? Array.from(
+          previewCardRef.current.querySelectorAll<HTMLElement>(
+            focusableSelector,
+          ),
+        )
+      : [];
+
+    (previewCloseButtonRef.current || focusableElements[0] || previewCardRef.current)?.focus();
+
+    const handleEscapeAndTrap = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClosePreview();
+        return;
+      }
+
+      if (event.key !== "Tab" || !previewCardRef.current) return;
+
+      const activeFocusable = Array.from(
+        previewCardRef.current.querySelectorAll<HTMLElement>(focusableSelector),
+      );
+
+      if (activeFocusable.length === 0) {
+        event.preventDefault();
+        previewCardRef.current.focus();
+        return;
+      }
+
+      const firstElement = activeFocusable[0];
+      const lastElement = activeFocusable[activeFocusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeAndTrap);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscapeAndTrap);
+      if (previewTriggerRef.current?.isConnected) {
+        previewTriggerRef.current.focus();
+      }
+    };
+  }, [expandedIndex]);
 
   return (
     <section className={styles.section}>
@@ -60,7 +120,7 @@ export default function GallerySection() {
                           ? styles.nearCard
                           : styles.farCard
                     }`}
-                    onClick={() => handleImageClick(index)}
+                    onClick={(event) => handleImageClick(index, event.currentTarget)}
                     aria-label={`Go to gallery image ${index + 1}`}
                   >
                     <div className={styles.imageWrapper}>
@@ -134,10 +194,13 @@ export default function GallerySection() {
             onClick={handleClosePreview}
           >
             <div
+              ref={previewCardRef}
               className={styles.previewCard}
               onClick={(event) => event.stopPropagation()}
+              tabIndex={-1}
             >
               <button
+                ref={previewCloseButtonRef}
                 type="button"
                 className={styles.previewClose}
                 onClick={handleClosePreview}
