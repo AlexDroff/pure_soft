@@ -15,7 +15,7 @@ export function buildWhatsAppMessage({
 
   const itemsText = items
     .map((item, index) => {
-      return `${index + 1}. ${item.title} - ${item.quantity} ${item.unit} x ${item.price} €`;
+      return `${index + 1}. ${item.title} - ${item.quantity} ${item.unit} x ${item.price} EUR`;
     })
     .join("\n");
 
@@ -27,5 +27,5 @@ Teléfono: ${customer.phone}
 Servicios:
 ${itemsText}
 
-Total: ${total} €`;
+Total: ${total} EUR`;
 }

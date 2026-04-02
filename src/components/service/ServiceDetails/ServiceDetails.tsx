@@ -6,13 +6,13 @@ import styles from "./ServiceDetails.module.css";
 
 type ServiceDetailsProps = {
   service: Service;
-  onAddToOrder: (service: Service) => void;
+  onAddToOrderAction: (service: Service) => void;
   onClose: () => void;
 };
 
 export default function ServiceDetails({
   service,
-  onAddToOrder,
+  onAddToOrderAction,
   onClose,
 }: ServiceDetailsProps) {
   return (
@@ -40,7 +40,7 @@ export default function ServiceDetails({
         <Button
           className={styles.cta}
           onClick={() => {
-            onAddToOrder(service);
+            onAddToOrderAction(service);
             onClose();
           }}
           size="md"

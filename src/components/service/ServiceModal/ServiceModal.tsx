@@ -9,14 +9,14 @@ type ServiceModalProps = {
   service: Service | null;
   isOpen: boolean;
   onCloseAction: () => void;
-  onAddToOrder: (service: Service) => void;
+  onAddToOrderAction: (service: Service) => void;
 };
 
 export default function ServiceModal({
   service,
   isOpen,
   onCloseAction,
-  onAddToOrder,
+  onAddToOrderAction,
 }: ServiceModalProps) {
   if (!service) return null;
 
@@ -28,7 +28,7 @@ export default function ServiceModal({
     >
       <ServiceDetails
         service={service}
-        onAddToOrder={onAddToOrder}
+        onAddToOrderAction={onAddToOrderAction}
         onClose={onCloseAction}
       />
     </Modal>

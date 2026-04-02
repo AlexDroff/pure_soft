@@ -7,14 +7,14 @@ import styles from "./ServiceGrid.module.css";
 
 type ServiceGridProps = {
   services: Service[];
-  onOpen?: (service: Service) => void;
-  onAddToOrder?: (service: Service) => void;
+  onOpenAction?: (service: Service) => void;
+  onAddToOrderAction?: (service: Service) => void;
 };
 
 export default function ServiceGrid({
   services,
-  onOpen,
-  onAddToOrder,
+  onOpenAction,
+  onAddToOrderAction,
 }: ServiceGridProps) {
   return (
     <div className={styles.grid}>
@@ -22,8 +22,8 @@ export default function ServiceGrid({
         <ServiceCard
           key={service.id}
           service={service}
-          onOpen={onOpen}
-          onAddToOrder={onAddToOrder}
+          onOpenAction={onOpenAction}
+          onAddToOrderAction={onAddToOrderAction}
           imagePriority={index === 0}
         />
       ))}

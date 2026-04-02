@@ -68,8 +68,8 @@ export default function ServicesPage() {
 
         <ServiceGrid
           services={activeServices}
-          onOpen={handleOpenModal}
-          onAddToOrder={handleAddToOrder}
+          onOpenAction={handleOpenModal}
+          onAddToOrderAction={handleAddToOrder}
         />
       </Container>
 
@@ -77,7 +77,7 @@ export default function ServicesPage() {
         service={selectedService}
         isOpen={isServiceModalOpen}
         onCloseAction={handleCloseModal}
-        onAddToOrder={handleAddToOrder}
+        onAddToOrderAction={handleAddToOrder}
       />
 
       <OrderSidebar
