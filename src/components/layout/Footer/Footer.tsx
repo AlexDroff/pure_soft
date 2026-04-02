@@ -11,7 +11,7 @@ type SocialItem = {
 };
 
 const socialItems = [
-  { label: "YouTube", href: "#", icon: "/icons/youtube.svg" },
+  { label: "YouTube", href: contacts.youtube, icon: "/icons/youtube.svg" },
   {
     label: "Instagram",
     href: contacts.instagram,

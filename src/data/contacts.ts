@@ -5,4 +5,5 @@ export const contacts: ContactItem = {
   whatsapp: "34637943520",
   instagram: "https://instagram.com/puresoft",
   facebook: "https://facebook.com/puresoft",
+  youtube: "https://youtube.com/@puresoft",
 };

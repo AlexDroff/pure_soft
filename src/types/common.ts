@@ -17,4 +17,5 @@ export type ContactItem = {
   whatsapp: string;
   instagram?: string;
   facebook?: string;
+  youtube?: string;
 };
