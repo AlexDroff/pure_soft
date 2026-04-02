@@ -1,4 +1,3 @@
-// Root Next.js layout file. Connects global styles and shared page structure.
 import type { Metadata } from "next";
 import "modern-normalize";
 import "@/styles/globals.css";
@@ -6,7 +5,7 @@ import { Footer, Header } from "@/components/layout";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const metadataBase = new URL(siteUrl);
-const ogImagePath = "/og-image.jpg";
+const ogImageUrl = `${siteUrl}/og-image.jpg`;
 
 export const metadata: Metadata = {
   metadataBase,
@@ -38,14 +37,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "/",
+    url: siteUrl,
     siteName: "PURE SOFT",
     title: "PURE SOFT | Limpieza de sofas, colchones y tapiceria en Alicante",
     description:
       "Limpieza profesional de sofas, colchones, alfombras y tapiceria en Alicante. Servicio a domicilio con presupuesto gratuito.",
     images: [
       {
-        url: ogImagePath,
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
         alt: "PURE SOFT - limpieza profesional de tapiceria en Alicante",
       },
     ],
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     title: "PURE SOFT | Limpieza de tapiceria en Alicante",
     description:
       "Servicio profesional de limpieza de sofas, colchones y alfombras en Alicante.",
-    images: [ogImagePath],
+    images: [ogImageUrl],
   },
 };
 
