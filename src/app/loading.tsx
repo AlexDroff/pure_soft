@@ -6,5 +6,5 @@ import { useI18n } from "@/providers/locale-provider";
 
 export default function LoadingPage() {
   const { t } = useI18n();
-  return <Loader fullScreen subtext={t("loader.pageLoadingSubtext")} />;
+  return <Loader subtext={t("loader.pageLoadingSubtext")} />;
 }
