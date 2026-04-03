@@ -1,12 +1,10 @@
 // Next.js loading state for the route. Shows temporary UI while content is loading.
+"use client";
+
 import { Loader } from "@/components/ui";
+import { useI18n } from "@/providers/locale-provider";
 
 export default function LoadingPage() {
-  return (
-    <Loader
-      fullScreen
-      text="Cargando..."
-      subtext="Por favor, espera unos segundos."
-    />
-  );
+  const { t } = useI18n();
+  return <Loader fullScreen subtext={t("loader.pageLoadingSubtext")} />;
 }

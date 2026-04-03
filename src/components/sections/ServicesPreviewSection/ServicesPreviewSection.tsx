@@ -1,48 +1,52 @@
 // React component 'ServicesPreviewSection'. Handles a dedicated UI element and its behavior.
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./ServicesPreviewSection.module.css";
-
-const previewCards = [
-  {
-    title: "LIMPIEZA DE ALFOMBRAS",
-    description: "Limpieza profesional de alfombras",
-    price: "DESDE 50 EUR",
-    image: "/images/services/carpet.webp",
-  },
-  {
-    title: "LIMPIEZA DE SOFAS",
-    description: "Limpieza profunda de sofas y tapiceria",
-    price: "DESDE 50 EUR",
-    image: "/images/services/sofa.webp",
-  },
-  {
-    title: "LIMPIEZA DE SILLAS",
-    description: "Limpieza profesional de sillas y asientos",
-    price: "DESDE 7 EUR",
-    image: "/images/services/chair.webp",
-  },
-  {
-    title: "LIMPIEZA DE COLCHONES",
-    description: "Limpieza y desinfeccion de colchones",
-    price: "DESDE 60 EUR",
-    image: "/images/services/mattress.webp",
-  },
-  {
-    title: "LIMPIEZA DE SILLONES",
-    description: "Limpieza profunda de sillones",
-    price: "DESDE 30 EUR",
-    image: "/images/services/armchair.webp",
-  },
-];
 
 const previewImageSizes =
   "(min-width: 768px) 356px, (min-width: 390px) 356px, 100vw";
 
 export default function ServicesPreviewSection() {
+  const { t } = useI18n();
+  const previewCards = [
+    {
+      title: t("servicesPreview.items.carpet.title"),
+      description: t("servicesPreview.items.carpet.description"),
+      price: t("servicesPreview.items.carpet.price"),
+      image: "/images/services/carpet.webp",
+    },
+    {
+      title: t("servicesPreview.items.sofa.title"),
+      description: t("servicesPreview.items.sofa.description"),
+      price: t("servicesPreview.items.sofa.price"),
+      image: "/images/services/sofa.webp",
+    },
+    {
+      title: t("servicesPreview.items.chair.title"),
+      description: t("servicesPreview.items.chair.description"),
+      price: t("servicesPreview.items.chair.price"),
+      image: "/images/services/chair.webp",
+    },
+    {
+      title: t("servicesPreview.items.mattress.title"),
+      description: t("servicesPreview.items.mattress.description"),
+      price: t("servicesPreview.items.mattress.price"),
+      image: "/images/services/mattress.webp",
+    },
+    {
+      title: t("servicesPreview.items.armchair.title"),
+      description: t("servicesPreview.items.armchair.description"),
+      price: t("servicesPreview.items.armchair.price"),
+      image: "/images/services/armchair.webp",
+    },
+  ];
+
   return (
     <section id="limpieza" className={styles.section}>
       <Container>
@@ -143,7 +147,7 @@ export default function ServicesPreviewSection() {
             <div className={styles.promoMedia}>
               <Image
                 src="/icons/promo.svg"
-                alt="Promocion 3x2"
+                alt={t("servicesPreview.promo.imageAlt")}
                 width={280}
                 height={280}
                 className={styles.promoImage}

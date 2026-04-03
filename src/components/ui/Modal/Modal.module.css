@@ -19,7 +19,7 @@
   max-width: 400px;
   border: none;
   border-radius: var(--radius-md);
-  background-color: var(--color-bg);
+  background-color: var(--color-surface-strong);
   box-shadow: var(--shadow-lg);
   padding: var(--spacing-4xl) var(--spacing-md) var(--spacing-lg);
 }

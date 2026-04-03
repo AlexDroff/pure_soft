@@ -7,3 +7,5 @@ export { default as Modal } from "./Modal/Modal";
 export { default as SectionTitle } from "./SectionTitle/SectionTitle";
 export { default as SectionText } from "./SectionText/SectionText";
 export { default as SystemState } from "./SystemState/SystemState";
+export { default as ThemeToggle } from "./theme-toggle/ThemeToggle";
+export { default as LanguageSwitcher } from "./language-switcher/LanguageSwitcher";

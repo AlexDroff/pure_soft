@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { GalleryItem } from "@/types/common";
 import { IconButton } from "@/components/ui";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { useI18n } from "@/providers/locale-provider";
 import GallerySlide from "../GallerySlide/GallerySlide";
 import styles from "./GallerySlider.module.css";
 
@@ -13,6 +14,7 @@ type GallerySliderProps = {
 };
 
 export default function GallerySlider({ items }: GallerySliderProps) {
+  const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -36,7 +38,7 @@ export default function GallerySlider({ items }: GallerySliderProps) {
       <div className={styles.controls}>
         <IconButton
           icon={<IoChevronBack size={20} />}
-          label="Previous slide"
+          label={t("gallery.controls.previousSlideAriaLabel")}
           onClickAction={handlePrev}
         />
 
@@ -49,14 +51,16 @@ export default function GallerySlider({ items }: GallerySliderProps) {
                 currentIndex === index ? styles.activeDot : ""
               }`}
               onClick={() => handleDotClick(index)}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={t("gallery.controls.goToSlideAriaTemplate", {
+                index: index + 1,
+              })}
             />
           ))}
         </div>
 
         <IconButton
           icon={<IoChevronForward size={20} />}
-          label="Next slide"
+          label={t("gallery.controls.nextSlideAriaLabel")}
           onClickAction={handleNext}
         />
       </div>

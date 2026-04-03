@@ -7,6 +7,7 @@ import clsx from "clsx";
 import type { Service } from "@/types/service";
 import { Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./ServiceCard.module.css";
 
 type ServiceCardProps = {
@@ -24,8 +25,11 @@ export default function ServiceCard({
   className,
   imagePriority = false,
 }: ServiceCardProps) {
+  const { t } = useI18n();
   const isInteractive = Boolean(onOpenAction);
-  const ctaLabel = `DESDE ${String(service.price)} EUR`;
+  const ctaLabel = t("servicesCatalog.card.priceCtaTemplate", {
+    price: service.price,
+  });
 
   const handleCardClick = () => {
     onOpenAction?.(service);
@@ -60,7 +64,9 @@ export default function ServiceCard({
         onKeyDown={handleCardKeyDown}
         role="button"
         tabIndex={0}
-        aria-label={`Abrir detalles de ${service.title}`}
+        aria-label={t("servicesCatalog.card.openDetailsAriaTemplate", {
+          serviceTitle: service.title,
+        })}
       >
         <div className={styles.imageWrap}>
           <Image

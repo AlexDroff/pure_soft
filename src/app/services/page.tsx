@@ -8,10 +8,13 @@ import { Container } from "@/components/layout";
 import { ServiceGrid, ServiceModal } from "@/components/service";
 import { OrderSidebar, CheckoutModal } from "@/components/order";
 import { useOrderStore } from "@/features/order";
+import { localizeService } from "@/i18n/services";
+import { useI18n } from "@/providers/locale-provider";
 import { getActiveServices } from "@/utils/getActiveServices";
 import styles from "./ServicesPage.module.css";
 
 export default function ServicesPage() {
+  const { t, messages } = useI18n();
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -30,7 +33,9 @@ export default function ServicesPage() {
     getTotalPrice,
   } = useOrderStore();
 
-  const activeServices = getActiveServices(services);
+  const activeServices = getActiveServices(services).map((service) =>
+    localizeService(service, messages),
+  );
 
   const handleOpenModal = (service: Service) => {
     setSelectedService(service);
@@ -60,10 +65,19 @@ export default function ServicesPage() {
   return (
     <main className={styles.page}>
       <Container>
-        <section className={styles.promoBanner} aria-label="Promocion destacada">
-          <span className={styles.promoLabel}>PROMO</span>
-          <span className={styles.promoValue}>3x2</span>
-          <span className={styles.promoText}>HAGA CLIC Y CONOZCA MAS</span>
+        <section
+          className={styles.promoBanner}
+          aria-label={t("servicesPage.promoBanner.ariaLabel")}
+        >
+          <span className={styles.promoLabel}>
+            {t("servicesPage.promoBanner.label")}
+          </span>
+          <span className={styles.promoValue}>
+            {t("servicesPage.promoBanner.value")}
+          </span>
+          <span className={styles.promoText}>
+            {t("servicesPage.promoBanner.text")}
+          </span>
         </section>
 
         <ServiceGrid

@@ -1,0 +1,31 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--theme-toggle-size, 44px);
+  height: var(--theme-toggle-size, 44px);
+  padding: 0;
+  border: 1px solid var(--theme-toggle-border, var(--color-border-on-primary));
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--theme-toggle-color, var(--color-text-on-primary));
+  box-shadow: none;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.toggle:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+@media screen and (hover: hover) {
+  .toggle:hover:not(:disabled) {
+    border-color: var(--theme-toggle-hover-border, var(--color-text-on-primary));
+    opacity: 0.82;
+    transform: translateY(-1px);
+  }
+}

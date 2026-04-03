@@ -3,7 +3,7 @@
   margin-top: var(--spacing-3xl);
   padding: var(--spacing-xl) 0;
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-text-on-primary);
 }
 
 .inner {
@@ -44,7 +44,7 @@
 .link {
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body);
-  color: var(--color-white);
+  color: var(--color-text-on-primary);
 }
 
 .link {

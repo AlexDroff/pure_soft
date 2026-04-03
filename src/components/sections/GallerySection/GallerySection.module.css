@@ -44,7 +44,7 @@
   overflow: hidden;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
-  background-color: var(--color-white);
+  background-color: var(--color-surface-strong);
 }
 
 .image {
@@ -153,7 +153,7 @@
   height: 32px;
   border: none;
   border-radius: var(--radius-md);
-  background-color: var(--color-white);
+  background-color: var(--color-surface-strong);
   color: var(--color-text-primary);
   cursor: pointer;
   box-shadow: var(--shadow-sm);
@@ -166,7 +166,7 @@
   overflow: hidden;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  background-color: var(--color-white);
+  background-color: var(--color-surface-strong);
   box-shadow: var(--shadow-lg);
 }
 

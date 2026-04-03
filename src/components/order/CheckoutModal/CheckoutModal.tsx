@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import type { OrderItem, CheckoutFormValues } from "@/types/order";
 import { Modal, Input, Button } from "@/components/ui";
 import { contacts } from "@/data/contacts";
+import { useI18n } from "@/providers/locale-provider";
 import { buildWhatsAppMessage } from "@/utils/buildWhatsAppMessage";
 import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import styles from "./CheckoutModal.module.css";
@@ -16,11 +17,6 @@ type CheckoutModalProps = {
   onCloseAction: () => void;
   onSuccess?: () => void;
 };
-
-const checkoutSchema = Yup.object({
-  name: Yup.string().trim().required("Introduce tu nombre"),
-  phone: Yup.string().trim().required("Introduce tu telefono"),
-});
 
 const initialValues: CheckoutFormValues = {
   name: "",
@@ -33,10 +29,20 @@ export default function CheckoutModal({
   onCloseAction,
   onSuccess,
 }: CheckoutModalProps) {
+  const { t } = useI18n();
+  const checkoutSchema = Yup.object({
+    name: Yup.string().trim().required(t("checkoutModal.fields.name.requiredError")),
+    phone: Yup.string().trim().required(t("checkoutModal.fields.phone.requiredError")),
+  });
+
   const handleSubmit = (values: CheckoutFormValues) => {
     const message = buildWhatsAppMessage({
       customer: values,
       items,
+      messages: {
+        template: t("whatsAppTemplate.message"),
+        itemTemplate: t("whatsAppTemplate.itemLineTemplate"),
+      },
     });
 
     const whatsappUrl = `https://wa.me/${formatPhoneNumber(
@@ -53,13 +59,12 @@ export default function CheckoutModal({
       isOpen={isOpen}
       onCloseAction={onCloseAction}
       className={styles.modal}
-      ariaLabel="Formulario de pedido"
+      ariaLabel={t("checkoutModal.ariaLabel")}
     >
       <div className={styles.content}>
-        <h2 className={styles.title}>REALIZAR UN PEDIDO</h2>
+        <h2 className={styles.title}>{t("checkoutModal.title")}</h2>
         <p className={styles.subtitle}>
-          Por favor, introduzca sus datos y nuestro asesor se pondra en
-          contacto con usted en breve.
+          {t("checkoutModal.subtitle")}
         </p>
         <Formik
           initialValues={initialValues}
@@ -69,10 +74,10 @@ export default function CheckoutModal({
           {({ values, errors, touched, handleChange, handleBlur }) => (
             <Form className={styles.form}>
               <Input
-                label="Su nombre*"
+                label={t("checkoutModal.fields.name.label")}
                 name="name"
                 value={values.name}
-                placeholder="Nombre"
+                placeholder={t("checkoutModal.fields.name.placeholder")}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={errors.name}
@@ -81,10 +86,10 @@ export default function CheckoutModal({
               />
 
               <Input
-                label="Numero de telefono*"
+                label={t("checkoutModal.fields.phone.label")}
                 name="phone"
                 value={values.phone}
-                placeholder="+34 123 456 789"
+                placeholder={t("checkoutModal.fields.phone.placeholder")}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={errors.phone}
@@ -93,7 +98,7 @@ export default function CheckoutModal({
               />
 
               <Button className={styles.submitButton} type="submit" size="md">
-                PEDIR POR WHATSAPP
+                {t("checkoutModal.submitCta")}
               </Button>
             </Form>
           )}

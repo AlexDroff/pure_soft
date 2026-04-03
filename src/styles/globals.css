@@ -15,6 +15,9 @@
   --color-border-strong: rgba(15, 105, 120, 0.18);
   --color-border-focus: rgba(1, 150, 172, 0.24);
   --color-text-secondary: rgba(28, 27, 23, 0.68);
+  --color-text-placeholder: rgba(28, 27, 23, 0.35);
+  --color-text-on-primary: #fefefe;
+  --color-border-on-primary: rgba(254, 254, 254, 0.64);
   --color-shadow: rgba(15, 105, 120, 0.14);
   --color-overlay: rgba(28, 27, 23, 0.4);
   --color-surface-muted: rgba(254, 254, 254, 0.72);
@@ -102,6 +105,31 @@
   --z-toast: 1200;
 
   color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --color-bg: #21242a;
+  --color-primary: #0f6978;
+  --color-secondary: #0196ac;
+
+  --color-text-primary: rgba(254, 254, 254, 0.92);
+  --color-text-secondary: rgba(254, 254, 254, 0.74);
+  --color-text-placeholder: rgba(254, 254, 254, 0.52);
+  --color-text-on-primary: rgba(254, 254, 254, 0.95);
+  --color-border-on-primary: rgba(254, 254, 254, 0.72);
+
+  --color-border: rgba(254, 254, 254, 0.12);
+  --color-border-strong: rgba(15, 105, 120, 0.28);
+  --color-border-focus: rgba(15, 105, 120, 0.36);
+
+  --color-shadow: rgba(0, 0, 0, 0.6);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  --color-surface-muted: rgba(33, 36, 42, 0.72);
+  --color-surface-overlay: rgba(33, 36, 42, 0.82);
+  --color-surface-strong: rgba(33, 36, 42, 0.92);
 }
 
 html {
@@ -215,5 +243,5 @@ h6 {
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(28, 27, 23, 0.35);
+  color: var(--color-text-placeholder);
 }

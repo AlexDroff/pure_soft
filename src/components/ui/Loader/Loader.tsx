@@ -1,4 +1,7 @@
 // React component 'Loader'. Handles a dedicated UI element and its behavior.
+"use client";
+
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./Loader.module.css";
 
 type LoaderProps = {
@@ -8,10 +11,12 @@ type LoaderProps = {
 };
 
 export default function Loader({
-  text = "Cargando...",
-  subtext = "Por favor, espera un momento",
+  text,
+  subtext,
   fullScreen = false,
 }: LoaderProps) {
+  const { t } = useI18n();
+
   return (
     <div
       className={`${styles.loader} ${fullScreen ? styles.fullScreen : ""}`}
@@ -23,8 +28,10 @@ export default function Loader({
       </div>
 
       <div className={styles.textBlock}>
-        <p className={styles.title}>{text}</p>
-        <p className={styles.subtitle}>{subtext}</p>
+        <p className={styles.title}>{text ?? t("loader.defaultText")}</p>
+        <p className={styles.subtitle}>
+          {subtext ?? t("loader.defaultSubtext")}
+        </p>
       </div>
     </div>
   );

@@ -1,8 +1,11 @@
 // React component 'Footer'. Handles a dedicated UI element and its behavior.
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout";
 import { contacts } from "@/data/contacts";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./Footer.module.css";
 
 type SocialItem = {
@@ -22,14 +25,19 @@ const socialItems = [
 ].filter((item): item is SocialItem => typeof item.href === "string");
 
 export default function Footer() {
+  const { t } = useI18n();
   return (
     <footer id="contacto" className={styles.footer}>
       <Container>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logoLink} aria-label="PureSoft">
+          <Link
+            href="/"
+            className={styles.logoLink}
+            aria-label={t("footer.brand.logoAriaLabel")}
+          >
             <Image
               src="/icons/logo.svg"
-              alt="PureSoft"
+              alt={t("footer.brand.logoAlt")}
               width={320}
               height={68}
               className={styles.logo}
@@ -38,20 +46,25 @@ export default function Footer() {
 
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>
-              <p className={styles.addressLine}>Avinguda de Denia, 76,</p>
-              <p className={styles.addressLine}>03013 Alicante,</p>
+              <p className={styles.addressLine}>{t("footer.address.line1")}</p>
+              <p className={styles.addressLine}>{t("footer.address.line2")}</p>
               <Link href="tel:637943520" className={styles.link}>
                 637 943 520
               </Link>
             </address>
 
-            <div className={styles.socials} aria-label="Social media links">
+            <div
+              className={styles.socials}
+              aria-label={t("footer.social.groupAriaLabel")}
+            >
               {socialItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   className={styles.socialLink}
-                  aria-label={item.label}
+                  aria-label={t(
+                    `footer.social.${item.label.toLowerCase()}AriaLabel`,
+                  )}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                 >

@@ -5,6 +5,7 @@ import clsx from "clsx";
 import type { OrderItem } from "@/types/order";
 import { SectionTitle, SectionText, IconButton } from "@/components/ui";
 import { IoClose } from "react-icons/io5";
+import { useI18n } from "@/providers/locale-provider";
 import OrderItemCard from "../OrderItemCard/OrderItemCard";
 import OrderSummary from "../OrderSummary/OrderSummary";
 import styles from "./OrderSidebar.module.css";
@@ -32,14 +33,18 @@ export default function OrderSidebar({
   onDecrease,
   onRemove,
 }: OrderSidebarProps) {
+  const { t } = useI18n();
+
   return (
     <aside className={clsx(styles.sidebar, isOpen && styles.open)}>
       <div className={styles.header}>
-        <SectionTitle className={styles.title}>TU PEDIDO</SectionTitle>
+        <SectionTitle className={styles.title}>
+          {t("order.sidebar.title")}
+        </SectionTitle>
 
         <IconButton
           icon={<IoClose size={22} />}
-          label="Cerrar carrito"
+          label={t("order.sidebar.closeCartAriaLabel")}
           onClickAction={onClose}
           variant="borderless"
         />
@@ -48,7 +53,7 @@ export default function OrderSidebar({
 
       {items.length === 0 ? (
         <div className={styles.empty}>
-          <SectionText>Tu carrito esta vacio.</SectionText>
+          <SectionText>{t("order.sidebar.empty")}</SectionText>
         </div>
       ) : (
         <>

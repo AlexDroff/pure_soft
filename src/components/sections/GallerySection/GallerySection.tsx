@@ -5,9 +5,11 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gallery } from "@/data/gallery";
 import { Container } from "@/components/layout";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./GallerySection.module.css";
 
 export default function GallerySection() {
+  const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const previewCardRef = useRef<HTMLDivElement | null>(null);
@@ -127,12 +129,14 @@ export default function GallerySection() {
                           : styles.farCard
                     }`}
                     onClick={(event) => handleImageClick(index, event.currentTarget)}
-                    aria-label={`Go to gallery image ${index + 1}`}
+                    aria-label={t("gallery.controls.goToImageAriaTemplate", {
+                      index: index + 1,
+                    })}
                   >
                     <div className={styles.imageWrapper}>
                       <Image
                         src={item.image}
-                        alt={item.alt}
+                        alt={t(`gallery.itemsAlt.${item.id}`)}
                         fill
                         sizes="(min-width: 1440px) 214px, (min-width: 768px) 176px, 118px"
                         className={styles.image}
@@ -149,7 +153,7 @@ export default function GallerySection() {
               type="button"
               className={styles.navButton}
               onClick={handlePrev}
-              aria-label="Previous slide"
+              aria-label={t("gallery.controls.previousSlideAriaLabel")}
             >
               <Image
                 src="/icons/arrow-left.svg"
@@ -169,7 +173,9 @@ export default function GallerySection() {
                     currentIndex === index ? styles.activeDot : ""
                   }`}
                   onClick={() => handleDotClick(index)}
-                  aria-label={`Go to slide ${index + 1}`}
+                  aria-label={t("gallery.controls.goToSlideAriaTemplate", {
+                    index: index + 1,
+                  })}
                 />
               ))}
             </div>
@@ -178,7 +184,7 @@ export default function GallerySection() {
               type="button"
               className={styles.navButton}
               onClick={handleNext}
-              aria-label="Next slide"
+              aria-label={t("gallery.controls.nextSlideAriaLabel")}
             >
               <Image
                 src="/icons/arrow-right.svg"
@@ -196,7 +202,7 @@ export default function GallerySection() {
             className={styles.previewOverlay}
             role="dialog"
             aria-modal="true"
-            aria-label="Gallery image preview"
+            aria-label={t("gallery.preview.dialogAriaLabel")}
             onClick={handleClosePreview}
           >
             <div
@@ -210,15 +216,15 @@ export default function GallerySection() {
                 type="button"
                 className={styles.previewClose}
                 onClick={handleClosePreview}
-                aria-label="Close image preview"
+                aria-label={t("gallery.preview.closeAriaLabel")}
               >
-                x
+                {t("gallery.preview.closeButtonText")}
               </button>
 
               <div className={styles.previewImageWrapper}>
                 <Image
                   src={gallery[expandedIndex].image}
-                  alt={gallery[expandedIndex].alt}
+                  alt={t(`gallery.itemsAlt.${gallery[expandedIndex].id}`)}
                   fill
                   sizes="(min-width: 1024px) 920px, 100vw"
                   className={styles.previewImage}

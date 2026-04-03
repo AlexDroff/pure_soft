@@ -1,76 +1,86 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import "modern-normalize";
 import "@/styles/globals.css";
 import { Footer, Header } from "@/components/layout";
+import { ThemeProvider, type Theme } from "@/providers/theme-provider";
+import { LocaleProvider } from "@/providers/locale-provider";
+import { getMessages } from "@/i18n/messages";
+import { getServerLocale } from "@/i18n/server";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const metadataBase = new URL(siteUrl);
 const ogImageUrl = `${siteUrl}/og-image.jpg`;
 
-export const metadata: Metadata = {
-  metadataBase,
-  title: {
-    default: "PURE SOFT | Limpieza de sofas, colchones y tapiceria en Alicante",
-    template: "%s | PURE SOFT",
-  },
-  description:
-    "Servicio profesional de limpieza de sofas, colchones, alfombras y tapiceria a domicilio en Alicante. Resultados visibles, atencion cercana y presupuesto gratuito.",
-  keywords: [
-    "limpieza de sofas Alicante",
-    "limpieza de colchones Alicante",
-    "limpieza de alfombras Alicante",
-    "limpieza de tapiceria Alicante",
-    "limpieza a domicilio Alicante",
-    "PURE SOFT",
-  ],
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getServerLocale();
+  const messages = getMessages(locale);
+
+  return {
+    metadataBase,
+    title: {
+      default: messages.meta.defaultTitle,
+      template: messages.meta.titleTemplate,
+    },
+    description: messages.meta.description,
+    keywords: messages.meta.keywords,
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "es_ES",
-    url: siteUrl,
-    siteName: "PURE SOFT",
-    title: "PURE SOFT | Limpieza de sofas, colchones y tapiceria en Alicante",
-    description:
-      "Limpieza profesional de sofas, colchones, alfombras y tapiceria en Alicante. Servicio a domicilio con presupuesto gratuito.",
-    images: [
-      {
-        url: ogImageUrl,
-        width: 1200,
-        height: 630,
-        alt: "PURE SOFT - limpieza profesional de tapiceria en Alicante",
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PURE SOFT | Limpieza de tapiceria en Alicante",
-    description:
-      "Servicio profesional de limpieza de sofas, colchones y alfombras en Alicante.",
-    images: [ogImageUrl],
-  },
-};
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "en" ? "en_US" : "es_ES",
+      url: siteUrl,
+      siteName: messages.meta.openGraph.siteName,
+      title: messages.meta.openGraph.title,
+      description: messages.meta.openGraph.description,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: messages.meta.openGraph.imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: messages.meta.twitter.title,
+      description: messages.meta.twitter.description,
+      images: [ogImageUrl],
+    },
+  };
+}
 
 type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const locale = await getServerLocale();
+  const messages = getMessages(locale);
+  const cookieStore = await cookies();
+  const storedTheme = cookieStore.get("theme")?.value;
+  const initialTheme: Theme = storedTheme === "dark" ? "dark" : "light";
+
   return (
-    <html lang="es" data-scroll-behavior="smooth">
+    <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <LocaleProvider locale={locale} messages={messages}>
+          <ThemeProvider initialTheme={initialTheme}>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

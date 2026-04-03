@@ -4,6 +4,7 @@ import type { OrderItem } from "@/types/order";
 import { IconButton, SectionText } from "@/components/ui";
 import { IoAdd, IoRemove, IoTrashOutline } from "react-icons/io5";
 import { services } from "@/data/services";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./OrderItemCard.module.css";
 
 type OrderItemCardProps = {
@@ -19,6 +20,7 @@ export default function OrderItemCard({
   onDecrease,
   onRemove,
 }: OrderItemCardProps) {
+  const { t } = useI18n();
   const service = services.find((s) => s.id === item.serviceId);
   const image = service?.image || "/images/placeholders/placeholders.webp";
 
@@ -37,7 +39,9 @@ export default function OrderItemCard({
 
         <div className={styles.info}>
           <h3 className={styles.title}>{item.title}</h3>
-          <SectionText className={styles.price}>{item.price} EUR</SectionText>
+          <SectionText className={styles.price}>
+            {t("order.itemCard.priceTemplate", { price: item.price })}
+          </SectionText>
         </div>
       </div>
 
@@ -45,7 +49,7 @@ export default function OrderItemCard({
         <div className={styles.quantity}>
           <IconButton
             icon={<IoRemove size={14} />}
-            label="Reducir cantidad"
+            label={t("order.itemCard.decreaseQuantityAriaLabel")}
             onClickAction={() => onDecrease(item.serviceId)}
             variant="borderless"
             className={styles.controlButton}
@@ -55,7 +59,7 @@ export default function OrderItemCard({
 
           <IconButton
             icon={<IoAdd size={14} />}
-            label="Aumentar cantidad"
+            label={t("order.itemCard.increaseQuantityAriaLabel")}
             onClickAction={() => onIncrease(item.serviceId)}
             variant="borderless"
             className={styles.controlButton}
@@ -64,7 +68,7 @@ export default function OrderItemCard({
 
         <IconButton
           icon={<IoTrashOutline size={14} />}
-          label="Eliminar servicio"
+          label={t("order.itemCard.removeServiceAriaLabel")}
           onClickAction={() => onRemove(item.serviceId)}
           variant="borderless"
           className={styles.controlButton}
