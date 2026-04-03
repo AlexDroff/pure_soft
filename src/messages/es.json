@@ -1,25 +1,25 @@
 {
   "meta": {
-    "defaultTitle": "PURE SOFT | Limpieza de sofas, colchones y tapiceria en Alicante",
+    "defaultTitle": "PURE SOFT | Limpieza de sofás, colchones y tapicería en Alicante",
     "titleTemplate": "%s | PURE SOFT",
-    "description": "Servicio profesional de limpieza de sofas, colchones, alfombras y tapiceria a domicilio en Alicante. Resultados visibles, atencion cercana y presupuesto gratuito.",
+    "description": "Servicio profesional de limpieza de sofás, colchones, alfombras y tapicería a domicilio en Alicante. Resultados visibles, atención cercana y presupuesto gratuito.",
     "keywords": [
-      "limpieza de sofas Alicante",
+      "limpieza de sofás Alicante",
       "limpieza de colchones Alicante",
       "limpieza de alfombras Alicante",
-      "limpieza de tapiceria Alicante",
+      "limpieza de tapicería Alicante",
       "limpieza a domicilio Alicante",
       "PURE SOFT"
     ],
     "openGraph": {
       "siteName": "PURE SOFT",
-      "title": "PURE SOFT | Limpieza de sofas, colchones y tapiceria en Alicante",
-      "description": "Limpieza profesional de sofas, colchones, alfombras y tapiceria en Alicante. Servicio a domicilio con presupuesto gratuito.",
-      "imageAlt": "PURE SOFT - limpieza profesional de tapiceria en Alicante"
+      "title": "PURE SOFT | Limpieza de sofás, colchones y tapicería en Alicante",
+      "description": "Limpieza profesional de sofás, colchones, alfombras y tapicería en Alicante. Servicio a domicilio con presupuesto gratuito.",
+      "imageAlt": "PURE SOFT - limpieza profesional de tapicería en Alicante"
     },
     "twitter": {
-      "title": "PURE SOFT | Limpieza de tapiceria en Alicante",
-      "description": "Servicio profesional de limpieza de sofas, colchones y alfombras en Alicante."
+      "title": "PURE SOFT | Limpieza de tapicería en Alicante",
+      "description": "Servicio profesional de limpieza de sofás, colchones y alfombras en Alicante."
     }
   },
   "header": {
@@ -27,8 +27,8 @@
       "logoAriaLabel": "PURE SOFT"
     },
     "navigation": {
-      "ariaLabelDesktop": "Primary navigation",
-      "ariaLabelMobile": "Mobile navigation",
+      "ariaLabelDesktop": "Navegación principal",
+      "ariaLabelMobile": "Navegación móvil",
       "items": {
         "cleaning": "LIMPIEZA",
         "contact": "CONTACTO"
@@ -38,10 +38,10 @@
       "openAriaLabel": "Abrir carrito"
     },
     "mobileMenu": {
-      "openAriaLabel": "Abrir menu",
-      "closeAriaLabel": "Cerrar menu",
-      "dialogAriaLabel": "Menu movil",
-      "actionsAriaLabel": "Acciones del menu"
+      "openAriaLabel": "Abrir menú",
+      "closeAriaLabel": "Cerrar menú",
+      "dialogAriaLabel": "Menú móvil",
+      "actionsAriaLabel": "Acciones del menú"
     }
   },
   "themeToggle": {
@@ -49,7 +49,7 @@
     "toDarkAriaLabel": "Activar tema oscuro"
   },
   "hero": {
-    "imageAlt": "Limpieza profesional de muebles y tapiceria",
+    "imageAlt": "Limpieza profesional de muebles y tapicería",
     "title": "Tus muebles como nuevos, sin esfuerzo",
     "subtitle": "Eliminamos suciedad, manchas y olores con resultados visibles desde la primera limpieza.",
     "cta": "PRESUPUESTO GRATIS"
@@ -59,22 +59,22 @@
       "step1": {
         "number": "01.",
         "title": "Contacto",
-        "description": "Te contacta uno de nuestros asesores para responder a tu solicitud y orientarte desde el primer momento."
+        "description": "Uno de nuestros asesores se pondrá en contacto contigo para responder a tu solicitud y orientarte desde el primer momento."
       },
       "step2": {
         "number": "02.",
-        "title": "Detalles y coordinacion",
-        "description": "Aclaramos todas tus dudas, revisamos los detalles del servicio y acordamos el dia y la hora que mejor te convenga."
+        "title": "Detalles y coordinación",
+        "description": "Aclaramos todas tus dudas, revisamos los detalles del servicio y acordamos el día y la hora que mejor te convenga."
       },
       "step3": {
         "number": "03.",
         "title": "Servicio en tu hogar",
-        "description": "Vamos a tu hogar y realizamos una limpieza de maxima calidad con resultados impecables."
+        "description": "Nos desplazamos a tu domicilio y realizamos una limpieza de máxima calidad con resultados impecables."
       }
     },
     "environment": {
       "title": "CUIDAMOS DEL MEDIO AMBIENTE",
-      "description": "Somos un servicio profesional de limpieza de sofas, alfombras, sillas y colchones. Utilizamos productos y metodos seguros que no danan ni tu hogar ni al medio ambiente.",
+      "description": "Ofrecemos un servicio profesional de limpieza de sofás, alfombras, sillas y colchones. Utilizamos productos y métodos seguros que no dañan ni tu hogar ni el medio ambiente.",
       "imageAlt": "Limpieza profesional segura para el hogar y el medio ambiente"
     }
   },
@@ -86,8 +86,8 @@
         "price": "DESDE 50 EUR"
       },
       "sofa": {
-        "title": "LIMPIEZA DE SOFAS",
-        "description": "Limpieza profunda de sofas y tapiceria",
+        "title": "LIMPIEZA DE SOFÁS",
+        "description": "Limpieza profunda de sofás y tapicería",
         "price": "DESDE 50 EUR"
       },
       "chair": {
@@ -97,7 +97,7 @@
       },
       "mattress": {
         "title": "LIMPIEZA DE COLCHONES",
-        "description": "Limpieza y desinfeccion de colchones",
+        "description": "Limpieza y desinfección de colchones",
         "price": "DESDE 60 EUR"
       },
       "armchair": {
@@ -107,15 +107,15 @@
       }
     },
     "promo": {
-      "imageAlt": "Promocion 3x2"
+      "imageAlt": "Promoción 3x2"
     }
   },
   "servicesPage": {
     "promoBanner": {
-      "ariaLabel": "Promocion destacada",
+      "ariaLabel": "Promoción destacada",
       "label": "PROMO",
       "value": "3x2",
-      "text": "HAGA CLIC Y CONOZCA MAS"
+      "text": "HAZ CLIC Y DESCUBRE MÁS"
     }
   },
   "servicesCatalog": {
@@ -123,13 +123,13 @@
     "items": {
       "service-carpet-1": {
         "title": "ALFOMBRA",
-        "shortDescription": "Desinfeccion y limpieza de alfombras",
-        "fullDescription": "Servicio profesional de desinfeccion y limpieza profunda de alfombras para eliminar suciedad, polvo y manchas comunes."
+        "shortDescription": "Desinfección y limpieza de alfombras",
+        "fullDescription": "Servicio profesional de desinfección y limpieza profunda de alfombras para eliminar suciedad, polvo y manchas comunes."
       },
       "service-armchair-1": {
         "title": "SILLÓN",
-        "shortDescription": "Limpieza profunda y eliminacion de manchas",
-        "fullDescription": "Limpieza profunda de sillon con tratamiento para manchas, polvo y malos olores, pensada para tapicerias de uso diario."
+        "shortDescription": "Limpieza profunda y eliminación de manchas",
+        "fullDescription": "Limpieza profunda de sillón con tratamiento para manchas, polvo y malos olores, pensada para tapicerías de uso diario."
       },
       "service-chair-1": {
         "title": "SILLA",
@@ -138,38 +138,38 @@
       },
       "service-mattress-90": {
         "title": "COLCHÓN (90 x 190 cm)",
-        "shortDescription": "Desinfeccion y limpieza profunda de colchon",
-        "fullDescription": "Desinfeccion y limpieza profunda de colchon de 90 x 190 cm para mejorar la higiene y reducir manchas y olores."
+        "shortDescription": "Desinfección y limpieza profunda de colchón",
+        "fullDescription": "Desinfección y limpieza profunda de colchón de 90 x 190 cm para mejorar la higiene y reducir manchas y olores."
       },
       "service-mattress-135": {
         "title": "COLCHÓN (135 x 190 cm)",
-        "shortDescription": "Desinfeccion y limpieza profunda de colchon",
-        "fullDescription": "Desinfeccion y limpieza profunda de colchon de 135 x 190 cm con enfoque en higiene, frescura y eliminacion de suciedad."
+        "shortDescription": "Desinfección y limpieza profunda de colchón",
+        "fullDescription": "Desinfección y limpieza profunda de colchón de 135 x 190 cm con enfoque en higiene, frescura y eliminación de suciedad."
       },
       "service-mattress-193": {
         "title": "COLCHÓN (193 x 202 cm)",
-        "shortDescription": "Desinfeccion y limpieza profunda de colchon",
-        "fullDescription": "Desinfeccion y limpieza profunda de colchon de 193 x 202 cm para una limpieza completa de la superficie y el tejido."
+        "shortDescription": "Desinfección y limpieza profunda de colchón",
+        "fullDescription": "Desinfección y limpieza profunda de colchón de 193 x 202 cm para una limpieza completa de la superficie y el tejido."
       },
       "service-sofa-2": {
         "title": "SOFÁ 2 PLAZAS",
-        "shortDescription": "Limpieza profunda de sofa y eliminacion de manchas",
-        "fullDescription": "Limpieza profunda de sofa de 2 plazas con tratamiento para manchas habituales, polvo y olores incrustados."
+        "shortDescription": "Limpieza profunda de sofá y eliminación de manchas",
+        "fullDescription": "Limpieza profunda de sofá de 2 plazas con tratamiento para manchas habituales, polvo y olores incrustados."
       },
       "service-sofa-3": {
         "title": "SOFÁ 3 PLAZAS",
-        "shortDescription": "Limpieza profunda de sofa y eliminacion de manchas",
-        "fullDescription": "Limpieza profunda de sofa de 3 plazas con eliminacion de manchas y suciedad acumulada en el tapizado."
+        "shortDescription": "Limpieza profunda de sofá y eliminación de manchas",
+        "fullDescription": "Limpieza profunda de sofá de 3 plazas con eliminación de manchas y suciedad acumulada en el tapizado."
       },
       "service-sofa-4": {
         "title": "SOFÁ 4 PLAZAS",
-        "shortDescription": "Limpieza profunda de sofa y eliminacion de manchas",
-        "fullDescription": "Limpieza profunda de sofa de 4 plazas con lavado de tapiceria y eliminacion de manchas visibles."
+        "shortDescription": "Limpieza profunda de sofá y eliminación de manchas",
+        "fullDescription": "Limpieza profunda de sofá de 4 plazas con lavado de tapicería y eliminación de manchas visibles."
       },
       "service-sofa-corner": {
         "title": "SOFÁ EN ESQUINA",
-        "shortDescription": "Limpieza profunda de sofa y eliminacion de manchas",
-        "fullDescription": "Limpieza profunda de sofa en esquina para renovar la tapiceria, eliminar manchas y recuperar frescura."
+        "shortDescription": "Limpieza profunda de sofá y eliminación de manchas",
+        "fullDescription": "Limpieza profunda de sofá en esquina para renovar la tapicería, eliminar manchas y recuperar frescura."
       }
     },
     "card": {
@@ -187,64 +187,64 @@
     "title": "FAQ",
     "items": {
       "faq-1": {
-        "question": "Cuando pueden venir?",
-        "answer": "Intentamos ofrecer cita lo antes posible, normalmente dentro de las proximas 24 a 48 horas, segun disponibilidad y ubicacion. Tambien ofrecemos turnos urgentes en algunos casos."
+        "question": "¿Cuándo pueden venir?",
+        "answer": "Intentamos ofrecer cita lo antes posible, normalmente dentro de las próximas 24 a 48 horas, según disponibilidad y ubicación. También ofrecemos turnos urgentes en algunos casos."
       },
       "faq-2": {
-        "question": "Como se puede pagar?",
-        "answer": "Puedes pagar de forma comoda por Bizum, transferencia bancaria o en efectivo."
+        "question": "¿Qué métodos de pago aceptan?",
+        "answer": "Puedes pagar cómodamente por Bizum, transferencia bancaria o en efectivo."
       },
       "faq-3": {
-        "question": "Como es la tecnica y tecnologia?",
-        "answer": "Trabajamos con tecnologia de inyeccion y extraccion, entre otros metodos profesionales. Este sistema permite limpiar, desinfectar y extraer la suciedad en un solo proceso."
+        "question": "¿Qué técnica y tecnología utilizan?",
+        "answer": "Trabajamos con tecnología de inyección y extracción, entre otros métodos profesionales. Este sistema permite limpiar, desinfectar y extraer la suciedad en un solo proceso."
       },
       "faq-4": {
-        "question": "Queda humedo luego?",
-        "answer": "Si, la tapiceria puede quedar ligeramente humeda despues del servicio. El tiempo de secado depende del nivel de suciedad y del tipo de tejido, aunque normalmente suele secarse en unas 2 o 3 horas."
+        "question": "¿Queda húmedo después de la limpieza?",
+        "answer": "Sí, la tapicería puede quedar ligeramente húmeda después del servicio. El tiempo de secado depende del nivel de suciedad y del tipo de tejido, aunque normalmente suele secarse en unas 2 o 3 horas."
       },
       "faq-5": {
-        "question": "Cada cuanto recomendais limpiar la tapiceria?",
-        "answer": "En condiciones normales de uso, solemos recomendar una limpieza profesional 2 o 3 veces al ano. Si en casa hay ninos o mascotas, puede ser recomendable hacerlo con algo mas de frecuencia."
+        "question": "¿Cada cuánto recomendáis limpiar la tapicería?",
+        "answer": "En condiciones normales de uso, solemos recomendar una limpieza profesional 2 o 3 veces al año. Si en casa hay niños o mascotas, puede ser recomendable hacerlo con algo más de frecuencia."
       },
       "faq-6": {
-        "question": "En cuanto tiempo se hacen los trabajos?",
-        "answer": "La duracion depende del tipo de trabajo que se vaya a realizar. En nuestra pagina puedes consultar el tiempo estimado para cada servicio."
+        "question": "¿Cuánto tiempo tarda el servicio?",
+        "answer": "La duración depende del tipo de trabajo que se vaya a realizar. En nuestra página puedes consultar el tiempo estimado para cada servicio."
       },
       "faq-7": {
-        "question": "Sacan manchas?",
-        "answer": "Realizamos una limpieza profunda y desinfeccion profesional. Muchas manchas pueden eliminarse por completo, aunque el resultado final depende de factores como el tipo de mancha, el tiempo que lleve y el material del tejido."
+        "question": "¿Eliminan las manchas?",
+        "answer": "Realizamos una limpieza profunda y desinfección profesional. Muchas manchas pueden eliminarse por completo, aunque el resultado final depende de factores como el tipo de mancha, el tiempo que lleve y el material del tejido."
       }
     }
   },
   "gallery": {
     "controls": {
-      "goToImageAriaTemplate": "Go to gallery image {index}",
-      "goToSlideAriaTemplate": "Go to slide {index}",
-      "previousSlideAriaLabel": "Previous slide",
-      "nextSlideAriaLabel": "Next slide"
+      "goToImageAriaTemplate": "Ir a la imagen {index} de la galería",
+      "goToSlideAriaTemplate": "Ir a la diapositiva {index}",
+      "previousSlideAriaLabel": "Diapositiva anterior",
+      "nextSlideAriaLabel": "Siguiente diapositiva"
     },
     "preview": {
-      "dialogAriaLabel": "Gallery image preview",
-      "closeAriaLabel": "Close image preview",
+      "dialogAriaLabel": "Vista previa de la imagen de la galería",
+      "closeAriaLabel": "Cerrar vista previa de la imagen",
       "closeButtonText": "x"
     },
     "itemsAlt": {
-      "gallery-1": "Sofa claro despues de una limpieza profesional",
-      "gallery-2": "Sillon despues de una limpieza profesional",
-      "gallery-3": "Alfombra limpia despues del tratamiento",
-      "gallery-4": "Muebles tapizados despues de la limpieza",
-      "gallery-5": "Tapiceria limpia con acabado uniforme",
+      "gallery-1": "Sofá claro después de una limpieza profesional",
+      "gallery-2": "Sillón después de una limpieza profesional",
+      "gallery-3": "Alfombra limpia después del tratamiento",
+      "gallery-4": "Muebles tapizados después de la limpieza",
+      "gallery-5": "Tapicería limpia con acabado uniforme",
       "gallery-6": "Detalle de limpieza profesional en tejido",
       "gallery-7": "Resultado final de limpieza en mobiliario",
       "gallery-8": "Limpieza profunda en mueble tapizado",
-      "gallery-9": "Resultado de desinfeccion y limpieza textil",
+      "gallery-9": "Resultado de desinfección y limpieza textil",
       "gallery-10": "Acabado final de limpieza profesional"
     }
   },
   "order": {
     "sidebar": {
       "title": "TU PEDIDO",
-      "empty": "Tu carrito esta vacio.",
+      "empty": "Tu carrito está vacío.",
       "closeCartAriaLabel": "Cerrar carrito"
     },
     "itemCard": {
@@ -262,24 +262,28 @@
   "checkoutModal": {
     "ariaLabel": "Formulario de pedido",
     "title": "REALIZAR UN PEDIDO",
-    "subtitle": "Por favor, introduzca sus datos y nuestro asesor se pondra en contacto con usted en breve.",
+    "subtitle": "Por favor, introduce tus datos y uno de nuestros asesores se pondrá en contacto contigo en breve.",
     "fields": {
       "name": {
-        "label": "Su nombre*",
+        "label": "Tu nombre*",
         "placeholder": "Nombre",
-        "requiredError": "Introduce tu nombre"
+        "requiredError": "Introduce tu nombre",
+        "minLengthError": "El nombre debe tener entre 3 y 50 caracteres",
+        "maxLengthError": "El nombre debe tener entre 3 y 50 caracteres",
+        "invalidCharsError": "El nombre contiene caracteres no válidos"
       },
       "phone": {
-        "label": "Numero de telefono*",
+        "label": "Número de teléfono*",
         "placeholder": "+34 123 456 789",
-        "requiredError": "Introduce tu telefono"
+        "requiredError": "Introduce tu teléfono",
+        "formatError": "El teléfono debe tener el formato +XXXXXXXXXXX"
       }
     },
     "submitCta": "PEDIR POR WHATSAPP"
   },
   "modal": {
-    "defaultAriaLabel": "Dialog window",
-    "closeButtonAriaLabel": "Close modal"
+    "defaultAriaLabel": "Ventana de diálogo",
+    "closeButtonAriaLabel": "Cerrar ventana"
   },
   "loader": {
     "defaultText": "Cargando...",
@@ -292,12 +296,12 @@
       "logoAlt": "PureSoft"
     },
     "address": {
-      "line1": "Avinguda de Denia, 76,",
+      "line1": "Avinguda de Dénia, 76,",
       "line2": "03013 Alicante,",
       "phone": "637 943 520"
     },
     "social": {
-      "groupAriaLabel": "Social media links",
+      "groupAriaLabel": "Enlaces a redes sociales",
       "youtubeAriaLabel": "YouTube",
       "instagramAriaLabel": "Instagram",
       "facebookAriaLabel": "Facebook"
@@ -305,18 +309,18 @@
   },
   "systemStates": {
     "notFound": {
-      "title": "Pagina no encontrada",
-      "description": "Es posible que el enlace este desactualizado o que la pagina se haya movido.",
+      "title": "Página no encontrada",
+      "description": "Es posible que el enlace esté desactualizado o que la página se haya movido.",
       "cta": "Volver al inicio"
     },
     "error": {
-      "title": "Algo salio mal",
-      "description": "Ocurrio un error inesperado. Intenta nuevamente en unos segundos.",
+      "title": "Algo salió mal",
+      "description": "Ocurrió un error inesperado. Inténtalo de nuevo en unos segundos.",
       "cta": "Intentar de nuevo"
     }
   },
   "whatsAppTemplate": {
-    "message": "Hola, quiero hacer un pedido.\n\nNombre: {name}\nTelГ©fono: {phone}\n\nServicios:\n{items}\n\nTotal: {total} EUR",
+    "message": "Hola, quiero hacer un pedido.\n\nNombre: {name}\nTeléfono: {phone}\n\nServicios:\n{items}\n\nTotal: {total} EUR",
     "itemLineTemplate": "{index}. {title} - {quantity} {unit} x {price} EUR"
   }
 }

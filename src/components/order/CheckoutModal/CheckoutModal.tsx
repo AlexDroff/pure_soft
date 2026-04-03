@@ -7,8 +7,8 @@ import type { OrderItem, CheckoutFormValues } from "@/types/order";
 import { Modal, Input, Button } from "@/components/ui";
 import { contacts } from "@/data/contacts";
 import { useI18n } from "@/providers/locale-provider";
+import { sanitizePhone, formatPhoneNumber } from "@/utils/phone.utils";
 import { buildWhatsAppMessage } from "@/utils/buildWhatsAppMessage";
-import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import styles from "./CheckoutModal.module.css";
 
 type CheckoutModalProps = {
@@ -30,9 +30,20 @@ export default function CheckoutModal({
   onSuccess,
 }: CheckoutModalProps) {
   const { t } = useI18n();
+
+  const nameRegex = /^[A-Za-zÀ-ÿ\s-]{3,50}$/;
+  const phoneRegex = /^\+\d{11,12}$/;
+
   const checkoutSchema = Yup.object({
-    name: Yup.string().trim().required(t("checkoutModal.fields.name.requiredError")),
-    phone: Yup.string().trim().required(t("checkoutModal.fields.phone.requiredError")),
+    name: Yup.string()
+      .required(t("checkoutModal.fields.name.requiredError"))
+      .min(3, t("checkoutModal.fields.name.minLengthError"))
+      .max(50, t("checkoutModal.fields.name.maxLengthError"))
+      .matches(nameRegex, t("checkoutModal.fields.name.invalidCharsError")),
+    phone: Yup.string()
+      .transform((value) => sanitizePhone(value))
+      .required(t("checkoutModal.fields.phone.requiredError"))
+      .matches(phoneRegex, t("checkoutModal.fields.phone.formatError")),
   });
 
   const handleSubmit = (values: CheckoutFormValues) => {
@@ -71,37 +82,44 @@ export default function CheckoutModal({
           validationSchema={checkoutSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, errors, touched, handleChange, handleBlur }) => (
-            <Form className={styles.form}>
-              <Input
-                label={t("checkoutModal.fields.name.label")}
-                name="name"
-                value={values.name}
-                placeholder={t("checkoutModal.fields.name.placeholder")}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.name}
-                touched={touched.name}
-                className={styles.inputField}
-              />
+          {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => {
+            const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+              const sanitized = sanitizePhone(e.target.value);
+              setFieldValue("phone", sanitized);
+            };
 
-              <Input
-                label={t("checkoutModal.fields.phone.label")}
-                name="phone"
-                value={values.phone}
-                placeholder={t("checkoutModal.fields.phone.placeholder")}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.phone}
-                touched={touched.phone}
-                className={styles.inputField}
-              />
+            return (
+              <Form className={styles.form}>
+                <Input
+                  label={t("checkoutModal.fields.name.label")}
+                  name="name"
+                  value={values.name}
+                  placeholder={t("checkoutModal.fields.name.placeholder")}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.name}
+                  touched={touched.name}
+                  className={styles.inputField}
+                />
 
-              <Button className={styles.submitButton} type="submit" size="md">
-                {t("checkoutModal.submitCta")}
-              </Button>
-            </Form>
-          )}
+                <Input
+                  label={t("checkoutModal.fields.phone.label")}
+                  name="phone"
+                  value={values.phone}
+                  placeholder={t("checkoutModal.fields.phone.placeholder")}
+                  onChange={handlePhoneChange}
+                  onBlur={handleBlur}
+                  error={errors.phone}
+                  touched={touched.phone}
+                  className={styles.inputField}
+                />
+
+                <Button className={styles.submitButton} type="submit" size="md">
+                  {t("checkoutModal.submitCta")}
+                </Button>
+              </Form>
+            );
+          }}
         </Formik>
       </div>
     </Modal>

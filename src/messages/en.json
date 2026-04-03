@@ -50,7 +50,7 @@
   },
   "hero": {
     "imageAlt": "Professional furniture and upholstery cleaning",
-    "title": "Your furniture looking like new, without the effort",
+    "title": "Furniture that looks like new, without the hassle",
     "subtitle": "We remove dirt, stains, and odors with visible results from the very first cleaning.",
     "cta": "FREE QUOTE"
   },
@@ -74,7 +74,7 @@
     },
     "environment": {
       "title": "WE CARE ABOUT THE ENVIRONMENT",
-      "description": "We are a professional cleaning service for sofas, carpets, chairs, and mattresses. We use safe products and methods that do not harm your home or the environment.",
+      "description": "We provide professional cleaning services for sofas, carpets, chairs, and mattresses. We use safe products and methods that do not harm your home or the environment.",
       "imageAlt": "Professional cleaning that is safe for your home and the environment"
     }
   },
@@ -159,7 +159,7 @@
       "service-sofa-3": {
         "title": "3-SEATER SOFA",
         "shortDescription": "Deep sofa cleaning and stain removal",
-        "fullDescription": "Deep cleaning for a 3-seater sofa with stain removal and elimination of built-up dirt in the upholstery."
+        "fullDescription": "Deep cleaning for a 3-seater sofa with stain removal and removal of built-up dirt from the upholstery."
       },
       "service-sofa-4": {
         "title": "4-SEATER SOFA",
@@ -207,7 +207,7 @@
         "answer": "Under normal use conditions, we usually recommend professional cleaning 2 to 3 times a year. If you have children or pets at home, it may be a good idea to do it a bit more often."
       },
       "faq-6": {
-        "question": "How long does the work take?",
+        "question": "How long does the service take?",
         "answer": "The duration depends on the type of service to be carried out. On our website, you can check the estimated time for each service."
       },
       "faq-7": {
@@ -267,12 +267,16 @@
       "name": {
         "label": "Your name*",
         "placeholder": "Name",
-        "requiredError": "Enter your name"
+        "requiredError": "Enter your name",
+        "minLengthError": "Name must be between 3 and 50 characters",
+        "maxLengthError": "Name must be between 3 and 50 characters",
+        "invalidCharsError": "Name contains invalid characters"
       },
       "phone": {
         "label": "Phone number*",
         "placeholder": "+34 123 456 789",
-        "requiredError": "Enter your phone number"
+        "requiredError": "Enter your phone number",
+        "formatError": "Phone must be in format +XXXXXXXXXXX"
       }
     },
     "submitCta": "ORDER VIA WHATSAPP"
@@ -292,7 +296,7 @@
       "logoAlt": "PureSoft"
     },
     "address": {
-      "line1": "Avinguda de Denia, 76,",
+      "line1": "Avinguda de Dénia, 76,",
       "line2": "03013 Alicante,",
       "phone": "637 943 520"
     },
