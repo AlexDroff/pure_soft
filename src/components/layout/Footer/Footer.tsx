@@ -47,9 +47,8 @@ export default function Footer() {
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>
               <p className={styles.addressLine}>{t("footer.address.line1")}</p>
-              <p className={styles.addressLine}>{t("footer.address.line2")}</p>
-              <Link href="tel:637943520" className={styles.link}>
-                637 943 520
+              <Link href="tel:+34637943520" className={styles.link}>
+                {t("footer.address.phone")}
               </Link>
             </address>
 
