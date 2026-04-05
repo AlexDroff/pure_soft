@@ -7,6 +7,7 @@ import { IconButton } from "@/components/ui";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useI18n } from "@/providers/locale-provider";
 import GallerySlide from "../GallerySlide/GallerySlide";
+import GalleryVideoDialog from "../GalleryVideoDialog/GalleryVideoDialog";
 import styles from "./GallerySlider.module.css";
 
 type GallerySliderProps = {
@@ -16,6 +17,7 @@ type GallerySliderProps = {
 export default function GallerySlider({ items }: GallerySliderProps) {
   const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedVideo, setSelectedVideo] = useState<GalleryItem | null>(null);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -29,11 +31,19 @@ export default function GallerySlider({ items }: GallerySliderProps) {
     setCurrentIndex(index);
   };
 
+  const handleVideoOpen = (item: GalleryItem) => {
+    setSelectedVideo(item);
+  };
+
+  const handleVideoClose = () => {
+    setSelectedVideo(null);
+  };
+
   if (items.length === 0) return null;
 
   return (
     <div className={styles.slider}>
-      <GallerySlide item={items[currentIndex]} />
+      <GallerySlide item={items[currentIndex]} onVideoOpen={handleVideoOpen} />
 
       <div className={styles.controls}>
         <IconButton
@@ -64,6 +74,12 @@ export default function GallerySlider({ items }: GallerySliderProps) {
           onClickAction={handleNext}
         />
       </div>
+
+      <GalleryVideoDialog
+        item={selectedVideo}
+        isOpen={selectedVideo !== null}
+        onClose={handleVideoClose}
+      />
     </div>
   );
 }

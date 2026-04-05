@@ -109,7 +109,7 @@
 
 .cartIcon {
   width: 20px;
-  height: auto;
+  height: 20px;
 }
 
 .mobileOverlay {
@@ -288,12 +288,12 @@
       transform var(--transition-fast);
   }
 
-  .mobileCartIcon {
-    width: 16px;
-    height: auto;
-    filter: brightness(0) saturate(100%) invert(27%) sepia(18%) saturate(1200%)
-      hue-rotate(145deg) brightness(95%) contrast(90%);
-  }
+.mobileCartIcon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(18%) saturate(1200%)
+    hue-rotate(145deg) brightness(95%) contrast(90%);
+}
 
   :global(html.dark) .mobileCartIcon {
     filter: brightness(0) saturate(100%) invert(43%) sepia(98%) saturate(1325%)

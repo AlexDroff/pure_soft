@@ -3,6 +3,15 @@
   width: 100%;
 }
 
+.slideButton {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 .imageWrapper {
   position: relative;
   width: 100%;
@@ -14,4 +23,30 @@
 
 .image {
   object-fit: cover;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background var(--transition-base);
+}
+
+.slideButton:hover .playOverlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.playIcon {
+  width: 64px;
+  height: 64px;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform var(--transition-base);
+}
+
+.slideButton:hover .playIcon {
+  transform: scale(1.1);
 }

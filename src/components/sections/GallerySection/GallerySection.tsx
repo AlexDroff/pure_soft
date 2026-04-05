@@ -4,14 +4,25 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gallery } from "@/data/gallery";
+import type { GalleryItem } from "@/types/common";
 import { Container } from "@/components/layout";
 import { useI18n } from "@/providers/locale-provider";
+import { getYouTubeThumbnailUrl } from "@/utils/youtube.utils";
+import GalleryVideoDialog from "@/components/gallery/GalleryVideoDialog/GalleryVideoDialog";
 import styles from "./GallerySection.module.css";
+
+const getImageSrc = (item: GalleryItem) => {
+  if (item.type === "image") {
+    return item.src;
+  }
+  return item.thumbnail || getYouTubeThumbnailUrl(item.src) || "";
+};
 
 export default function GallerySection() {
   const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<GalleryItem | null>(null);
   const previewCardRef = useRef<HTMLDivElement | null>(null);
   const previewCloseButtonRef = useRef<HTMLButtonElement | null>(null);
   const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -29,6 +40,11 @@ export default function GallerySection() {
   };
 
   const handleImageClick = (index: number, trigger: HTMLButtonElement) => {
+    const item = gallery[index];
+    if (item.type === "youtube") {
+      setSelectedVideo(item);
+      return;
+    }
     previewTriggerRef.current = trigger;
     setCurrentIndex(index);
     setExpandedIndex(index);
@@ -36,6 +52,10 @@ export default function GallerySection() {
 
   const handleClosePreview = () => {
     setExpandedIndex(null);
+  };
+
+  const handleCloseVideo = () => {
+    setSelectedVideo(null);
   };
 
   const orderedGallery = gallery
@@ -117,6 +137,7 @@ export default function GallerySection() {
               {orderedGallery.map(({ item, index, wrappedOffset }) => {
                 const isActive = wrappedOffset === 0;
                 const isNear = Math.abs(wrappedOffset) === 1;
+                const imageSrc = getImageSrc(item);
                 return (
                   <button
                     key={item.id}
@@ -134,13 +155,15 @@ export default function GallerySection() {
                     })}
                   >
                     <div className={styles.imageWrapper}>
-                      <Image
-                        src={item.image}
-                        alt={t(`gallery.itemsAlt.${item.id}`)}
-                        fill
-                        sizes="(min-width: 1440px) 214px, (min-width: 768px) 176px, 118px"
-                        className={styles.image}
-                      />
+                      {imageSrc && (
+                        <Image
+                          src={imageSrc}
+                          alt={t(`gallery.itemsAlt.${item.id}`)}
+                          fill
+                          sizes="(min-width: 1440px) 214px, (min-width: 768px) 176px, 118px"
+                          className={styles.image}
+                        />
+                      )}
                     </div>
                   </button>
                 );
@@ -197,42 +220,52 @@ export default function GallerySection() {
           </div>
         </div>
 
-        {expandedIndex !== null && (
-          <div
-            className={styles.previewOverlay}
-            role="dialog"
-            aria-modal="true"
-            aria-label={t("gallery.preview.dialogAriaLabel")}
-            onClick={handleClosePreview}
-          >
+        {expandedIndex !== null && (() => {
+          const expandedItem = gallery[expandedIndex];
+          const previewSrc = getImageSrc(expandedItem);
+          return previewSrc ? (
             <div
-              ref={previewCardRef}
-              className={styles.previewCard}
-              onClick={(event) => event.stopPropagation()}
-              tabIndex={-1}
+              className={styles.previewOverlay}
+              role="dialog"
+              aria-modal="true"
+              aria-label={t("gallery.preview.dialogAriaLabel")}
+              onClick={handleClosePreview}
             >
-              <button
-                ref={previewCloseButtonRef}
-                type="button"
-                className={styles.previewClose}
-                onClick={handleClosePreview}
-                aria-label={t("gallery.preview.closeAriaLabel")}
+              <div
+                ref={previewCardRef}
+                className={styles.previewCard}
+                onClick={(event) => event.stopPropagation()}
+                tabIndex={-1}
               >
-                {t("gallery.preview.closeButtonText")}
-              </button>
+                <button
+                  ref={previewCloseButtonRef}
+                  type="button"
+                  className={styles.previewClose}
+                  onClick={handleClosePreview}
+                  aria-label={t("gallery.preview.closeAriaLabel")}
+                >
+                  {t("gallery.preview.closeButtonText")}
+                </button>
 
-              <div className={styles.previewImageWrapper}>
-                <Image
-                  src={gallery[expandedIndex].image}
-                  alt={t(`gallery.itemsAlt.${gallery[expandedIndex].id}`)}
-                  fill
-                  sizes="(min-width: 1024px) 920px, 100vw"
-                  className={styles.previewImage}
-                />
+                <div className={styles.previewImageWrapper}>
+                  <Image
+                    src={previewSrc}
+                    alt={t(`gallery.itemsAlt.${expandedItem.id}`)}
+                    fill
+                    sizes="(min-width: 1024px) 920px, 100vw"
+                    className={styles.previewImage}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          ) : null;
+        })()}
+
+        <GalleryVideoDialog
+          item={selectedVideo}
+          isOpen={selectedVideo !== null}
+          onClose={handleCloseVideo}
+        />
       </Container>
     </section>
   );
