@@ -304,6 +304,12 @@
       "youtubeAriaLabel": "YouTube",
       "instagramAriaLabel": "Instagram",
       "facebookAriaLabel": "Facebook"
+    },
+    "meta": {
+      "ownerName": "PURE SOFT",
+      "rightsTemplate": "© {year} {ownerName}. Todos los derechos reservados.",
+      "developedBy": "Diseño y desarrollo web por",
+      "developerLinkAriaLabel": "Visitar el portafolio de Loading (se abre en una pestaña nueva)"
     }
   },
   "systemStates": {

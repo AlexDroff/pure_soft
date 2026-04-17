@@ -26,6 +26,9 @@ const socialItems = [
 
 export default function Footer() {
   const { t } = useI18n();
+  const currentYear = new Date().getUTCFullYear();
+  const ownerName = t("footer.meta.ownerName");
+
   return (
     <footer id="contacto" className={styles.footer}>
       <Container>
@@ -78,6 +81,34 @@ export default function Footer() {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className={styles.meta}>
+          <p className={styles.metaText}>
+            {t("footer.meta.rightsTemplate", {
+              year: currentYear,
+              ownerName,
+            })}
+          </p>
+
+          <p className={styles.metaCredit}>
+            <span>{t("footer.meta.developedBy")}</span>
+            <Link
+              href="https://alexandroff.pl/"
+              className={styles.developerLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("footer.meta.developerLinkAriaLabel")}
+            >
+              <Image
+                src="/icons/loading-logo.svg"
+                alt=""
+                width={94}
+                height={18}
+                className={styles.developerLogo}
+              />
+            </Link>
+          </p>
         </div>
       </Container>
     </footer>
