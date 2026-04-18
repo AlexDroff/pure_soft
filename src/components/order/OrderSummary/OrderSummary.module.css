@@ -16,6 +16,10 @@
 .subtotal {
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-extrabold);
+  color: var(--color-secondary);
+}
+
+:global(html.dark) .subtotal {
   color: var(--color-text-primary);
 }
 

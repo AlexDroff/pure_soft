@@ -49,39 +49,78 @@
 
 .link {
   font-weight: var(--font-weight-semibold);
-  transition: opacity var(--transition-base);
+  text-decoration-line: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition:
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
 }
 
-.link:hover,
-.socialLink:hover {
-  opacity: 0.8;
+@media screen and (hover: hover) {
+  .link:hover {
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+  }
 }
 
 .socials {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-lg);
 }
 
 .socialLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  color: var(--color-text-on-primary);
   transition:
-    opacity var(--transition-base),
-    transform var(--transition-base);
-}
-
-.socialLink:hover {
-  transform: translateY(-1px);
+    color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
 }
 
 .socialIcon {
-  width: 40px;
-  height: 40px;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: currentColor;
+  -webkit-mask-image: var(--social-icon);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: var(--social-icon);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  transition: background-color var(--transition-base);
+}
+
+.link:focus-visible {
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+}
+
+.link:active {
+  opacity: 0.85;
+}
+
+.socialLink:hover .socialIcon,
+.socialLink:focus-visible .socialIcon {
+  background-color: var(--color-secondary);
+}
+
+:global(html.dark) .socialLink:hover .socialIcon,
+:global(html.dark) .socialLink:focus-visible .socialIcon {
+  background-color: var(--color-border-on-primary);
+}
+
+.socialLink:active {
+  transform: translateY(1px);
 }
 
 .meta {
@@ -116,15 +155,28 @@
   align-items: center;
   justify-content: center;
   color: var(--color-text-on-primary);
-  border-radius: var(--radius-pill);
+  text-decoration-line: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
   transition:
-    opacity var(--transition-base),
-    transform var(--transition-base);
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
 }
 
-.developerLink:hover {
-  opacity: 1;
-  transform: translateY(-1px);
+@media screen and (hover: hover) {
+  .developerLink:hover {
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+  }
+}
+
+.developerLink:focus-visible {
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+}
+
+.developerLink:active {
+  opacity: 0.85;
 }
 
 .developerLogo {

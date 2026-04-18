@@ -7,12 +7,13 @@
   --color-primary: #0196ac;
   --color-secondary: #0f6978;
   --color-accent: #fcc249;
+  --color-accent-hover: #3a545c;
   --color-white: #fefefe;
   --color-text-primary: #1c1b17;
 
   /* Supporting colors */
   --color-border: rgba(28, 27, 23, 0.12);
-  --color-border-strong: rgba(15, 105, 120, 0.18);
+  --color-border-strong: rgba(74, 79, 80, 0.18);
   --color-border-focus: rgba(1, 150, 172, 0.24);
   --color-text-secondary: rgba(28, 27, 23, 0.68);
   --color-text-placeholder: rgba(28, 27, 23, 0.35);

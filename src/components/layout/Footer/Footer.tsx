@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Container } from "@/components/layout";
 import { contacts } from "@/data/contacts";
 import { useI18n } from "@/providers/locale-provider";
@@ -50,9 +51,9 @@ export default function Footer() {
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>
               <p className={styles.addressLine}>{t("footer.address.line1")}</p>
-              <Link href="tel:+34637943520" className={styles.link}>
+              <a href="tel:+34637943520" className={styles.link}>
                 {t("footer.address.phone")}
-              </Link>
+              </a>
             </address>
 
             <div
@@ -64,19 +65,18 @@ export default function Footer() {
                   key={item.label}
                   href={item.href}
                   className={styles.socialLink}
+                  style={
+                    {
+                      "--social-icon": `url("${item.icon}")`,
+                    } as CSSProperties
+                  }
                   aria-label={t(
                     `footer.social.${item.label.toLowerCase()}AriaLabel`,
                   )}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                 >
-                  <Image
-                    src={item.icon}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className={styles.socialIcon}
-                  />
+                  <span className={styles.socialIcon} aria-hidden="true" />
                 </Link>
               ))}
             </div>

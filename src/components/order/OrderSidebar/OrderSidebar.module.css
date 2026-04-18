@@ -68,6 +68,25 @@
   gap: var(--spacing-md);
 }
 
+.header :global(button) {
+  color: var(--color-text-secondary);
+}
+
+@media screen and (hover: hover) {
+  .header :global(button:hover:not(:disabled)) {
+    color: var(--color-secondary);
+  }
+}
+
+.header :global(button:focus-visible) {
+  color: var(--color-secondary);
+}
+
+:global(html.dark) .header :global(button:hover:not(:disabled)),
+:global(html.dark) .header :global(button:focus-visible) {
+  color: var(--color-text-primary);
+}
+
 .title {
   color: var(--color-secondary) !important;
 }

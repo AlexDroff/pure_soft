@@ -19,10 +19,26 @@ export default function Header() {
   const router = useRouter();
   const openSidebar = useOrderStore((state) => state.openSidebar);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState<string>(() =>
+    typeof window === "undefined" ? "" : window.location.hash,
+  );
   const mobileMenuId = useId();
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const mobileCloseButtonRef = useRef<HTMLButtonElement | null>(null);
   const mobileTriggerRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const syncHash = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+
+    return () => {
+      window.removeEventListener("hashchange", syncHash);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -126,6 +142,21 @@ export default function Header() {
     },
   ];
 
+  const isNavItemActive = (href: string) => {
+    const [rawPath, rawHash] = href.split("#");
+    const targetPath = rawPath || "/";
+
+    if (pathname !== targetPath) {
+      return false;
+    }
+
+    if (!rawHash) {
+      return false;
+    }
+
+    return currentHash === `#${rawHash}`;
+  };
+
   return (
     <header className={styles.header}>
       <Container>
@@ -152,8 +183,7 @@ export default function Header() {
             >
               <ul className={styles.navList}>
                 {navItems.map((item) => {
-                  const isActive =
-                    item.id === "cleaning" && pathname === "/services";
+                  const isActive = isNavItemActive(item.href);
 
                   return (
                     <li key={item.href}>
@@ -163,6 +193,7 @@ export default function Header() {
                           styles.navLink,
                           isActive && styles.active,
                         )}
+                        aria-current={isActive ? "page" : undefined}
                       >
                         {item.label}
                       </Link>
@@ -179,13 +210,7 @@ export default function Header() {
                 aria-label={t("header.cart.openAriaLabel")}
                 onClick={handleCartClick}
               >
-                <Image
-                  src="/icons/cart.svg"
-                  alt=""
-                  width={20}
-                  height={20}
-                  className={styles.cartIcon}
-                />
+                <span className={styles.cartIcon} aria-hidden="true" />
               </button>
 
               <ThemeToggle className={styles.themeToggle} />
@@ -202,13 +227,7 @@ export default function Header() {
                 aria-haspopup="dialog"
                 onClick={handleCloseMobileMenu}
               >
-                <Image
-                  src="/icons/burger.svg"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className={styles.burgerIcon}
-                />
+                <span className={styles.burgerIcon} aria-hidden="true" />
               </button>
             ) : (
               <button
@@ -220,13 +239,7 @@ export default function Header() {
                 aria-haspopup="dialog"
                 onClick={handleOpenMobileMenu}
               >
-                <Image
-                  src="/icons/burger.svg"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className={styles.burgerIcon}
-                />
+                <span className={styles.burgerIcon} aria-hidden="true" />
               </button>
             )}
           </div>
@@ -260,16 +273,24 @@ export default function Header() {
                 className={styles.mobileNav}
                 aria-label={t("header.navigation.ariaLabelMobile")}
               >
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={styles.mobileMenuLink}
-                    onClick={handleMobileLinkClick}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = isNavItemActive(item.href);
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={clsx(
+                        styles.mobileMenuLink,
+                        isActive && styles.active,
+                      )}
+                      onClick={handleMobileLinkClick}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </nav>
 
               <div
@@ -282,13 +303,7 @@ export default function Header() {
                   aria-label={t("header.cart.openAriaLabel")}
                   onClick={handleMobileCartClick}
                 >
-                  <Image
-                    src="/icons/cart.svg"
-                    alt=""
-                    width={18}
-                    height={18}
-                    className={styles.mobileCartIcon}
-                  />
+                  <span className={styles.mobileCartIcon} aria-hidden="true" />
                 </button>
                 <ThemeToggle className={styles.mobileThemeToggle} iconSize={16} />
                 <LanguageSwitcher className={styles.mobileLanguageSwitcher} />

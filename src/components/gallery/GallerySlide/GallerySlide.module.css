@@ -44,9 +44,13 @@
   height: 64px;
   color: #fff;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-  transition: transform var(--transition-base);
+  transition: color var(--transition-fast);
 }
 
 .slideButton:hover .playIcon {
-  transform: scale(1.1);
+  color: var(--color-overlay);
+}
+
+.slideButton:focus-visible .playIcon {
+  color: var(--color-overlay);
 }

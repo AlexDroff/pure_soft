@@ -11,9 +11,8 @@
   color: var(--theme-toggle-color, var(--color-text-on-primary));
   box-shadow: none;
   transition:
-    color var(--transition-fast),
-    border-color var(--transition-fast),
-    opacity var(--transition-fast),
+    color var(--transition-base),
+    border-color var(--transition-base),
     transform var(--transition-fast);
 }
 
@@ -24,8 +23,22 @@
 
 @media screen and (hover: hover) {
   .toggle:hover:not(:disabled) {
-    border-color: var(--theme-toggle-hover-border, var(--color-text-on-primary));
-    opacity: 0.82;
-    transform: translateY(-1px);
+    color: var(--theme-toggle-hover-color, var(--color-primary));
+    border-color: var(
+      --theme-toggle-hover-border,
+      var(--theme-toggle-hover-color, var(--color-primary))
+    );
   }
+}
+
+.toggle:focus-visible {
+  color: var(--theme-toggle-hover-color, var(--color-primary));
+  border-color: var(
+    --theme-toggle-hover-border,
+    var(--theme-toggle-hover-color, var(--color-primary))
+  );
+}
+
+.toggle:active:not(:disabled) {
+  transform: translateY(1px);
 }

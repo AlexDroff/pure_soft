@@ -100,6 +100,7 @@
   display: block;
   width: 12px;
   height: 12px;
+  transition: filter var(--transition-fast);
 }
 
 .dots {
@@ -188,9 +189,17 @@
     opacity: 1;
   }
 
+  .navButton:hover .navIcon {
+    filter: brightness(0) saturate(100%);
+  }
+
   .previewClose:hover {
     transform: translateY(-1px);
   }
+}
+
+.navButton:focus-visible .navIcon {
+  filter: brightness(0) saturate(100%);
 }
 
 @media screen and (min-width: 768px) {
