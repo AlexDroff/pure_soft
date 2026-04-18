@@ -85,16 +85,11 @@
   background-color: transparent;
   color: var(--color-text-secondary);
   box-shadow: none;
+  transition: color var(--transition-fast);
 }
 
-.controlButton:hover,
-.controlButton:focus,
-.controlButton:focus-visible {
-  background-color: transparent;
-  border-color: transparent;
-  color: var(--color-text-secondary);
-  box-shadow: none;
-  transform: none;
+.controlButton:active {
+  transform: translateY(1px);
 }
 
 @media screen and (max-width: 767px) {

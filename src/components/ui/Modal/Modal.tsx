@@ -6,6 +6,7 @@ import clsx from "clsx";
 import styles from "./Modal.module.css";
 import IconButton from "../IconButton/IconButton";
 import { IoClose } from "react-icons/io5";
+import { useI18n } from "@/providers/locale-provider";
 
 type ModalProps = {
   isOpen: boolean;
@@ -20,8 +21,9 @@ export default function Modal({
   onCloseAction,
   children,
   className,
-  ariaLabel = "Dialog window",
+  ariaLabel,
 }: ModalProps) {
+  const { t } = useI18n();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -99,12 +101,12 @@ export default function Modal({
         className={clsx(styles.modal, className)}
         role="dialog"
         aria-modal="true"
-        aria-label={ariaLabel}
+        aria-label={ariaLabel ?? t("modal.defaultAriaLabel")}
         tabIndex={-1}
       >
         <IconButton
           icon={<IoClose size={22} />}
-          label="Close modal"
+          label={t("modal.closeButtonAriaLabel")}
           onClickAction={onCloseAction}
           className={styles.closeButton}
         />

@@ -6,8 +6,9 @@ import * as Yup from "yup";
 import type { OrderItem, CheckoutFormValues } from "@/types/order";
 import { Modal, Input, Button } from "@/components/ui";
 import { contacts } from "@/data/contacts";
+import { useI18n } from "@/providers/locale-provider";
+import { sanitizePhone, formatPhoneNumber } from "@/utils/phone.utils";
 import { buildWhatsAppMessage } from "@/utils/buildWhatsAppMessage";
-import { formatPhoneNumber } from "@/utils/formatPhoneNumber";
 import styles from "./CheckoutModal.module.css";
 
 type CheckoutModalProps = {
@@ -16,11 +17,6 @@ type CheckoutModalProps = {
   onCloseAction: () => void;
   onSuccess?: () => void;
 };
-
-const checkoutSchema = Yup.object({
-  name: Yup.string().trim().required("Introduce tu nombre"),
-  phone: Yup.string().trim().required("Introduce tu telefono"),
-});
 
 const initialValues: CheckoutFormValues = {
   name: "",
@@ -33,10 +29,31 @@ export default function CheckoutModal({
   onCloseAction,
   onSuccess,
 }: CheckoutModalProps) {
+  const { t } = useI18n();
+
+  const nameRegex = /^[A-Za-zÀ-ÿ\s-]{3,50}$/;
+  const phoneRegex = /^\+\d{11,12}$/;
+
+  const checkoutSchema = Yup.object({
+    name: Yup.string()
+      .required(t("checkoutModal.fields.name.requiredError"))
+      .min(3, t("checkoutModal.fields.name.minLengthError"))
+      .max(50, t("checkoutModal.fields.name.maxLengthError"))
+      .matches(nameRegex, t("checkoutModal.fields.name.invalidCharsError")),
+    phone: Yup.string()
+      .transform((value) => sanitizePhone(value))
+      .required(t("checkoutModal.fields.phone.requiredError"))
+      .matches(phoneRegex, t("checkoutModal.fields.phone.formatError")),
+  });
+
   const handleSubmit = (values: CheckoutFormValues) => {
     const message = buildWhatsAppMessage({
       customer: values,
       items,
+      messages: {
+        template: t("whatsAppTemplate.message"),
+        itemTemplate: t("whatsAppTemplate.itemLineTemplate"),
+      },
     });
 
     const whatsappUrl = `https://wa.me/${formatPhoneNumber(
@@ -53,50 +70,56 @@ export default function CheckoutModal({
       isOpen={isOpen}
       onCloseAction={onCloseAction}
       className={styles.modal}
-      ariaLabel="Formulario de pedido"
+      ariaLabel={t("checkoutModal.ariaLabel")}
     >
       <div className={styles.content}>
-        <h2 className={styles.title}>REALIZAR UN PEDIDO</h2>
+        <h2 className={styles.title}>{t("checkoutModal.title")}</h2>
         <p className={styles.subtitle}>
-          Por favor, introduzca sus datos y nuestro asesor se pondra en
-          contacto con usted en breve.
+          {t("checkoutModal.subtitle")}
         </p>
         <Formik
           initialValues={initialValues}
           validationSchema={checkoutSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, errors, touched, handleChange, handleBlur }) => (
-            <Form className={styles.form}>
-              <Input
-                label="Su nombre*"
-                name="name"
-                value={values.name}
-                placeholder="Nombre"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.name}
-                touched={touched.name}
-                className={styles.inputField}
-              />
+          {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => {
+            const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+              const sanitized = sanitizePhone(e.target.value);
+              setFieldValue("phone", sanitized);
+            };
 
-              <Input
-                label="Numero de telefono*"
-                name="phone"
-                value={values.phone}
-                placeholder="+34 123 456 789"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors.phone}
-                touched={touched.phone}
-                className={styles.inputField}
-              />
+            return (
+              <Form className={styles.form}>
+                <Input
+                  label={t("checkoutModal.fields.name.label")}
+                  name="name"
+                  value={values.name}
+                  placeholder={t("checkoutModal.fields.name.placeholder")}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors.name}
+                  touched={touched.name}
+                  className={styles.inputField}
+                />
 
-              <Button className={styles.submitButton} type="submit" size="md">
-                PEDIR POR WHATSAPP
-              </Button>
-            </Form>
-          )}
+                <Input
+                  label={t("checkoutModal.fields.phone.label")}
+                  name="phone"
+                  value={values.phone}
+                  placeholder={t("checkoutModal.fields.phone.placeholder")}
+                  onChange={handlePhoneChange}
+                  onBlur={handleBlur}
+                  error={errors.phone}
+                  touched={touched.phone}
+                  className={styles.inputField}
+                />
+
+                <Button className={styles.submitButton} type="submit" size="md">
+                  {t("checkoutModal.submitCta")}
+                </Button>
+              </Form>
+            );
+          }}
         </Formik>
       </div>
     </Modal>

@@ -1,0 +1,331 @@
+{
+  "meta": {
+    "defaultTitle": "PURE SOFT | Sofa, Mattress & Upholstery Cleaning in Alicante",
+    "titleTemplate": "%s | PURE SOFT",
+    "description": "Professional home cleaning service for sofas, mattresses, carpets, and upholstery in Alicante. Visible results, friendly service, and a free quote.",
+    "keywords": [
+      "sofa cleaning Alicante",
+      "mattress cleaning Alicante",
+      "carpet cleaning Alicante",
+      "upholstery cleaning Alicante",
+      "home cleaning Alicante",
+      "PURE SOFT"
+    ],
+    "openGraph": {
+      "siteName": "PURE SOFT",
+      "title": "PURE SOFT | Sofa, Mattress & Upholstery Cleaning in Alicante",
+      "description": "Professional cleaning of sofas, mattresses, carpets, and upholstery in Alicante. Home service with a free quote.",
+      "imageAlt": "PURE SOFT - professional upholstery cleaning in Alicante"
+    },
+    "twitter": {
+      "title": "PURE SOFT | Upholstery Cleaning in Alicante",
+      "description": "Professional sofa, mattress, and carpet cleaning service in Alicante."
+    }
+  },
+  "header": {
+    "brand": {
+      "logoAriaLabel": "PURE SOFT"
+    },
+    "navigation": {
+      "ariaLabelDesktop": "Primary navigation",
+      "ariaLabelMobile": "Mobile navigation",
+      "items": {
+        "cleaning": "CLEANING",
+        "contact": "CONTACT"
+      }
+    },
+    "cart": {
+      "openAriaLabel": "Open cart"
+    },
+    "mobileMenu": {
+      "openAriaLabel": "Open menu",
+      "closeAriaLabel": "Close menu",
+      "dialogAriaLabel": "Mobile menu",
+      "actionsAriaLabel": "Menu actions"
+    }
+  },
+  "themeToggle": {
+    "toLightAriaLabel": "Enable light theme",
+    "toDarkAriaLabel": "Enable dark theme"
+  },
+  "hero": {
+    "imageAlt": "Professional furniture and upholstery cleaning",
+    "title": "Furniture that looks like new, without the hassle",
+    "subtitle": "We remove dirt, stains, and odors with visible results from the very first cleaning.",
+    "cta": "FREE QUOTE"
+  },
+  "about": {
+    "steps": {
+      "step1": {
+        "number": "01.",
+        "title": "Contact",
+        "description": "One of our advisors will get in touch with you to respond to your request and guide you from the very beginning."
+      },
+      "step2": {
+        "number": "02.",
+        "title": "Details & Scheduling",
+        "description": "We answer all your questions, review the service details, and arrange the day and time that works best for you."
+      },
+      "step3": {
+        "number": "03.",
+        "title": "Service at Your Home",
+        "description": "We come to your home and carry out a high-quality cleaning service with spotless results."
+      }
+    },
+    "environment": {
+      "title": "WE CARE ABOUT THE ENVIRONMENT",
+      "description": "We provide professional cleaning services for sofas, carpets, chairs, and mattresses. We use safe products and methods that do not harm your home or the environment.",
+      "imageAlt": "Professional cleaning that is safe for your home and the environment"
+    }
+  },
+  "servicesPreview": {
+    "items": {
+      "carpet": {
+        "title": "CARPET CLEANING",
+        "description": "Professional carpet cleaning service",
+        "price": "FROM 50 EUR"
+      },
+      "sofa": {
+        "title": "SOFA CLEANING",
+        "description": "Deep cleaning for sofas and upholstery",
+        "price": "FROM 50 EUR"
+      },
+      "chair": {
+        "title": "CHAIR CLEANING",
+        "description": "Professional cleaning for chairs and seats",
+        "price": "FROM 7 EUR"
+      },
+      "mattress": {
+        "title": "MATTRESS CLEANING",
+        "description": "Mattress cleaning and disinfection",
+        "price": "FROM 60 EUR"
+      },
+      "armchair": {
+        "title": "ARMCHAIR CLEANING",
+        "description": "Deep cleaning for armchairs",
+        "price": "FROM 30 EUR"
+      }
+    },
+    "promo": {
+      "imageAlt": "3x2 promotion"
+    }
+  },
+  "servicesPage": {
+    "promoBanner": {
+      "ariaLabel": "Featured promotion",
+      "label": "PROMO",
+      "value": "3x2",
+      "text": "CLICK TO LEARN MORE"
+    }
+  },
+  "servicesCatalog": {
+    "unit": "service",
+    "items": {
+      "service-carpet-1": {
+        "title": "CARPET",
+        "shortDescription": "Carpet disinfection and cleaning",
+        "fullDescription": "Professional carpet disinfection and deep cleaning service to remove dirt, dust, and common stains."
+      },
+      "service-armchair-1": {
+        "title": "ARMCHAIR",
+        "shortDescription": "Deep cleaning and stain removal",
+        "fullDescription": "Deep armchair cleaning with treatment for stains, dust, and unpleasant odors, designed for everyday upholstery."
+      },
+      "service-chair-1": {
+        "title": "CHAIR",
+        "shortDescription": "Specialized cleaning service for chairs and seats",
+        "fullDescription": "Specialized cleaning for upholstered chairs and seats to refresh the fabric and remove built-up dirt."
+      },
+      "service-mattress-90": {
+        "title": "MATTRESS (90 x 190 cm)",
+        "shortDescription": "Mattress disinfection and deep cleaning",
+        "fullDescription": "Disinfection and deep cleaning for a 90 x 190 cm mattress to improve hygiene and reduce stains and odors."
+      },
+      "service-mattress-135": {
+        "title": "MATTRESS (135 x 190 cm)",
+        "shortDescription": "Mattress disinfection and deep cleaning",
+        "fullDescription": "Disinfection and deep cleaning for a 135 x 190 cm mattress with a focus on hygiene, freshness, and dirt removal."
+      },
+      "service-mattress-193": {
+        "title": "MATTRESS (193 x 202 cm)",
+        "shortDescription": "Mattress disinfection and deep cleaning",
+        "fullDescription": "Disinfection and deep cleaning for a 193 x 202 cm mattress for complete cleaning of the surface and fabric."
+      },
+      "service-sofa-2": {
+        "title": "2-SEATER SOFA",
+        "shortDescription": "Deep sofa cleaning and stain removal",
+        "fullDescription": "Deep cleaning for a 2-seater sofa with treatment for common stains, dust, and trapped odors."
+      },
+      "service-sofa-3": {
+        "title": "3-SEATER SOFA",
+        "shortDescription": "Deep sofa cleaning and stain removal",
+        "fullDescription": "Deep cleaning for a 3-seater sofa with stain removal and removal of built-up dirt from the upholstery."
+      },
+      "service-sofa-4": {
+        "title": "4-SEATER SOFA",
+        "shortDescription": "Deep sofa cleaning and stain removal",
+        "fullDescription": "Deep cleaning for a 4-seater sofa with upholstery washing and visible stain removal."
+      },
+      "service-sofa-corner": {
+        "title": "CORNER SOFA",
+        "shortDescription": "Deep sofa cleaning and stain removal",
+        "fullDescription": "Deep cleaning for a corner sofa to refresh the upholstery, remove stains, and restore freshness."
+      }
+    },
+    "card": {
+      "openDetailsAriaTemplate": "Open details for {serviceTitle}",
+      "priceCtaTemplate": "FROM {price} EUR"
+    },
+    "modal": {
+      "ariaLabelTemplate": "Service details for {serviceTitle}"
+    },
+    "details": {
+      "priceCtaTemplate": "From {price} EUR"
+    }
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": {
+      "faq-1": {
+        "question": "When can you come?",
+        "answer": "We try to offer an appointment as soon as possible, usually within the next 24 to 48 hours, depending on availability and location. In some cases, we also offer urgent appointments."
+      },
+      "faq-2": {
+        "question": "How can I pay?",
+        "answer": "You can conveniently pay by Bizum, bank transfer, or cash."
+      },
+      "faq-3": {
+        "question": "What cleaning method and technology do you use?",
+        "answer": "We work with injection and extraction technology, among other professional methods. This system allows us to clean, disinfect, and extract dirt in a single process."
+      },
+      "faq-4": {
+        "question": "Will it still be damp afterward?",
+        "answer": "Yes, the upholstery may remain slightly damp after the service. Drying time depends on the level of dirt and the type of fabric, although it usually dries within 2 to 3 hours."
+      },
+      "faq-5": {
+        "question": "How often do you recommend cleaning upholstery?",
+        "answer": "Under normal use conditions, we usually recommend professional cleaning 2 to 3 times a year. If you have children or pets at home, it may be a good idea to do it a bit more often."
+      },
+      "faq-6": {
+        "question": "How long does the service take?",
+        "answer": "The duration depends on the type of service to be carried out. On our website, you can check the estimated time for each service."
+      },
+      "faq-7": {
+        "question": "Do you remove stains?",
+        "answer": "We provide deep cleaning and professional disinfection. Many stains can be removed completely, although the final result depends on factors such as the type of stain, how long it has been there, and the fabric material."
+      }
+    }
+  },
+  "gallery": {
+    "controls": {
+      "goToImageAriaTemplate": "Go to gallery image {index}",
+      "goToSlideAriaTemplate": "Go to slide {index}",
+      "previousSlideAriaLabel": "Previous slide",
+      "nextSlideAriaLabel": "Next slide"
+    },
+    "preview": {
+      "dialogAriaLabel": "Gallery image preview",
+      "closeAriaLabel": "Close image preview",
+      "closeButtonText": "x"
+    },
+    "itemsAlt": {
+      "gallery-1": "Light-colored sofa after professional cleaning",
+      "gallery-2": "Armchair after professional cleaning",
+      "gallery-3": "Clean carpet after treatment",
+      "gallery-4": "Upholstered furniture after cleaning",
+      "gallery-5": "Clean upholstery with an even finish",
+      "gallery-6": "Professional fabric cleaning detail",
+      "gallery-7": "Final cleaning result on furniture",
+      "gallery-8": "Deep cleaning on upholstered furniture",
+      "gallery-9": "Result of textile disinfection and cleaning",
+      "gallery-10": "Final result of professional cleaning"
+    }
+  },
+  "order": {
+    "sidebar": {
+      "title": "YOUR ORDER",
+      "empty": "Your cart is empty.",
+      "closeCartAriaLabel": "Close cart"
+    },
+    "itemCard": {
+      "decreaseQuantityAriaLabel": "Decrease quantity",
+      "increaseQuantityAriaLabel": "Increase quantity",
+      "removeServiceAriaLabel": "Remove service",
+      "priceTemplate": "{price} EUR"
+    },
+    "summary": {
+      "subtotalTemplate": "Subtotal: {totalPrice} EUR",
+      "checkoutCta": "PLACE ORDER",
+      "continueShopping": "Continue shopping"
+    }
+  },
+  "checkoutModal": {
+    "ariaLabel": "Order form",
+    "title": "PLACE AN ORDER",
+    "subtitle": "Please enter your details and one of our advisors will contact you shortly.",
+    "fields": {
+      "name": {
+        "label": "Your name*",
+        "placeholder": "Name",
+        "requiredError": "Enter your name",
+        "minLengthError": "Name must be between 3 and 50 characters",
+        "maxLengthError": "Name must be between 3 and 50 characters",
+        "invalidCharsError": "Name contains invalid characters"
+      },
+      "phone": {
+        "label": "Phone number*",
+        "placeholder": "+34 123 456 789",
+        "requiredError": "Enter your phone number",
+        "formatError": "Phone must be in format +XXXXXXXXXXX"
+      }
+    },
+    "submitCta": "ORDER VIA WHATSAPP"
+  },
+  "modal": {
+    "defaultAriaLabel": "Dialog window",
+    "closeButtonAriaLabel": "Close modal"
+  },
+  "loader": {
+    "defaultText": "Loading...",
+    "defaultSubtext": "Please wait a moment",
+    "pageLoadingSubtext": "Please wait a few seconds."
+  },
+  "footer": {
+    "brand": {
+      "logoAriaLabel": "PureSoft",
+      "logoAlt": "PureSoft"
+    },
+    "address": {
+      "line1": "Castillo de Locubin",
+      "phone": "+34 637 943 520"
+    },
+    "social": {
+      "groupAriaLabel": "Social media links",
+      "youtubeAriaLabel": "YouTube",
+      "instagramAriaLabel": "Instagram",
+      "facebookAriaLabel": "Facebook"
+    },
+    "meta": {
+      "ownerName": "PURE SOFT",
+      "rightsTemplate": "© {year} {ownerName}. All rights reserved.",
+      "developedBy": "Website designed and developed by",
+      "developerLinkAriaLabel": "Visit Loading portfolio website (opens in a new tab)"
+    }
+  },
+  "systemStates": {
+    "notFound": {
+      "title": "Page not found",
+      "description": "The link may be outdated or the page may have been moved.",
+      "cta": "Back to home"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "An unexpected error occurred. Please try again in a few seconds.",
+      "cta": "Try again"
+    }
+  },
+  "whatsAppTemplate": {
+    "message": "Hello, I would like to place an order.\n\nName: {name}\nPhone: {phone}\n\nServices:\n{items}\n\nTotal: {total} EUR",
+    "itemLineTemplate": "{index}. {title} - {quantity} {unit} x {price} EUR"
+  }
+}

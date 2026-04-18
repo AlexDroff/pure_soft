@@ -17,7 +17,7 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  background-color: var(--color-white);
+  background-color: var(--color-surface-strong);
   box-shadow: var(--shadow-md);
   aspect-ratio: 4 / 5;
   transition:
@@ -45,7 +45,7 @@
   font-weight: var(--font-weight-extrabold);
   line-height: 1.2;
   text-align: center;
-  color: var(--color-white);
+  color: var(--color-text-on-primary);
   letter-spacing: 0.04em;
   overflow-wrap: anywhere;
 }

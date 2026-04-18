@@ -9,7 +9,7 @@
   width: 100vw;
   margin-left: -50vw;
   overflow: hidden;
-  min-height: calc(100vh - 120px);
+  min-height: 520px;
   background-color: var(--color-secondary);
 }
 
@@ -35,7 +35,7 @@
   z-index: var(--z-base);
   display: flex;
   align-items: flex-end;
-  min-height: calc(100vh - 120px);
+  min-height: 520px;
   width: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
@@ -73,12 +73,17 @@
 }
 
 .link {
-  width: fit-content;
+  width: min(100%, 400px);
   margin-top: var(--spacing-md);
 }
 
 @media screen and (min-width: 768px) {
+  .hero {
+    min-height: 620px;
+  }
+
   .content {
+    min-height: 620px;
     padding-right: var(--container-padding-tablet);
     padding-bottom: var(--spacing-2xl);
     padding-left: var(--container-padding-tablet);
@@ -95,6 +100,16 @@
 
   .textBlock .text {
     font-size: var(--font-size-caption);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero {
+    min-height: 700px;
+  }
+
+  .content {
+    min-height: 700px;
   }
 }
 

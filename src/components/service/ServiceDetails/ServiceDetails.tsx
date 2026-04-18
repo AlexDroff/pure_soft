@@ -2,6 +2,7 @@
 import Image from "next/image";
 import type { Service } from "@/types/service";
 import { Button, SectionText, SectionTitle } from "@/components/ui";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./ServiceDetails.module.css";
 
 type ServiceDetailsProps = {
@@ -15,6 +16,8 @@ export default function ServiceDetails({
   onAddToOrderAction,
   onClose,
 }: ServiceDetailsProps) {
+  const { t } = useI18n();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.imageWrapper}>
@@ -45,7 +48,7 @@ export default function ServiceDetails({
           }}
           size="md"
         >
-          Desde {service.price} EUR
+          {t("servicesCatalog.details.priceCtaTemplate", { price: service.price })}
         </Button>
       </div>
     </div>

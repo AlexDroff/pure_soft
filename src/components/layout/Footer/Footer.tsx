@@ -1,8 +1,12 @@
 // React component 'Footer'. Handles a dedicated UI element and its behavior.
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { Container } from "@/components/layout";
 import { contacts } from "@/data/contacts";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./Footer.module.css";
 
 type SocialItem = {
@@ -22,14 +26,22 @@ const socialItems = [
 ].filter((item): item is SocialItem => typeof item.href === "string");
 
 export default function Footer() {
+  const { t } = useI18n();
+  const currentYear = new Date().getUTCFullYear();
+  const ownerName = t("footer.meta.ownerName");
+
   return (
     <footer id="contacto" className={styles.footer}>
       <Container>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logoLink} aria-label="PureSoft">
+          <Link
+            href="/"
+            className={styles.logoLink}
+            aria-label={t("footer.brand.logoAriaLabel")}
+          >
             <Image
               src="/icons/logo.svg"
-              alt="PureSoft"
+              alt={t("footer.brand.logoAlt")}
               width={320}
               height={68}
               className={styles.logo}
@@ -38,34 +50,65 @@ export default function Footer() {
 
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>
-              <p className={styles.addressLine}>Avinguda de Denia, 76,</p>
-              <p className={styles.addressLine}>03013 Alicante,</p>
-              <Link href="tel:637943520" className={styles.link}>
-                637 943 520
-              </Link>
+              <p className={styles.addressLine}>{t("footer.address.line1")}</p>
+              <a href="tel:+34637943520" className={styles.link}>
+                {t("footer.address.phone")}
+              </a>
             </address>
 
-            <div className={styles.socials} aria-label="Social media links">
+            <div
+              className={styles.socials}
+              aria-label={t("footer.social.groupAriaLabel")}
+            >
               {socialItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   className={styles.socialLink}
-                  aria-label={item.label}
+                  style={
+                    {
+                      "--social-icon": `url("${item.icon}")`,
+                    } as CSSProperties
+                  }
+                  aria-label={t(
+                    `footer.social.${item.label.toLowerCase()}AriaLabel`,
+                  )}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                 >
-                  <Image
-                    src={item.icon}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className={styles.socialIcon}
-                  />
+                  <span className={styles.socialIcon} aria-hidden="true" />
                 </Link>
               ))}
             </div>
           </div>
+        </div>
+
+        <div className={styles.meta}>
+          <p className={styles.metaText}>
+            {t("footer.meta.rightsTemplate", {
+              year: currentYear,
+              ownerName,
+            })}
+          </p>
+
+          <p className={styles.metaCredit}>
+            <span>{t("footer.meta.developedBy")}</span>
+            <Link
+              href="https://alexandroff.pl/"
+              className={styles.developerLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("footer.meta.developerLinkAriaLabel")}
+            >
+              <Image
+                src="/icons/loading-logo.svg"
+                alt=""
+                width={94}
+                height={18}
+                className={styles.developerLogo}
+              />
+            </Link>
+          </p>
         </div>
       </Container>
     </footer>

@@ -9,8 +9,10 @@ export type FaqItem = {
 
 export type GalleryItem = {
   id: Id;
-  image: string;
+  type: "image" | "youtube";
+  src: string;
   alt: string;
+  thumbnail?: string;
 };
 
 export type ContactItem = {

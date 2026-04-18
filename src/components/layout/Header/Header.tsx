@@ -8,24 +8,37 @@ import { useEffect, useId, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { usePathname, useRouter } from "next/navigation";
 import { Container } from "@/components/layout";
+import { LanguageSwitcher, ThemeToggle } from "@/components/ui";
 import { useOrderStore } from "@/features/order";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./Header.module.css";
 
-const navItems = [
-  { label: "LIMPIEZA", href: "/#limpieza" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "CONTACTO", href: "/#contacto" },
-];
-
 export default function Header() {
+  const { t } = useI18n();
   const pathname = usePathname();
   const router = useRouter();
   const openSidebar = useOrderStore((state) => state.openSidebar);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState<string>(() =>
+    typeof window === "undefined" ? "" : window.location.hash,
+  );
   const mobileMenuId = useId();
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const mobileCloseButtonRef = useRef<HTMLButtonElement | null>(null);
   const mobileTriggerRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const syncHash = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+
+    return () => {
+      window.removeEventListener("hashchange", syncHash);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -42,7 +55,11 @@ export default function Header() {
         )
       : [];
 
-    (mobileCloseButtonRef.current || focusableElements[0] || mobileMenuRef.current)?.focus();
+    (
+      mobileCloseButtonRef.current ||
+      focusableElements[0] ||
+      mobileMenuRef.current
+    )?.focus();
 
     const handleEscapeAndTrap = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -95,17 +112,15 @@ export default function Header() {
   };
 
   const handleMobileCartClick = () => {
-    setIsMobileMenuOpen(false);
     handleCartClick();
+    setIsMobileMenuOpen(false);
   };
 
   const handleMobileLinkClick = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const handleOpenMobileMenu = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleOpenMobileMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     mobileTriggerRef.current = event.currentTarget;
     setIsMobileMenuOpen(true);
   };
@@ -114,26 +129,61 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const navItems = [
+    {
+      id: "cleaning",
+      label: t("header.navigation.items.cleaning"),
+      href: "/#limpieza",
+    },
+    {
+      id: "contact",
+      label: t("header.navigation.items.contact"),
+      href: "/#contacto",
+    },
+  ];
+
+  const isNavItemActive = (href: string) => {
+    const [rawPath, rawHash] = href.split("#");
+    const targetPath = rawPath || "/";
+
+    if (pathname !== targetPath) {
+      return false;
+    }
+
+    if (!rawHash) {
+      return false;
+    }
+
+    return currentHash === `#${rawHash}`;
+  };
+
   return (
     <header className={styles.header}>
       <Container>
         <div className={styles.inner}>
-          <Link href="/" className={styles.logoLink} aria-label="PURE SOFT">
+          <Link
+            href="/"
+            className={styles.logoLink}
+            aria-label={t("header.brand.logoAriaLabel")}
+          >
             <Image
               src="/icons/logo.svg"
               alt="PURE SOFT"
               width={320}
               height={68}
               className={styles.logo}
+              priority
             />
           </Link>
 
           <div className={styles.actions}>
-            <nav className={styles.nav} aria-label="Primary navigation">
+            <nav
+              className={styles.nav}
+              aria-label={t("header.navigation.ariaLabelDesktop")}
+            >
               <ul className={styles.navList}>
                 {navItems.map((item) => {
-                  const isActive =
-                    item.label === "LIMPIEZA" && pathname === "/services";
+                  const isActive = isNavItemActive(item.href);
 
                   return (
                     <li key={item.href}>
@@ -143,6 +193,7 @@ export default function Header() {
                           styles.navLink,
                           isActive && styles.active,
                         )}
+                        aria-current={isActive ? "page" : undefined}
                       >
                         {item.label}
                       </Link>
@@ -152,56 +203,43 @@ export default function Header() {
               </ul>
             </nav>
 
-            <button
-              type="button"
-              className={styles.cartLink}
-              aria-label="Abrir carrito"
-              onClick={handleCartClick}
-            >
-              <Image
-                src="/icons/cart.svg"
-                alt=""
-                width={50}
-                height={40}
-                className={styles.cartIcon}
-              />
-            </button>
+            <div className={styles.utilityActions}>
+              <button
+                type="button"
+                className={styles.cartLink}
+                aria-label={t("header.cart.openAriaLabel")}
+                onClick={handleCartClick}
+              >
+                <span className={styles.cartIcon} aria-hidden="true" />
+              </button>
+
+              <ThemeToggle className={styles.themeToggle} />
+              <LanguageSwitcher className={styles.languageSwitcher} />
+            </div>
 
             {isMobileMenuOpen ? (
               <button
                 type="button"
                 className={styles.burgerButton}
-                aria-label="Cerrar menu"
+                aria-label={t("header.mobileMenu.closeAriaLabel")}
                 aria-controls={mobileMenuId}
                 aria-expanded="true"
                 aria-haspopup="dialog"
                 onClick={handleCloseMobileMenu}
               >
-                <Image
-                  src="/icons/burger.svg"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className={styles.burgerIcon}
-                />
+                <span className={styles.burgerIcon} aria-hidden="true" />
               </button>
             ) : (
               <button
                 type="button"
                 className={styles.burgerButton}
-                aria-label="Abrir menu"
+                aria-label={t("header.mobileMenu.openAriaLabel")}
                 aria-controls={mobileMenuId}
                 aria-expanded="false"
                 aria-haspopup="dialog"
                 onClick={handleOpenMobileMenu}
               >
-                <Image
-                  src="/icons/burger.svg"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className={styles.burgerIcon}
-                />
+                <span className={styles.burgerIcon} aria-hidden="true" />
               </button>
             )}
           </div>
@@ -209,16 +247,13 @@ export default function Header() {
       </Container>
 
       {isMobileMenuOpen && (
-        <div
-          className={styles.mobileOverlay}
-          onClick={handleCloseMobileMenu}
-        >
+        <div className={styles.mobileOverlay} onClick={handleCloseMobileMenu}>
           <div
             id={mobileMenuId}
             ref={mobileMenuRef}
             role="dialog"
             aria-modal="true"
-            aria-label="Menu movil"
+            aria-label={t("header.mobileMenu.dialogAriaLabel")}
             className={styles.mobileMenu}
             onClick={(event) => event.stopPropagation()}
             tabIndex={-1}
@@ -227,39 +262,53 @@ export default function Header() {
               ref={mobileCloseButtonRef}
               type="button"
               className={styles.mobileCloseButton}
-              aria-label="Cerrar menu"
+              aria-label={t("header.mobileMenu.closeAriaLabel")}
               onClick={handleCloseMobileMenu}
             >
               <IoClose size={24} />
             </button>
 
-            <nav className={styles.mobileNav} aria-label="Mobile navigation">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={styles.mobileMenuLink}
-                  onClick={handleMobileLinkClick}
-                >
-                  {item.label}
-                </Link>
-              ))}
-
-              <button
-                type="button"
-                className={styles.mobileCartButton}
-                onClick={handleMobileCartClick}
-                aria-label="Abrir carrito"
+            <div className={styles.mobileMenuContent}>
+              <nav
+                className={styles.mobileNav}
+                aria-label={t("header.navigation.ariaLabelMobile")}
               >
-                <Image
-                  src="/icons/cart.svg"
-                  alt=""
-                  width={50}
-                  height={40}
-                  className={styles.mobileCartIcon}
-                />
-              </button>
-            </nav>
+                {navItems.map((item) => {
+                  const isActive = isNavItemActive(item.href);
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={clsx(
+                        styles.mobileMenuLink,
+                        isActive && styles.active,
+                      )}
+                      onClick={handleMobileLinkClick}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              <div
+                className={styles.mobileActions}
+                aria-label={t("header.mobileMenu.actionsAriaLabel")}
+              >
+                <button
+                  type="button"
+                  className={styles.mobileCartButton}
+                  aria-label={t("header.cart.openAriaLabel")}
+                  onClick={handleMobileCartClick}
+                >
+                  <span className={styles.mobileCartIcon} aria-hidden="true" />
+                </button>
+                <ThemeToggle className={styles.mobileThemeToggle} iconSize={16} />
+                <LanguageSwitcher className={styles.mobileLanguageSwitcher} />
+              </div>
+            </div>
           </div>
         </div>
       )}

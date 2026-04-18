@@ -29,8 +29,37 @@
   top: var(--spacing-md);
   right: var(--spacing-md);
   border: none;
+  border-color: var(--color-secondary);
   background: transparent;
+  color: var(--color-secondary);
   box-shadow: none;
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-fast);
+}
+
+:global(html.dark) .closeButton {
+  border-color: var(--color-text-on-primary);
+  color: var(--color-text-on-primary);
+}
+
+@media screen and (hover: hover) {
+  .closeButton:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+}
+
+.closeButton:focus-visible {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+:global(html.dark) .closeButton:hover,
+:global(html.dark) .closeButton:focus-visible {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 @media screen and (min-width: 768px) {

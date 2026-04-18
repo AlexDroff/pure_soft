@@ -1,23 +1,27 @@
 /* Style module for 'IconButton'. Contains local classes and visual presentation rules. */
 .button {
+  --icon-button-color: var(--color-secondary);
+  --icon-button-border: var(--color-border);
+  --icon-button-interactive-color: var(--icon-interactive-color, var(--color-overlay));
+  --icon-button-interactive-border: var(
+    --icon-interactive-border-color,
+    var(--icon-button-interactive-color)
+  );
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--icon-button-border);
   border-radius: var(--radius-md);
   background-color: var(--color-surface-overlay);
-  color: var(--color-secondary);
+  color: var(--icon-button-color);
   box-shadow: var(--shadow-sm);
   transition:
-    background-color var(--transition-base),
     color var(--transition-base),
     border-color var(--transition-base),
-    box-shadow var(--transition-base),
-    transform var(--transition-fast),
-    opacity var(--transition-base);
+    transform var(--transition-fast);
 }
 
 .button:disabled {
@@ -32,7 +36,8 @@
 }
 
 .button:focus-visible {
-  outline: none;
+  color: var(--icon-button-interactive-color);
+  border-color: var(--icon-button-interactive-border);
 }
 
 @media screen and (min-width: 768px) {
@@ -44,11 +49,8 @@
 
 @media screen and (hover: hover) {
   .button:hover:not(:disabled) {
-    background-color: var(--color-white);
-    border-color: var(--color-border-focus);
-    color: var(--color-primary);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
+    color: var(--icon-button-interactive-color);
+    border-color: var(--icon-button-interactive-border);
   }
 }
 
@@ -56,10 +58,18 @@
   border: none;
   background-color: transparent;
   box-shadow: none;
+  color: var(--color-text-secondary);
 }
 
 .borderless:hover:not(:disabled) {
-  background-color: transparent;
-  border-color: transparent;
-  box-shadow: none;
+  color: var(--color-secondary);
+}
+
+.borderless:focus-visible {
+  color: var(--color-secondary);
+}
+
+:global(html.dark) .borderless:hover:not(:disabled),
+:global(html.dark) .borderless:focus-visible {
+  color: var(--color-text-primary);
 }

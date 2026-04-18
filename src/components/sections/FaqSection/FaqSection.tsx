@@ -5,54 +5,49 @@ import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/layout";
 import { SectionTitle } from "@/components/ui";
+import { useI18n } from "@/providers/locale-provider";
 import styles from "./FaqSection.module.css";
 
-const faqItems = [
-  {
-    id: "faq-1",
-    question: "Cuando pueden venir?",
-    answer:
-      "Intentamos ofrecer cita lo antes posible, normalmente dentro de las proximas 24 a 48 horas, segun disponibilidad y ubicacion. Tambien ofrecemos turnos urgentes en algunos casos.",
-  },
-  {
-    id: "faq-2",
-    question: "Como se puede pagar?",
-    answer:
-      "Puedes pagar de forma comoda por Bizum, transferencia bancaria o en efectivo.",
-  },
-  {
-    id: "faq-3",
-    question: "Como es la tecnica y tecnologia?",
-    answer:
-      "Trabajamos con tecnologia de inyeccion y extraccion, entre otros metodos profesionales. Este sistema permite limpiar, desinfectar y extraer la suciedad en un solo proceso.",
-  },
-  {
-    id: "faq-4",
-    question: "Queda humedo luego?",
-    answer:
-      "Si, la tapiceria puede quedar ligeramente humeda despues del servicio. El tiempo de secado depende del nivel de suciedad y del tipo de tejido, aunque normalmente suele secarse en unas 2 o 3 horas.",
-  },
-  {
-    id: "faq-5",
-    question: "Cada cuanto recomendais limpiar la tapiceria?",
-    answer:
-      "En condiciones normales de uso, solemos recomendar una limpieza profesional 2 o 3 veces al ano. Si en casa hay ninos o mascotas, puede ser recomendable hacerlo con algo mas de frecuencia.",
-  },
-  {
-    id: "faq-6",
-    question: "En cuanto tiempo se hacen los trabajos?",
-    answer:
-      "La duracion depende del tipo de trabajo que se vaya a realizar. En nuestra pagina puedes consultar el tiempo estimado para cada servicio.",
-  },
-  {
-    id: "faq-7",
-    question: "Sacan manchas?",
-    answer:
-      "Realizamos una limpieza profunda y desinfeccion profesional. Muchas manchas pueden eliminarse por completo, aunque el resultado final depende de factores como el tipo de mancha, el tiempo que lleve y el material del tejido.",
-  },
-];
-
 export default function FaqSection() {
+  const { t } = useI18n();
+  const faqItems = [
+    {
+      id: "faq-1",
+      question: t("faq.items.faq-1.question"),
+      answer: t("faq.items.faq-1.answer"),
+    },
+    {
+      id: "faq-2",
+      question: t("faq.items.faq-2.question"),
+      answer: t("faq.items.faq-2.answer"),
+    },
+    {
+      id: "faq-3",
+      question: t("faq.items.faq-3.question"),
+      answer: t("faq.items.faq-3.answer"),
+    },
+    {
+      id: "faq-4",
+      question: t("faq.items.faq-4.question"),
+      answer: t("faq.items.faq-4.answer"),
+    },
+    {
+      id: "faq-5",
+      question: t("faq.items.faq-5.question"),
+      answer: t("faq.items.faq-5.answer"),
+    },
+    {
+      id: "faq-6",
+      question: t("faq.items.faq-6.question"),
+      answer: t("faq.items.faq-6.answer"),
+    },
+    {
+      id: "faq-7",
+      question: t("faq.items.faq-7.question"),
+      answer: t("faq.items.faq-7.answer"),
+    },
+  ];
+
   const [openId, setOpenId] = useState<string>(faqItems[0].id);
 
   const handleToggle = (id: string) => {
@@ -63,7 +58,7 @@ export default function FaqSection() {
     <section id="faq" className={styles.section}>
       <Container>
         <div className={styles.header}>
-          <SectionTitle className={styles.title}>FAQ</SectionTitle>
+          <SectionTitle className={styles.title}>{t("faq.title")}</SectionTitle>
         </div>
 
         <div className={styles.list}>

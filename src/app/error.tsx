@@ -8,6 +8,7 @@ import {
   SectionTitle,
   SystemState,
 } from "@/components/ui";
+import { useI18n } from "@/providers/locale-provider";
 
 type ErrorPageProps = {
   error: Error & { digest?: string };
@@ -15,6 +16,8 @@ type ErrorPageProps = {
 };
 
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
+  const { t } = useI18n();
+
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
       console.error(error);
@@ -23,13 +26,11 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
   return (
     <SystemState>
-      <SectionTitle>Algo salio mal</SectionTitle>
+      <SectionTitle>{t("systemStates.error.title")}</SectionTitle>
 
-      <SectionText>
-        Ocurrio un error inesperado. Intenta nuevamente en unos segundos.
-      </SectionText>
+      <SectionText>{t("systemStates.error.description")}</SectionText>
 
-      <Button onClick={reset}>Intentar de nuevo</Button>
+      <Button onClick={reset}>{t("systemStates.error.cta")}</Button>
     </SystemState>
   );
 }
