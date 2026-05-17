@@ -94,7 +94,7 @@ export default function Footer() {
           <p className={styles.metaCredit}>
             <span>{t("footer.meta.developedBy")}</span>
             <Link
-              href="https://alexandroff.pl/"
+              href="https://www.loadingstudio.pl/"
               className={styles.developerLink}
               target="_blank"
               rel="noopener noreferrer"
