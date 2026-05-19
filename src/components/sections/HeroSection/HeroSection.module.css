@@ -93,6 +93,23 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xs);
+  border-color: var(--color-primary);
+}
+
+.ctaAction.ctaAction:focus-visible {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-text-on-primary);
+  transform: none;
+}
+
+@media screen and (hover: hover) {
+  .ctaAction.ctaAction:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-text-on-primary);
+    transform: none;
+  }
 }
 
 
