@@ -2,7 +2,7 @@
 .button {
   --icon-button-color: var(--color-secondary);
   --icon-button-border: var(--color-border);
-  --icon-button-interactive-color: var(--icon-interactive-color, var(--color-overlay));
+  --icon-button-interactive-color: var(--icon-interactive-color, var(--color-primary));
   --icon-button-interactive-border: var(
     --icon-interactive-border-color,
     var(--icon-button-interactive-color)
@@ -21,6 +21,7 @@
   transition:
     color var(--transition-base),
     border-color var(--transition-base),
+    background-color var(--transition-base),
     transform var(--transition-fast);
 }
 
@@ -38,6 +39,7 @@
 .button:focus-visible {
   color: var(--icon-button-interactive-color);
   border-color: var(--icon-button-interactive-border);
+  transform: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -51,6 +53,7 @@
   .button:hover:not(:disabled) {
     color: var(--icon-button-interactive-color);
     border-color: var(--icon-button-interactive-border);
+    transform: none;
   }
 }
 
