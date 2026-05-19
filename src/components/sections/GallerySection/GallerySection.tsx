@@ -14,6 +14,7 @@ import GalleryVideoDialog from "@/components/gallery/GalleryVideoDialog/GalleryV
 import styles from "./GallerySection.module.css";
 
 const GALLERY_IMAGE_QUALITY = 95;
+const SWIPE_THRESHOLD = 48;
 
 const getImageSrc = (item: GalleryItem) => {
   if (item.type === "image") {
@@ -35,6 +36,9 @@ export default function GallerySection() {
   const previewCardRef = useRef<HTMLDivElement | null>(null);
   const previewCloseButtonRef = useRef<HTMLButtonElement | null>(null);
   const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+  const hasSwipedRef = useRef(false);
 
   const slidesCount = gallery.length;
   const currentItem = gallery[currentIndex];
@@ -49,6 +53,11 @@ export default function GallerySection() {
   };
 
   const handleImageClick = (trigger: HTMLButtonElement) => {
+    if (hasSwipedRef.current) {
+      hasSwipedRef.current = false;
+      return;
+    }
+
     const item = gallery[currentIndex];
     if (!item) return;
     if (item.type === "youtube") {
@@ -65,6 +74,45 @@ export default function GallerySection() {
 
   const handleCloseVideo = () => {
     setSelectedVideo(null);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLButtonElement>) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    touchStartXRef.current = touch.clientX;
+    touchStartYRef.current = touch.clientY;
+    hasSwipedRef.current = false;
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLButtonElement>) => {
+    const startX = touchStartXRef.current;
+    const startY = touchStartYRef.current;
+    const touch = event.changedTouches[0];
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+    if (startX === null || startY === null || !touch) return;
+
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+
+    if (absX < SWIPE_THRESHOLD || absX <= absY) return;
+
+    hasSwipedRef.current = true;
+
+    if (deltaX < 0) {
+      handleNext();
+      return;
+    }
+
+    handlePrev();
+  };
+
+  const handleTouchCancel = () => {
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+    hasSwipedRef.current = false;
   };
 
   const handleSliderKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -165,6 +213,9 @@ export default function GallerySection() {
                       type="button"
                       className={styles.card}
                       onClick={(event) => handleImageClick(event.currentTarget)}
+                      onTouchStart={handleTouchStart}
+                      onTouchEnd={handleTouchEnd}
+                      onTouchCancel={handleTouchCancel}
                       aria-label={t("gallery.controls.goToImageAriaTemplate", {
                         index: currentIndex + 1,
                       })}
