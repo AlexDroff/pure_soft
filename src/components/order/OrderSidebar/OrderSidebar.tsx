@@ -1,4 +1,4 @@
-﻿// React component 'OrderSidebar'. Handles a dedicated UI element and its behavior.
+// React component 'OrderSidebar'. Handles a dedicated UI element and its behavior.
 "use client";
 
 import { useEffect, useRef, type MouseEvent } from "react";
@@ -15,22 +15,22 @@ type OrderSidebarProps = {
   isOpen: boolean;
   items: OrderItem[];
   totalPrice: number;
-  onClose: () => void;
-  onCheckout: () => void;
-  onIncrease: (serviceId: string) => void;
-  onDecrease: (serviceId: string) => void;
-  onRemove: (serviceId: string) => void;
+  onCloseAction: () => void;
+  onCheckoutAction: () => void;
+  onIncreaseAction: (serviceId: string) => void;
+  onDecreaseAction: (serviceId: string) => void;
+  onRemoveAction: (serviceId: string) => void;
 };
 
 export default function OrderSidebar({
   isOpen,
   items,
   totalPrice,
-  onClose,
-  onCheckout,
-  onIncrease,
-  onDecrease,
-  onRemove,
+  onCloseAction,
+  onCheckoutAction,
+  onIncreaseAction,
+  onDecreaseAction,
+  onRemoveAction,
 }: OrderSidebarProps) {
   const { t } = useI18n();
   const sidebarRef = useRef<HTMLElement | null>(null);
@@ -60,7 +60,7 @@ export default function OrderSidebar({
 
     const handleEscapeAndTrap = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onClose();
+        onCloseAction();
         return;
       }
 
@@ -97,11 +97,11 @@ export default function OrderSidebar({
         previouslyFocusedRef.current.focus();
       }
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onCloseAction]);
 
   const handleBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      onClose();
+      onCloseAction();
     }
   };
 
@@ -119,7 +119,6 @@ export default function OrderSidebar({
         role="dialog"
         aria-modal="true"
         aria-label={t("order.sidebar.title")}
-        aria-hidden={!isOpen}
         tabIndex={-1}
       >
         <div className={styles.header}>
@@ -130,7 +129,7 @@ export default function OrderSidebar({
           <IconButton
             icon={<IoClose size={22} />}
             label={t("order.sidebar.closeCartAriaLabel")}
-            onClickAction={onClose}
+            onClickAction={onCloseAction}
             variant="borderless"
           />
         </div>
@@ -147,17 +146,17 @@ export default function OrderSidebar({
                 <OrderItemCard
                   key={item.serviceId}
                   item={item}
-                  onIncrease={onIncrease}
-                  onDecrease={onDecrease}
-                  onRemove={onRemove}
+                  onIncrease={onIncreaseAction}
+                  onDecrease={onDecreaseAction}
+                  onRemove={onRemoveAction}
                 />
               ))}
             </div>
 
             <OrderSummary
               totalPrice={totalPrice}
-              onCheckout={onCheckout}
-              onClose={onClose}
+              onCheckout={onCheckoutAction}
+              onClose={onCloseAction}
             />
           </>
         )}

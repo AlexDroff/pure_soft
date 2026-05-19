@@ -100,11 +100,11 @@ export default function ServicesPageClient() {
         isOpen={isSidebarOpen}
         items={items}
         totalPrice={getTotalPrice()}
-        onClose={closeSidebar}
-        onCheckout={handleCheckout}
-        onIncrease={increaseQuantity}
-        onDecrease={decreaseQuantity}
-        onRemove={removeItem}
+        onCloseAction={closeSidebar}
+        onCheckoutAction={handleCheckout}
+        onIncreaseAction={increaseQuantity}
+        onDecreaseAction={decreaseQuantity}
+        onRemoveAction={removeItem}
       />
 
       <CheckoutModal
