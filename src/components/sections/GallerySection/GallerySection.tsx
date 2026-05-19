@@ -3,13 +3,26 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  type PanInfo,
+} from "motion/react";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { gallery } from "@/data/gallery";
 import type { GalleryItem } from "@/types/common";
 import { Container } from "@/components/layout";
+import { IconButton } from "@/components/ui";
 import { useI18n } from "@/providers/locale-provider";
 import { getYouTubeThumbnailUrl } from "@/utils/youtube.utils";
 import GalleryVideoDialog from "@/components/gallery/GalleryVideoDialog/GalleryVideoDialog";
 import styles from "./GallerySection.module.css";
+
+const SWIPE_OFFSET_THRESHOLD = 72;
+const SWIPE_VELOCITY_THRESHOLD = 520;
+const SLIDE_OFFSET = 34;
+const GALLERY_IMAGE_QUALITY = 95;
 
 const getImageSrc = (item: GalleryItem) => {
   if (item.type === "image") {
@@ -18,36 +31,73 @@ const getImageSrc = (item: GalleryItem) => {
   return item.thumbnail || getYouTubeThumbnailUrl(item.src) || "";
 };
 
+const getNextIndex = (current: number, delta: number, total: number) => {
+  if (total <= 0) return 0;
+  return (current + delta + total) % total;
+};
+
 export default function GallerySection() {
   const { t } = useI18n();
+  const shouldReduceMotion = useReducedMotion() === true;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<GalleryItem | null>(null);
   const previewCardRef = useRef<HTMLDivElement | null>(null);
   const previewCloseButtonRef = useRef<HTMLButtonElement | null>(null);
   const previewTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const draggedRef = useRef(false);
+
+  const slidesCount = gallery.length;
+  const currentItem = gallery[currentIndex];
+  const currentImageSrc = currentItem ? getImageSrc(currentItem) : "";
+
+  const slideVariants = {
+    enter: (navDirection: 1 | -1) =>
+      shouldReduceMotion
+        ? { opacity: 0 }
+        : {
+            x: navDirection > 0 ? SLIDE_OFFSET : -SLIDE_OFFSET,
+            opacity: 0.68,
+            scale: 1.02,
+            filter: "blur(1.5px)",
+          },
+    center: { x: 0, opacity: 1, scale: 1, filter: "blur(0px)" },
+    exit: (navDirection: 1 | -1) =>
+      shouldReduceMotion
+        ? { opacity: 0 }
+        : {
+            x: navDirection > 0 ? -SLIDE_OFFSET : SLIDE_OFFSET,
+            opacity: 0.62,
+            scale: 0.985,
+            filter: "blur(1.5px)",
+          },
+  };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? gallery.length - 1 : prev - 1));
+    setDirection(-1);
+    setCurrentIndex((prev) => getNextIndex(prev, -1, slidesCount));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === gallery.length - 1 ? 0 : prev + 1));
+    setDirection(1);
+    setCurrentIndex((prev) => getNextIndex(prev, 1, slidesCount));
   };
 
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
-  };
+  const handleImageClick = (trigger: HTMLButtonElement) => {
+    if (draggedRef.current) {
+      draggedRef.current = false;
+      return;
+    }
 
-  const handleImageClick = (index: number, trigger: HTMLButtonElement) => {
-    const item = gallery[index];
+    const item = gallery[currentIndex];
+    if (!item) return;
     if (item.type === "youtube") {
       setSelectedVideo(item);
       return;
     }
     previewTriggerRef.current = trigger;
-    setCurrentIndex(index);
-    setExpandedIndex(index);
+    setExpandedIndex(currentIndex);
   };
 
   const handleClosePreview = () => {
@@ -58,19 +108,33 @@ export default function GallerySection() {
     setSelectedVideo(null);
   };
 
-  const orderedGallery = gallery
-    .map((item, index) => {
-      const offset = index - currentIndex;
-      const wrappedOffset =
-        offset > gallery.length / 2
-          ? offset - gallery.length
-          : offset < -gallery.length / 2
-            ? offset + gallery.length
-            : offset;
+  const handleCardDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const offsetX = info.offset.x;
+    const velocityX = info.velocity.x;
+    draggedRef.current = Math.abs(offsetX) > 8;
 
-      return { item, index, wrappedOffset };
-    })
-    .sort((a, b) => a.wrappedOffset - b.wrappedOffset);
+    if (offsetX <= -SWIPE_OFFSET_THRESHOLD || velocityX <= -SWIPE_VELOCITY_THRESHOLD) {
+      handleNext();
+      return;
+    }
+
+    if (offsetX >= SWIPE_OFFSET_THRESHOLD || velocityX >= SWIPE_VELOCITY_THRESHOLD) {
+      handlePrev();
+    }
+  };
+
+  const handleSliderKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      handlePrev();
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      handleNext();
+    }
+  };
 
   useEffect(() => {
     if (expandedIndex === null) return;
@@ -131,92 +195,87 @@ export default function GallerySection() {
   return (
     <section className={styles.section}>
       <Container>
-        <div className={styles.slider}>
+        <div
+          className={styles.slider}
+          role="region"
+          aria-label={t("gallery.controls.sliderAriaLabel")}
+          tabIndex={0}
+          onKeyDown={handleSliderKeyDown}
+        >
           <div className={styles.viewport}>
-            <div className={styles.strip}>
-              {orderedGallery.map(({ item, index, wrappedOffset }) => {
-                const isActive = wrappedOffset === 0;
-                const isNear = Math.abs(wrappedOffset) === 1;
-                const imageSrc = getImageSrc(item);
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className={`${styles.card} ${
-                      isActive
-                        ? styles.activeCard
-                        : isNear
-                          ? styles.nearCard
-                          : styles.farCard
-                    }`}
-                    onClick={(event) => handleImageClick(index, event.currentTarget)}
-                    aria-label={t("gallery.controls.goToImageAriaTemplate", {
-                      index: index + 1,
-                    })}
-                  >
-                    <div className={styles.imageWrapper}>
-                      {imageSrc && (
-                        <Image
-                          src={imageSrc}
-                          alt={t(`gallery.itemsAlt.${item.id}`)}
-                          fill
-                          sizes="(min-width: 1440px) 214px, (min-width: 768px) 176px, 118px"
-                          className={styles.image}
-                        />
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className={styles.controls}>
-            <button
-              type="button"
-              className={styles.navButton}
-              onClick={handlePrev}
-              aria-label={t("gallery.controls.previousSlideAriaLabel")}
-            >
-              <Image
-                src="/icons/arrow-left.svg"
-                alt=""
-                width={12}
-                height={12}
-                className={styles.navIcon}
-              />
-            </button>
-
-            <div className={styles.dots}>
-              {gallery.map((item, index) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={`${styles.dot} ${
-                    currentIndex === index ? styles.activeDot : ""
-                  }`}
-                  onClick={() => handleDotClick(index)}
-                  aria-label={t("gallery.controls.goToSlideAriaTemplate", {
-                    index: index + 1,
-                  })}
+            <div className={styles.viewportTrack}>
+              <div className={styles.arrowDock}>
+                <IconButton
+                  icon={<IoChevronBack size={40} />}
+                  label={t("gallery.controls.previousSlideAriaLabel")}
+                  className={styles.navButton}
+                  onClickAction={handlePrev}
                 />
-              ))}
-            </div>
+              </div>
 
-            <button
-              type="button"
-              className={styles.navButton}
-              onClick={handleNext}
-              aria-label={t("gallery.controls.nextSlideAriaLabel")}
-            >
-              <Image
-                src="/icons/arrow-right.svg"
-                alt=""
-                width={12}
-                height={12}
-                className={styles.navIcon}
-              />
-            </button>
+              <div className={styles.frame}>
+                <div className={styles.slideStack}>
+                  <AnimatePresence mode="sync" custom={direction} initial={false}>
+                    {currentItem && currentImageSrc && (
+                      <motion.button
+                        key={currentItem.id}
+                        type="button"
+                        className={styles.card}
+                        onClick={(event) => handleImageClick(event.currentTarget)}
+                        aria-label={t("gallery.controls.goToImageAriaTemplate", {
+                          index: currentIndex + 1,
+                        })}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                      transition={
+                        shouldReduceMotion
+                          ? { duration: 0.12, ease: "linear" }
+                          : {
+                              x: { type: "spring", stiffness: 120, damping: 22, mass: 0.9 },
+                              opacity: { duration: 0.52, ease: [0.22, 1, 0.36, 1] },
+                              scale: { duration: 0.56, ease: [0.22, 1, 0.36, 1] },
+                              filter: { duration: 0.56, ease: [0.22, 1, 0.36, 1] },
+                            }
+                      }
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.12}
+                      dragMomentum={false}
+                      onDragEnd={handleCardDragEnd}
+                    >
+                        <div className={styles.imageWrapper}>
+                          <Image
+                            src={currentImageSrc}
+                            alt={t(`gallery.itemsAlt.${currentItem.id}`)}
+                            fill
+                            sizes="(min-width: 1024px) 600px, (min-width: 768px) 600px, 92vw"
+                            quality={GALLERY_IMAGE_QUALITY}
+                            className={styles.image}
+                          />
+                          {currentItem.type === "youtube" && (
+                            <span className={styles.videoBadge} aria-hidden="true">
+                              VIDEO
+                            </span>
+                          )}
+                        </div>
+                      </motion.button>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              <div className={styles.arrowDock}>
+                <IconButton
+                  icon={<IoChevronForward size={40} />}
+                  label={t("gallery.controls.nextSlideAriaLabel")}
+                  className={styles.navButton}
+                  onClickAction={handleNext}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -253,6 +312,7 @@ export default function GallerySection() {
                     alt={t(`gallery.itemsAlt.${expandedItem.id}`)}
                     fill
                     sizes="(min-width: 1024px) 920px, 100vw"
+                    quality={GALLERY_IMAGE_QUALITY}
                     className={styles.previewImage}
                   />
                 </div>

@@ -1,6 +1,7 @@
 // React component 'ServiceGrid'. Handles a dedicated UI element and its behavior.
 "use client";
 
+import { StaggerGroup } from "@/components/animation";
 import type { Service } from "@/types/service";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import styles from "./ServiceGrid.module.css";
@@ -17,7 +18,7 @@ export default function ServiceGrid({
   onAddToOrderAction,
 }: ServiceGridProps) {
   return (
-    <div className={styles.grid}>
+    <StaggerGroup className={styles.grid} staggerChildren={0.08}>
       {services.map((service, index) => (
         <ServiceCard
           key={service.id}
@@ -27,6 +28,6 @@ export default function ServiceGrid({
           imagePriority={index === 0}
         />
       ))}
-    </div>
+    </StaggerGroup>
   );
 }

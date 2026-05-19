@@ -7,10 +7,8 @@ import { ThemeProvider, type Theme } from "@/providers/theme-provider";
 import { LocaleProvider } from "@/providers/locale-provider";
 import { getMessages } from "@/i18n/messages";
 import { getServerLocale } from "@/i18n/server";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-const metadataBase = new URL(siteUrl);
-const ogImageUrl = `${siteUrl}/og-image.jpg`;
+import { SITE_OG_IMAGE_URL, SITE_URL } from "@/config/site";
+const metadataBase = new URL(SITE_URL);
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getServerLocale();
@@ -18,6 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase,
+    alternates: {
+      canonical: "/",
+    },
     title: {
       default: messages.meta.defaultTitle,
       template: messages.meta.titleTemplate,
@@ -38,13 +39,13 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: locale === "en" ? "en_US" : "es_ES",
-      url: siteUrl,
+      url: SITE_URL,
       siteName: messages.meta.openGraph.siteName,
       title: messages.meta.openGraph.title,
       description: messages.meta.openGraph.description,
       images: [
         {
-          url: ogImageUrl,
+          url: SITE_OG_IMAGE_URL,
           width: 1200,
           height: 630,
           alt: messages.meta.openGraph.imageAlt,
@@ -55,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: messages.meta.twitter.title,
       description: messages.meta.twitter.description,
-      images: [ogImageUrl],
+      images: [SITE_OG_IMAGE_URL],
     },
   };
 }

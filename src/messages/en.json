@@ -35,7 +35,8 @@
       }
     },
     "cart": {
-      "openAriaLabel": "Open cart"
+      "openAriaLabel": "Open cart",
+      "openWithCountAriaLabelTemplate": "Open cart, {count} items in cart"
     },
     "mobileMenu": {
       "openAriaLabel": "Open menu",
@@ -52,7 +53,10 @@
     "imageAlt": "Professional furniture and upholstery cleaning",
     "title": "Furniture that looks like new, without the hassle",
     "subtitle": "We remove dirt, stains, and odors with visible results from the very first cleaning.",
-    "cta": "FREE QUOTE"
+    "cta": "FREE QUOTE",
+    "ctaServices": "VIEW SERVICES",
+    "ctaQuote": "FREE QUOTE",
+    "ctaHelper": "Send us a photo of your sofa, mattress or carpet and we'll give you an estimated quote."
   },
   "about": {
     "steps": {
@@ -111,6 +115,10 @@
     }
   },
   "servicesPage": {
+    "meta": {
+      "title": "Upholstery, Sofa, Mattress and Carpet Cleaning Services in Alicante",
+      "description": "Home cleaning services for upholstery, sofas, mattresses and carpets in Alicante. Request a quote via WhatsApp."
+    },
     "promoBanner": {
       "ariaLabel": "Featured promotion",
       "label": "PROMO",
@@ -218,6 +226,7 @@
   },
   "gallery": {
     "controls": {
+      "sliderAriaLabel": "Gallery slider",
       "goToImageAriaTemplate": "Go to gallery image {index}",
       "goToSlideAriaTemplate": "Go to slide {index}",
       "previousSlideAriaLabel": "Previous slide",
@@ -238,7 +247,8 @@
       "gallery-7": "Final cleaning result on furniture",
       "gallery-8": "Deep cleaning on upholstered furniture",
       "gallery-9": "Result of textile disinfection and cleaning",
-      "gallery-10": "Final result of professional cleaning"
+      "gallery-10": "Final result of professional cleaning",
+      "gallery-11": "Professional cleaning result on light upholstery"
     }
   },
   "order": {

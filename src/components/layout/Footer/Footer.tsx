@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Container } from "@/components/layout";
-import { contacts } from "@/data/contacts";
+import { CONTACT_PHONE_TEL, contacts } from "@/data/contacts";
 import { useI18n } from "@/providers/locale-provider";
 import styles from "./Footer.module.css";
 
@@ -31,7 +31,7 @@ export default function Footer() {
   const ownerName = t("footer.meta.ownerName");
 
   return (
-    <footer id="contacto" className={styles.footer}>
+    <footer id="contacto" className={styles.footer} data-sticky-footer>
       <Container>
         <div className={styles.inner}>
           <Link
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className={styles.contactGroup}>
             <address className={styles.addressBlock}>
               <p className={styles.addressLine}>{t("footer.address.line1")}</p>
-              <a href="tel:+34637943520" className={styles.link}>
+              <a href={CONTACT_PHONE_TEL} className={styles.link}>
                 {t("footer.address.phone")}
               </a>
             </address>
@@ -74,7 +74,7 @@ export default function Footer() {
                     `footer.social.${item.label.toLowerCase()}AriaLabel`,
                   )}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
                   <span className={styles.socialIcon} aria-hidden="true" />
                 </Link>

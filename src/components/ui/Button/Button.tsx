@@ -4,7 +4,7 @@
 import clsx from "clsx";
 import styles from "./Button.module.css";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "outlinePrimary";
 type ButtonSize = "sm" | "md" | "lg";
 type ButtonRadius = "pill" | "soft";
 

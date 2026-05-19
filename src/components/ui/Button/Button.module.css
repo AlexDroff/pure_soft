@@ -1,4 +1,4 @@
-/* Style module for 'Button'. Contains local classes and visual presentation rules. */
+﻿/* Style module for 'Button'. Contains local classes and visual presentation rules. */
 .button {
   display: inline-flex;
   align-items: center;
@@ -17,6 +17,10 @@
     transform var(--transition-fast),
     opacity var(--transition-base);
   min-width: 0;
+}
+
+.linkButton {
+  text-decoration: none;
 }
 
 .size-sm,
@@ -65,6 +69,12 @@
   color: var(--color-text-on-primary);
 }
 
+.outlinePrimary {
+  border-color: var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
 .button:disabled {
   opacity: 0.55;
   cursor: not-allowed;
@@ -89,5 +99,12 @@
   .secondary:hover:not(:disabled) {
     box-shadow: var(--shadow-md);
     background-color: var(--color-secondary);
+  }
+
+  .outlinePrimary:hover:not(:disabled) {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+    background-color: transparent;
+    color: var(--color-primary);
   }
 }

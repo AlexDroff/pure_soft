@@ -4,7 +4,6 @@ import { useI18n } from "@/providers/locale-provider";
 import styles from "./OrderSummary.module.css";
 
 type OrderSummaryProps = {
-  totalItems: number;
   totalPrice: number;
   onCheckout: () => void;
   onClose: () => void;

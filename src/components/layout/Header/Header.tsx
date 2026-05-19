@@ -17,11 +17,10 @@ export default function Header() {
   const { t } = useI18n();
   const pathname = usePathname();
   const router = useRouter();
+  const cartPositionsCount = useOrderStore((state) => state.items.length);
   const openSidebar = useOrderStore((state) => state.openSidebar);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentHash, setCurrentHash] = useState<string>(() =>
-    typeof window === "undefined" ? "" : window.location.hash,
-  );
+  const [currentHash, setCurrentHash] = useState("");
   const mobileMenuId = useId();
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const mobileCloseButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -129,6 +128,15 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const cartBadgeCountLabel =
+    cartPositionsCount > 99 ? "99+" : String(cartPositionsCount);
+  const cartOpenAriaLabel =
+    cartPositionsCount > 0
+      ? t("header.cart.openWithCountAriaLabelTemplate", {
+          count: cartPositionsCount,
+        })
+      : t("header.cart.openAriaLabel");
+
   const navItems = [
     {
       id: "cleaning",
@@ -207,10 +215,15 @@ export default function Header() {
               <button
                 type="button"
                 className={styles.cartLink}
-                aria-label={t("header.cart.openAriaLabel")}
+                aria-label={cartOpenAriaLabel}
                 onClick={handleCartClick}
               >
                 <span className={styles.cartIcon} aria-hidden="true" />
+                {cartPositionsCount > 0 ? (
+                  <span className={styles.cartBadge} aria-hidden="true">
+                    {cartBadgeCountLabel}
+                  </span>
+                ) : null}
               </button>
 
               <ThemeToggle className={styles.themeToggle} />
@@ -300,10 +313,15 @@ export default function Header() {
                 <button
                   type="button"
                   className={styles.mobileCartButton}
-                  aria-label={t("header.cart.openAriaLabel")}
+                  aria-label={cartOpenAriaLabel}
                   onClick={handleMobileCartClick}
                 >
                   <span className={styles.mobileCartIcon} aria-hidden="true" />
+                  {cartPositionsCount > 0 ? (
+                    <span className={styles.cartBadge} aria-hidden="true">
+                      {cartBadgeCountLabel}
+                    </span>
+                  ) : null}
                 </button>
                 <ThemeToggle className={styles.mobileThemeToggle} iconSize={16} />
                 <LanguageSwitcher className={styles.mobileLanguageSwitcher} />

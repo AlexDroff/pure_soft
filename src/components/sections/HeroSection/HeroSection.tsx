@@ -4,7 +4,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout";
-import { Button, SectionText, SectionTitle } from "@/components/ui";
+import { Button, ButtonLink, SectionText, SectionTitle } from "@/components/ui";
+import { WHATSAPP_QUOTE_URL } from "@/data/contacts";
 import { ROUTES } from "@/lib/constants/routes";
 import { useI18n } from "@/providers/locale-provider";
 import styles from "./HeroSection.module.css";
@@ -13,7 +14,7 @@ export default function HeroSection() {
   const { t } = useI18n();
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} data-sticky-hero>
       <Container>
         <div className={styles.hero}>
           <Image
@@ -38,9 +39,32 @@ export default function HeroSection() {
                 {t("hero.subtitle")}
               </SectionText>
 
-              <Link href={ROUTES.SERVICES} className={styles.link}>
-                <Button size="md">{t("hero.cta")}</Button>
-              </Link>
+              <div className={styles.ctaGroup}>
+                <Link href={ROUTES.SERVICES} className={styles.link}>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    radius="soft"
+                    className={styles.ctaAction}
+                  >
+                    {t("hero.ctaServices")}
+                  </Button>
+                </Link>
+
+                <ButtonLink
+                  href={WHATSAPP_QUOTE_URL}
+                  variant="primary"
+                  size="md"
+                  radius="soft"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ariaLabel="Pedir presupuesto gratis por WhatsApp"
+                  className={styles.ctaAction}
+                >
+                  {t("hero.ctaQuote")}
+                  <span className={styles.whatsappIcon} aria-hidden="true" />
+                </ButtonLink>
+              </div>
             </div>
           </div>
         </div>

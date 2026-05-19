@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import { Container } from "@/components/layout";
+import { Reveal, StaggerGroup } from "@/components/animation";
 import { SectionText, SectionTitle } from "@/components/ui";
 import { useI18n } from "@/providers/locale-provider";
 import styles from "./AboutSection.module.css";
@@ -31,7 +32,7 @@ export default function AboutSection() {
     <section className={styles.section}>
       <Container>
         <div className={styles.wrapper}>
-          <div className={styles.stepsGrid}>
+          <StaggerGroup className={styles.stepsGrid} staggerChildren={0.08}>
             {steps.map((step) => (
               <article key={step.number} className={styles.stepCard}>
                 <span className={styles.stepNumber}>{step.number}</span>
@@ -41,10 +42,10 @@ export default function AboutSection() {
                 </SectionText>
               </article>
             ))}
-          </div>
+          </StaggerGroup>
 
           <div className={styles.bottomBlock}>
-            <div className={styles.infoBlock}>
+            <Reveal className={styles.infoBlock} y={16} duration={0.55}>
               <SectionTitle className={styles.title}>
                 {t("about.environment.title")}
               </SectionTitle>
@@ -52,9 +53,9 @@ export default function AboutSection() {
               <SectionText className={styles.description}>
                 {t("about.environment.description")}
               </SectionText>
-            </div>
+            </Reveal>
 
-            <div className={styles.imageWrapper}>
+            <Reveal className={styles.imageWrapper} delay={0.08} y={16} duration={0.55}>
               <Image
                 src="/images/about/about.webp"
                 alt={t("about.environment.imageAlt")}
@@ -62,7 +63,7 @@ export default function AboutSection() {
                 sizes="(min-width: 1280px) 52vw, (min-width: 768px) 50vw, 100vw"
                 className={styles.image}
               />
-            </div>
+            </Reveal>
           </div>
         </div>
       </Container>

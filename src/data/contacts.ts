@@ -8,3 +8,14 @@ export const contacts: ContactItem = {
   facebook: "https://www.facebook.com/profile.php?id=61586741181944",
   youtube: "https://www.youtube.com/channel/UCDaMP5s-0Q1JEBChabiVjSg",
 };
+
+export const WHATSAPP_QUOTE_MESSAGE =
+  "Hola, quiero un presupuesto para limpieza de sofá / colchón / alfombra. Te envío una foto. Mi zona es:";
+
+const formatContactPhone = (phone: string) => phone.replace(/\D/g, "");
+
+export const CONTACT_PHONE_TEL = `tel:${contacts.phone}`;
+
+export const WHATSAPP_QUOTE_URL = `https://wa.me/${formatContactPhone(
+  contacts.whatsapp,
+)}?text=${encodeURIComponent(WHATSAPP_QUOTE_MESSAGE)}`;

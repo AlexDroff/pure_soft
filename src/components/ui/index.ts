@@ -1,5 +1,6 @@
 // Component barrel file for 'ui'. Centralizes re-exports for simpler imports.
 export { default as Button } from "./Button/Button";
+export { default as ButtonLink } from "./Button/ButtonLink";
 export { default as IconButton } from "./IconButton/IconButton";
 export { default as Input } from "./Input/Input";
 export { default as Loader } from "./Loader/Loader";

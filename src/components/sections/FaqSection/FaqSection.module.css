@@ -10,7 +10,7 @@
 .title {
   max-width: none;
   font-size: var(--font-size-body-md);
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .list {

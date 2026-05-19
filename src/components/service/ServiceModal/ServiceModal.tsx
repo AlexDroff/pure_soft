@@ -5,6 +5,7 @@ import type { Service } from "@/types/service";
 import { Modal } from "@/components/ui";
 import { useI18n } from "@/providers/locale-provider";
 import ServiceDetails from "../ServiceDetails/ServiceDetails";
+import styles from "./ServiceModal.module.css";
 
 type ServiceModalProps = {
   service: Service | null;
@@ -27,6 +28,7 @@ export default function ServiceModal({
     <Modal
       isOpen={isOpen}
       onCloseAction={onCloseAction}
+      className={styles.serviceModal}
       ariaLabel={t("servicesCatalog.modal.ariaLabelTemplate", {
         serviceTitle: service.title,
       })}

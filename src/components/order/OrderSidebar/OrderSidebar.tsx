@@ -1,6 +1,7 @@
-// React component 'OrderSidebar'. Handles a dedicated UI element and its behavior.
+﻿// React component 'OrderSidebar'. Handles a dedicated UI element and its behavior.
 "use client";
 
+import { useEffect, useRef, type MouseEvent } from "react";
 import clsx from "clsx";
 import type { OrderItem } from "@/types/order";
 import { SectionTitle, SectionText, IconButton } from "@/components/ui";
@@ -13,7 +14,6 @@ import styles from "./OrderSidebar.module.css";
 type OrderSidebarProps = {
   isOpen: boolean;
   items: OrderItem[];
-  totalItems: number;
   totalPrice: number;
   onClose: () => void;
   onCheckout: () => void;
@@ -25,7 +25,6 @@ type OrderSidebarProps = {
 export default function OrderSidebar({
   isOpen,
   items,
-  totalItems,
   totalPrice,
   onClose,
   onCheckout,
@@ -34,49 +33,135 @@ export default function OrderSidebar({
   onRemove,
 }: OrderSidebarProps) {
   const { t } = useI18n();
+  const sidebarRef = useRef<HTMLElement | null>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    previouslyFocusedRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const focusableSelector =
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const focusableElements = sidebarRef.current
+      ? Array.from(
+          sidebarRef.current.querySelectorAll<HTMLElement>(focusableSelector),
+        )
+      : [];
+
+    (focusableElements[0] || sidebarRef.current)?.focus();
+
+    const handleEscapeAndTrap = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !sidebarRef.current) return;
+
+      const activeFocusable = Array.from(
+        sidebarRef.current.querySelectorAll<HTMLElement>(focusableSelector),
+      );
+
+      if (activeFocusable.length === 0) {
+        event.preventDefault();
+        sidebarRef.current.focus();
+        return;
+      }
+
+      const firstElement = activeFocusable[0];
+      const lastElement = activeFocusable[activeFocusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeAndTrap);
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.removeEventListener("keydown", handleEscapeAndTrap);
+      if (previouslyFocusedRef.current?.isConnected) {
+        previouslyFocusedRef.current.focus();
+      }
+    };
+  }, [isOpen, onClose]);
+
+  const handleBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
 
   return (
-    <aside className={clsx(styles.sidebar, isOpen && styles.open)}>
-      <div className={styles.header}>
-        <SectionTitle className={styles.title}>
-          {t("order.sidebar.title")}
-        </SectionTitle>
+    <>
+      <div
+        className={clsx(styles.backdrop, isOpen && styles.backdropVisible)}
+        onClick={handleBackdropClick}
+        aria-hidden="true"
+      />
 
-        <IconButton
-          icon={<IoClose size={22} />}
-          label={t("order.sidebar.closeCartAriaLabel")}
-          onClickAction={onClose}
-          variant="borderless"
-        />
-      </div>
-      <div className={styles.divider} />
+      <aside
+        ref={sidebarRef}
+        className={clsx(styles.sidebar, isOpen && styles.open)}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("order.sidebar.title")}
+        aria-hidden={!isOpen}
+        tabIndex={-1}
+      >
+        <div className={styles.header}>
+          <SectionTitle className={styles.title}>
+            {t("order.sidebar.title")}
+          </SectionTitle>
 
-      {items.length === 0 ? (
-        <div className={styles.empty}>
-          <SectionText>{t("order.sidebar.empty")}</SectionText>
-        </div>
-      ) : (
-        <>
-          <div className={styles.items}>
-            {items.map((item) => (
-              <OrderItemCard
-                key={item.serviceId}
-                item={item}
-                onIncrease={onIncrease}
-                onDecrease={onDecrease}
-                onRemove={onRemove}
-              />
-            ))}
-          </div>
-
-          <OrderSummary
-            totalItems={totalItems}
-            totalPrice={totalPrice}
-            onCheckout={onCheckout}
-            onClose={onClose}
+          <IconButton
+            icon={<IoClose size={22} />}
+            label={t("order.sidebar.closeCartAriaLabel")}
+            onClickAction={onClose}
+            variant="borderless"
           />
-        </>
-      )}
-    </aside>
+        </div>
+        <div className={styles.divider} />
+
+        {items.length === 0 ? (
+          <div className={styles.empty}>
+            <SectionText>{t("order.sidebar.empty")}</SectionText>
+          </div>
+        ) : (
+          <>
+            <div className={styles.items}>
+              {items.map((item) => (
+                <OrderItemCard
+                  key={item.serviceId}
+                  item={item}
+                  onIncrease={onIncrease}
+                  onDecrease={onDecrease}
+                  onRemove={onRemove}
+                />
+              ))}
+            </div>
+
+            <OrderSummary
+              totalPrice={totalPrice}
+              onCheckout={onCheckout}
+              onClose={onClose}
+            />
+          </>
+        )}
+      </aside>
+    </>
   );
 }

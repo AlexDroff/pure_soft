@@ -1,0 +1,22 @@
+.serviceModal.serviceModal {
+  width: min(100%, 960px);
+  max-width: 960px;
+  max-height: calc(100dvh - 48px);
+  overflow: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+  .serviceModal.serviceModal {
+    width: min(100%, 1120px);
+    max-width: 1120px;
+    max-height: calc(100dvh - 56px);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .serviceModal.serviceModal {
+    width: min(100%, 1320px);
+    max-width: 1320px;
+    max-height: calc(100dvh - 64px);
+  }
+}

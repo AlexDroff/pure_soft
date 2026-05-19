@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { StaggerGroup } from "@/components/animation";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
@@ -50,7 +51,7 @@ export default function ServicesPreviewSection() {
   return (
     <section id="limpieza" className={styles.section}>
       <Container>
-        <div className={styles.grid}>
+        <StaggerGroup className={styles.grid} staggerChildren={0.08}>
           <article className={styles.card}>
             <div className={styles.imageWrap}>
               <Image
@@ -177,7 +178,7 @@ export default function ServicesPreviewSection() {
               </div>
             </div>
           </article>
-        </div>
+        </StaggerGroup>
       </Container>
     </section>
   );
