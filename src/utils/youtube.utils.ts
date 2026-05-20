@@ -13,14 +13,22 @@ export function getYouTubeVideoId(url: string): string | null {
   return null;
 }
 
-export function getYouTubeEmbedUrl(url: string): string | null {
-  const videoId = getYouTubeVideoId(url);
+function normalizeYouTubeVideoId(value: string): string | null {
+  const normalizedValue = value.trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(normalizedValue)) {
+    return normalizedValue;
+  }
+  return getYouTubeVideoId(normalizedValue);
+}
+
+export function getYouTubeEmbedUrl(youtubeIdOrUrl: string): string | null {
+  const videoId = normalizeYouTubeVideoId(youtubeIdOrUrl);
   if (!videoId) return null;
   return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
 }
 
-export function getYouTubeThumbnailUrl(url: string): string | null {
-  const videoId = getYouTubeVideoId(url);
-  if (!videoId) return null;
-  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+export function getYouTubeThumbnailUrl(youtubeId: string): string | null {
+  const normalizedId = normalizeYouTubeVideoId(youtubeId);
+  if (!normalizedId) return null;
+  return `https://i.ytimg.com/vi/${normalizedId}/hq720.jpg`;
 }

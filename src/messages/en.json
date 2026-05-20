@@ -251,6 +251,80 @@
       "gallery-11": "Professional cleaning result on light upholstery"
     }
   },
+  "videoGallery": {
+    "title": "Videos",
+    "description": "See how we clean sofas, mattresses, carpets and upholstery step by step.",
+    "comingSoon": "Coming soon",
+    "controls": {
+      "openVideoAriaTemplate": "Open video: {title}"
+    },
+    "modal": {
+      "closeAriaLabel": "Close video",
+      "dialogAriaLabel": "Video player"
+    },
+    "items": {
+      "sofaCleaning": {
+        "title": "Sofa cleaning",
+        "caption": "A full step-by-step sofa deep-cleaning process."
+      },
+      "mattressCleaning": {
+        "title": "Mattress cleaning",
+        "caption": "Deep mattress cleaning focused on hygiene and freshness."
+      },
+      "carpetCleaning": {
+        "title": "Carpet cleaning",
+        "caption": "How we remove dirt and revive carpet fibers."
+      },
+      "upholsteryExtraction": {
+        "title": "Upholstery extraction",
+        "caption": "Professional extraction process for upholstered surfaces."
+      },
+      "beforeAfter": {
+        "title": "Before and after",
+        "caption": "Real visual comparison before and after cleaning."
+      },
+      "finalResult": {
+        "title": "Final result",
+        "caption": "The final finish after complete service."
+      },
+      "demo1": {
+        "title": "Sofa cleaning",
+        "caption": "Demo process for sofa cleaning and fabric refresh."
+      },
+      "demo2": {
+        "title": "Mattress cleaning",
+        "caption": "Demo workflow for deep mattress cleaning and hygiene."
+      },
+      "demo3": {
+        "title": "Carpet cleaning",
+        "caption": "Demo carpet treatment to lift dirt and revive fibers."
+      },
+      "demo4": {
+        "title": "Upholstery cleaning",
+        "caption": "Demo upholstery cleaning for everyday furniture fabric."
+      },
+      "demo5": {
+        "title": "Deep extraction",
+        "caption": "Demo extraction phase to remove embedded moisture and soil."
+      },
+      "demo6": {
+        "title": "Before and after",
+        "caption": "Demo comparison showing visible results before and after service."
+      },
+      "demo7": {
+        "title": "Stain removal",
+        "caption": "Demo stain-removal sequence for common upholstery spots."
+      },
+      "demo8": {
+        "title": "Drying process",
+        "caption": "Demo drying stage after wet cleaning and extraction."
+      },
+      "demo9": {
+        "title": "Final result",
+        "caption": "Demo final look after full cleaning and finishing."
+      }
+    }
+  },
   "order": {
     "sidebar": {
       "title": "YOUR ORDER",

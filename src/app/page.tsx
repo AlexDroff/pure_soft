@@ -5,7 +5,9 @@ import {
   GallerySection,
   HeroSection,
   ServicesPreviewSection,
+  VideoGallerySection,
 } from "@/components/sections";
+import { SHOW_VIDEO_GALLERY } from "@/config/features";
 import FaqJsonLd from "@/components/seo/FaqJsonLd";
 import ProfessionalServiceJsonLd from "@/components/seo/ProfessionalServiceJsonLd";
 import StickyWhatsAppCta from "@/components/ui/StickyWhatsAppCta/StickyWhatsAppCta";
@@ -47,6 +49,7 @@ export default async function HomePage() {
       <ServicesPreviewSection />
       <FaqSection />
       <GallerySection />
+      {SHOW_VIDEO_GALLERY ? <VideoGallerySection /> : null}
       <StickyWhatsAppCta />
     </main>
   );

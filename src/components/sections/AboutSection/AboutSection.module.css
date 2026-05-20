@@ -25,14 +25,14 @@
   font-size: var(--font-size-card-title);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
-  color: var(--color-primary);
+  color: #0196ac;
 }
 
 .stepTitle {
   font-size: var(--font-size-body-md);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-heading);
-  color: var(--color-primary);
+  color: #0196ac;
 }
 
 .stepText {
@@ -56,7 +56,7 @@
 
 .title {
   max-width: none;
-  color: var(--color-primary) !important;
+  color: #0196ac !important;
 }
 
 .description {
